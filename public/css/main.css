@@ -1,10 +1,11 @@
 :root {
 	--main-color-light: #ddf;
 	--main-color-dark: #226;
+	--main-color-text: #003;
 }
 
 body {
-	color: var(--main-color-dark);
+	color: var(--main-color-text);
 }
 
 a {
