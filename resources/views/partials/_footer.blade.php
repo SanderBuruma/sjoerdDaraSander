@@ -1,6 +1,6 @@
 @yield('footer')
 <hr>
-<p class="text-center">Copyright Sander Buruma - all Rights Reserved</p>
+<p class="text-center">Copyright {{date('Y', time())}} Sander Buruma - all Rights Reserved</p>
 <meta name="_token" content="{!! csrf_token() !!}"/>
 
 <!-- Optional JavaScript -->
