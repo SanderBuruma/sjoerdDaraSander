@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', function () { return view('home'); });
+Route::get('/about', function(){ return view('pages.about'); })->name('about');
 Route::resource('admin', 'AdminInterfaceController');
 
 Auth::routes();
