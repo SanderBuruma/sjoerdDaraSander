@@ -1,0 +1,22 @@
+:root {
+	--main-color-light: #ddf;
+	--main-color-dark: #226;
+}
+
+body {
+	
+}
+
+a {
+	opacity: 0.8;
+	color: var(--main-color-dark) !important;
+}
+a:hover {
+	opacity: 1;
+	text-decoration: underline !important;
+}
+
+.card-header,
+.navbar {
+	background-color: var(--main-color-light) !important;
+}
