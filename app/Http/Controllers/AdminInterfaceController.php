@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class AdminInterfaceController extends Controller
 {
@@ -13,7 +14,8 @@ class AdminInterfaceController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $users = User::all();
+        return view('admin.index')->withUsers($users);
     }
 
     /**

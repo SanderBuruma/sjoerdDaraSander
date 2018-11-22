@@ -25,15 +25,15 @@ class DatabaseSeeder extends Seeder {
 			'name' => 'Admin',
 		]);
 		
-		DB::table('users_roles')->insert([
+		DB::table('role_user')->insert([
 			'user_id' => '1',
 			'role_id' => '1',
 		]);
-		DB::table('users_roles')->insert([
+		DB::table('role_user')->insert([
 			'user_id' => '1',
 			'role_id' => '2',
 		]);
-		DB::table('users_roles')->insert([
+		DB::table('role_user')->insert([
 			'user_id' => '1',
 			'role_id' => '3',
 		]);
