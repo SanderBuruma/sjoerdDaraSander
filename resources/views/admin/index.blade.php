@@ -34,28 +34,8 @@ button:active {
 				<th>Created</th>
 				<th></th>
 			</thead>
-			<tbody id="tbody">
-				@foreach($users as $user)
-				<tr>
-					<td>{{ $user->id }}</td>
-					<td>{{ $user->name }}</td>
-					<td>{{ $user->email }}</td>
-					<td>
-						<p class="tooltip-1">
-							@foreach($user->roles as $role)
-								<span class="role-list-item">{{ $role->name }}</span>
-							@endforeach
-						</p>
-						<?php //echo dd($user->roles()) ?>
-					</td>
-					<td>{{ $user->created_at }}</td>
-					<td>
-						<button type="button" class="modal-button" data-toggle="modal" data-target="#adminModalCenter" data-user-id="{{$user->id}}" onclick=clickEdit(<?php echo $user->id ?>)>
-							<i class="fas fa-pencil-alt"></i>
-						</button>
-					</td>
-				</tr>
-				@endforeach
+			<tbody id="tBody">
+
 			</tbody>
 		</table>
 	</div>
@@ -123,7 +103,7 @@ $(document).ready(function(){
 				name: $('#modal-name').val(),
 			},
 			success: function(result){
-
+				refreshIndex();
 			},
 			error: function(jqxhr, status, exception) {
 				console.log('Exception:', exception);
@@ -139,6 +119,7 @@ $(document).ready(function(){
 function clickEdit (e) {
 	for (let i of users){
 		if (i.id == e){
+			console.log(i);
 			let arr = [];
 			for (let j of i.roles){
 				arr.push(j.id);
@@ -147,7 +128,7 @@ function clickEdit (e) {
 			editUserId = i.id;
 			$('#select-roles').val(arr).trigger('change');
 			$('#modal-name')[0].value = i.name;
-			break;
+			return;
 		}
 	}
 }
@@ -156,67 +137,40 @@ function refreshIndex () {
 	$.ajax({
 		url: '/adminajax',
 		success: function (result) {
+
+			users = result;
+
 			let tBodyString = ``;
-			for (let i of result){
+
+			for (let user of result){
 				tBodyString += `
-					
+					<tr>
+						<td>${user.id}</td>
+						<td>${user.name}</td>
+						<td>${user.email}</td>
+						<td>
+							<p class="tooltip-1">`;
+
+				for (let role of user.roles) {
+					tBodyString += `<span class="role-list-item">${role.name}</span> `
+				}
+				tBodyString += `
+							</p>
+						</td>
+						<td>${user.created_at}</td>
+						<td>
+							<button type="button" class="modal-button" data-toggle="modal" data-target="#adminModalCenter" data-user-id="${user.id}" onclick=clickEdit(${user.id})>
+								<i class="fas fa-pencil-alt"></i>
+							</button>
+						</td>
+					</tr>
 				`;
+				$('#tBody').html(tBodyString);
 			}
-			let tBodyString = `
-			<tr>
-				<td>{{ $user->id }}</td>
-				<td>{{ $user->name }}</td>
-				<td>{{ $user->email }}</td>
-				<td>
-					<p class="tooltip-1">
-						@foreach($user->roles as $role)
-							<span class="role-list-item">{{ $role->name }}</span>
-						@endforeach
-					</p>
-					<?php //echo dd($user->roles()) ?>
-				</td>
-				<td>{{ $user->created_at }}</td>
-				<td>
-					<button type="button" class="modal-button" data-toggle="modal" data-target="#adminModalCenter" data-user-id="{{$user->id}}" onclick=clickEdit(<?php echo $user->id ?>)>
-						<i class="fas fa-pencil-alt"></i>
-					</button>
-				</td>
-			</tr>
-			`;
-			console.log(result);
+
 		}
 	})
 }
 
-
-// <tr>
-// 	<td>{{ $user->id }}</td>
-// 	<td>{{ $user->name }}</td>
-// 	<td>{{ $user->email }}</td>
-// 	<td>
-// 		<p class="tooltip-1">
-// 			@foreach($user->roles as $role)
-// 				<span class="role-list-item">{{ $role->name }}</span>
-// 			@endforeach
-// 		</p>
-// 		<?php //echo dd($user->roles()) ?>
-// 	</td>
-// 	<td>{{ $user->created_at }}</td>
-// 	<td>
-// 		<button type="button" class="modal-button" data-toggle="modal" data-target="#adminModalCenter" data-user-id="{{$user->id}}" onclick=clickEdit(<?php echo $user->id ?>)>
-// 			<i class="fas fa-pencil-alt"></i>
-// 		</button>
-// 	</td>
-// </tr>
-
-/*
-code snippets for later use
-
-	get list of currently selected items
-	$('#select-roles').select2('data'); 
-
-	update list of currently selected items
-	$('#select-roles').val([3,2]).trigger('change');
-*/
 </script>
 @endsection
