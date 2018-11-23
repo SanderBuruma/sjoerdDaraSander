@@ -133,6 +133,7 @@ $(document).ready(function(){
 		})
 	})
 
+	refreshIndex();
 });
 
 function clickEdit (e) {
@@ -150,6 +151,63 @@ function clickEdit (e) {
 		}
 	}
 }
+
+function refreshIndex () {
+	$.ajax({
+		url: '/adminajax',
+		success: function (result) {
+			let tBodyString = ``;
+			for (let i of result){
+				tBodyString += `
+					
+				`;
+			}
+			let tBodyString = `
+			<tr>
+				<td>{{ $user->id }}</td>
+				<td>{{ $user->name }}</td>
+				<td>{{ $user->email }}</td>
+				<td>
+					<p class="tooltip-1">
+						@foreach($user->roles as $role)
+							<span class="role-list-item">{{ $role->name }}</span>
+						@endforeach
+					</p>
+					<?php //echo dd($user->roles()) ?>
+				</td>
+				<td>{{ $user->created_at }}</td>
+				<td>
+					<button type="button" class="modal-button" data-toggle="modal" data-target="#adminModalCenter" data-user-id="{{$user->id}}" onclick=clickEdit(<?php echo $user->id ?>)>
+						<i class="fas fa-pencil-alt"></i>
+					</button>
+				</td>
+			</tr>
+			`;
+			console.log(result);
+		}
+	})
+}
+
+
+// <tr>
+// 	<td>{{ $user->id }}</td>
+// 	<td>{{ $user->name }}</td>
+// 	<td>{{ $user->email }}</td>
+// 	<td>
+// 		<p class="tooltip-1">
+// 			@foreach($user->roles as $role)
+// 				<span class="role-list-item">{{ $role->name }}</span>
+// 			@endforeach
+// 		</p>
+// 		<?php //echo dd($user->roles()) ?>
+// 	</td>
+// 	<td>{{ $user->created_at }}</td>
+// 	<td>
+// 		<button type="button" class="modal-button" data-toggle="modal" data-target="#adminModalCenter" data-user-id="{{$user->id}}" onclick=clickEdit(<?php echo $user->id ?>)>
+// 			<i class="fas fa-pencil-alt"></i>
+// 		</button>
+// 	</td>
+// </tr>
 
 /*
 code snippets for later use

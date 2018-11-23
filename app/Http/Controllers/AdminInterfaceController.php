@@ -21,6 +21,15 @@ class AdminInterfaceController extends Controller
         return view('admin.index')->withUsers($users)->withRoles($roles);
     }
 
+    public function indexAjax()
+    {
+        $users = User::all();
+        foreach ($users as $user) {
+            $user->roles;
+        }
+        return $users;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -28,7 +37,7 @@ class AdminInterfaceController extends Controller
      */
     public function create()
     {
-        //
+        return 'ajaxindie create';
     }
 
     /**

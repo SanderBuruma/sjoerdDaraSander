@@ -28,6 +28,7 @@ Route::get('/about', function(){ return view('pages.about'); })->name('about');
 
 Route::group(['middleware' => ['web','auth','check.admin']], function(){
 	Route::resource('/admin', 'AdminInterfaceController');
+	Route::get('/adminajax', 'AdminInterfaceController@indexAjax')->name('admin.index.ajax');
 });
 
 Auth::routes();
