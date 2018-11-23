@@ -86,7 +86,7 @@ class AdminInterfaceController extends Controller
         $user->name = $request->name;
         $user->save();
 
-        $user->roles()->sync($request->roles, false);
+        $user->roles()->sync($request->roles, true);
     }
 
     /**
