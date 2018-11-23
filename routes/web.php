@@ -26,15 +26,8 @@ Route::get('/', function () { return view('home'); });
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/about', function(){ return view('pages.about'); })->name('about');
 
-// Route::get('/admin', function() {
-// 	dd('checkadmin');
-// 	if (isRole(1)){
-// 		dd('is admin');
-// 	}
-// });
-
-Route::group(['middleware' => ['web','auth']], function(){
-	Route::resource('/admin', 'AdminInterfaceController')->middleware('check.admin');
+Route::group(['middleware' => ['web','auth','check.admin']], function(){
+	Route::resource('/admin', 'AdminInterfaceController');
 });
 
 Auth::routes();
