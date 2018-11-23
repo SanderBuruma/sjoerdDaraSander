@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
+use Log;
 
 class AdminInterfaceController extends Controller
 {
@@ -14,7 +15,7 @@ class AdminInterfaceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
         $users = User::all();
         $roles = Role::all();
         return view('admin.index')->withUsers($users)->withRoles($roles);

@@ -4,6 +4,10 @@
 	--main-color-text: #003;
 }
 
+*:focus {
+	outline: none !important;
+}
+
 body {
 	color: var(--main-color-text);
 }
