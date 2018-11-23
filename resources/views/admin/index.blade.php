@@ -50,7 +50,7 @@ button:active {
 					</td>
 					<td>{{ $user->created_at }}</td>
 					<td>
-						<button type="button" class="modal-button" data-toggle="modal" data-target="#adminModalCenter" data-user-id="{{$user->id}}">
+						<button type="button" class="modal-button" data-toggle="modal" data-target="#adminModalCenter" data-user-id="{{$user->id}}" onclick=clickEdit(<?php echo $user->id ?>)>
 							<i class="fas fa-pencil-alt"></i>
 						</button>
 					</td>
@@ -61,7 +61,7 @@ button:active {
 	</div>
 </div>
 
-<!-- Modal -->
+<!-- Modal Body -->
 <div class="modal fade" id="adminModalCenter" tabindex="-1" role="dialog" aria-labelledby="adminModalCenterTitle" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
@@ -72,13 +72,13 @@ button:active {
 				</button>
 			</div>
 			<div class="modal-body">
-				{{-- {!! Form::model($user, ['route' => ['admin.update', 3], 'method' => 'PATCH']) !!} --}}
-				{{ Form::text('name', null, ["class"=>'form-control form-control-lg']) }}
+				{{ Form::text('name', null, ["class"=>'form-control form-control-lg', 'id'=>'modal-name']) }}
 				<hr>
-				@foreach($roles as $role)
-				<input class="form-check-input form-control" type="checkbox" checked="false" value="{{$role->id}}" id="defaultCheck1"><p>{{ $role->name }}</p>
-				@endforeach
-				{{-- {!! Form::close() !!} --}}
+				<select name="roles[]" id="select-roles" multiple="multiple" style="width: 100%;">
+					@foreach($roles as $role)
+						<option value="{{ $role->id }}">{{ $role->name }}</option>
+					@endforeach
+				</select>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
@@ -90,10 +90,38 @@ button:active {
 @endsection
 
 @section('footer')
-<script>
-let userId = null;
+<script type="text/javascript">
+let userId = <?php echo Auth::user()->id ?>;
+let roles = <?php echo json_encode($roles) ?>;
+let users = <?php echo json_encode($users) ?>;
 
+$(document).ready(function(){
+	$('#select-roles').select2();
+});
 
+function clickEdit (e) {
+	for (let i of users){
+		if (i.id == e){
+			let arr = [];
+			for (let j of i.roles){
+				arr.push(j.id);
+			}
+			console.log(arr);
+			$('#select-roles').val(arr).trigger('change');
+			$('#adminModalCenterTitle')[0].innerHTML = i.name;
+			break;
+		}
+	}
+}
 
+/*
+code snippets for later use
+
+	get list of currently selected items
+	$('#select-roles').select2('data'); 
+
+	update list of currently selected items
+	$('#select-roles').val([3,2]).trigger('change');
+*/
 </script>
 @endsection

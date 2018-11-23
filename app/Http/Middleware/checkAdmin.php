@@ -21,7 +21,7 @@ class checkAdmin
     {
         function isAdmin($request) {
             foreach($request->user()->roles as $role){
-                if ($role->name === "Admin"){
+                if ($role->id == 1){
                     return true;
                 }
             };
