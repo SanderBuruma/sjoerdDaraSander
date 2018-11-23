@@ -29,7 +29,6 @@ class checkAdmin
         };
 
         if(isAdmin($request)){
-            Session::flash('success', 'you are Admin!');
             return $next($request);
         } else {
             Session::flash('error', 'You need Admin role to access this page...');
