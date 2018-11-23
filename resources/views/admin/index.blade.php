@@ -66,7 +66,7 @@ button:active {
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="adminModalCenterTitle">Modal title</h5>
+				<h5 class="modal-title" id="adminModalCenterTitle">Edit User</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -82,7 +82,7 @@ button:active {
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
-				<button type="button" class="btn btn-primary">Save</button>
+				<button type="button" class="btn btn-primary" id="save-user">Save</button>
 			</div>
 		</div>
 	</div>
@@ -92,11 +92,47 @@ button:active {
 @section('footer')
 <script type="text/javascript">
 let userId = <?php echo Auth::user()->id ?>;
+let editUserId, editUserRoles, editUserName;
 let roles = <?php echo json_encode($roles) ?>;
 let users = <?php echo json_encode($users) ?>;
 
 $(document).ready(function(){
-	$('#select-roles').select2();
+	
+	$.ajaxSetup({
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+		}
+	});
+	
+	$('#select-roles').select2({
+    placeholder: "Select a state"
+	});
+
+	$('#save-user').click(null, function(){
+		
+		let arr = [];
+		for (let i of $('#select-roles').select2('data')){
+			arr.push(i.id)
+		}
+
+		$.ajax({
+			url: `/admin/`+editUserId,
+			method: 'put',
+			data: {
+				roles: arr,
+				name: $('#modal-name').val(),
+			},
+			success: function(result){
+
+			},
+			error: function(jqxhr, status, exception) {
+				console.log('Exception:', exception);
+				console.log(status);
+				console.log(jqxhr);
+			}
+		})
+	})
+
 });
 
 function clickEdit (e) {
@@ -107,8 +143,9 @@ function clickEdit (e) {
 				arr.push(j.id);
 			}
 			console.log(arr);
+			editUserId = i.id;
 			$('#select-roles').val(arr).trigger('change');
-			$('#adminModalCenterTitle')[0].innerHTML = i.name;
+			$('#modal-name')[0].value = i.name;
 			break;
 		}
 	}

@@ -32,7 +32,7 @@ class checkAdmin
             return $next($request);
         } else {
             Session::flash('error', 'You need Admin role to access this page...');
-            return view('home');
+            return view('pages.home');
         }
 
     }

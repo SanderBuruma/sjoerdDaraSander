@@ -18,6 +18,9 @@
 {{-- select2 CSS --}}
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 
+{{-- jQuery --}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 @yield('header')
 <title>Default Laravel @yield('title')</title>
 </head>
