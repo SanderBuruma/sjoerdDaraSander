@@ -23,3 +23,4 @@ See https://trello.com/b/4jj2d8UO/defaultlaravel for features to come.
 
 - Bootstrap
 - Jquer
+- Select2
