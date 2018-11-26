@@ -19,9 +19,10 @@ class checkAdmin
      */
     public function handle($request, Closure $next)
     {
+        // dd($request->user()->roles[0]);
         function isAdmin($request) {
             foreach($request->user()->roles as $role){
-                if ($role->id == 1){
+                if ($role->id == 3){
                     return true;
                 }
             };
