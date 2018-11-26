@@ -22,7 +22,7 @@ class CheckRole
         // | in checkrole parameter equals an OR statement. 2|3 means check whether user has role 2 OR 3.
         // ! before a role id means NOT. !2 passes if user does NOT have role 2.
         // & is an AND operator
-        // listed logical statements can be combined without issue as long as ! prefixes numbers and &| are inbetween role numbers. !2|1 passes if user has NOT role 2 OR has role 1.  2&!3 passes if user is not role 3 and has role 2.
+        // listed logical statements can be combined without issue as long as ! prefixes numbers and &| are inbetween role numbers. 1|!2 passes if user has NOT role 2 OR has role 1.  2&!3 passes if user is not role 3 and has role 2.
 
         $saveCheckString = $checkRole."";
 
@@ -56,7 +56,6 @@ class CheckRole
         }
 
         
-
         //error reporting
         $saveCheckString = preg_replace(['/\|/', '/\!/', '/\&/'], [" OR "," not:", " AND "], $saveCheckString);
         Session::flash('error', "role check failed, access denied. role $saveCheckString required");
