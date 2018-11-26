@@ -26,7 +26,7 @@ Route::get('/', function () { return view('pages.home'); });
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/about', function(){ return view('pages.about'); })->name('about');
 
-Route::group(['middleware' => ['web','auth','role:2']], function(){
+Route::group(['middleware' => ['web','auth','role:2|3|!1']], function(){
 	Route::resource('/admin', 'AdminInterfaceController');
 	Route::get('/adminajax', 'AdminInterfaceController@indexAjax')->name('admin.index.ajax');
 });
