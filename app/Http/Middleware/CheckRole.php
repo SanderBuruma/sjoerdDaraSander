@@ -26,8 +26,6 @@ class CheckRole
 
         $saveCheckString = $checkRole."";
 
-        $checkRole = explode("|", $checkRole);
-
         function isRole($request, $roleId) {
             foreach($request->user()->roles as $role){
                 if ($role->id == $roleId){
@@ -37,15 +35,15 @@ class CheckRole
             return false;
         };
 
-        foreach ($checkRole as $roleId) {
+        foreach (explode("|", $checkRole) as $orGroup) {
             $andStatement = true;
-            foreach(explode("&", $roleId) as $i){
-                if ($i[0] === "!") {
-                    if (isRole($request, substr($i,1)) === true) {
+            foreach(explode("&", $orGroup) as $andGroup){
+                if ($andGroup[0] === "!") {
+                    if (isRole($request, substr($andGroup,1)) === true) {
                         $andStatement = false; break;
                     }
                 } else {
-                    if (isRole($request, $i) === false) {
+                    if (isRole($request, $andGroup) === false) {
                         $andStatement = false; break;
                     }
                 }
