@@ -8,8 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\User as Authenticable;
 use Session;
 
-class checkAdmin
-{
+class CheckRole{
     /**
      * Handle an incoming request.
      *
@@ -17,23 +16,24 @@ class checkAdmin
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $checkRole)
     {
-        // dd($request->user()->roles[0]);
-        function isAdmin($request) {
+        function isRole($request) {
+            global $checkRole;
             foreach($request->user()->roles as $role){
-                if ($role->id == 3){
+                if ($role->id == $checkRole){
                     return true;
                 }
             };
             return false;
         };
 
-        if(isAdmin($request)){
+        if(isRole($request)){
             return $next($request);
         } else {
-            Session::flash('error', 'You need Admin role to access this page...');
-            return view('pages.home');
+            $roleName = Role::find($checkRole)->name;
+            Session::flash('error', "$roleName role needed to access this page");
+            return redirect('/home');
         }
 
     }

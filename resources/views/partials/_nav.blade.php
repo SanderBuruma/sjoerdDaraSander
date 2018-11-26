@@ -20,7 +20,6 @@
 					@guest
 					<a class="dropdown-item" href="{{ route('login')}}">Log In!</a>
 					<a class="dropdown-item" href="{{ route('register') }}">Register!</a>
-					<div class="dropdown-divider"></div>
 					@else
 					
 					<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -37,9 +36,9 @@
 					@endguest
 				</div>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="{{ route('admin.index.ajax') }}">Admin</a>
-			</li>
+			{{-- <li class="nav-item">
+				<a class="nav-link" href="{{ route('admin.index') }}">Admin</a>
+			</li> --}}
 		</ul>
 		<form class="form-inline my-2 my-lg-0">
 		<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
