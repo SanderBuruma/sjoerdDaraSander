@@ -1,7 +1,8 @@
 :root {
-	--main-color-light: #ddf;
-	--main-color-dark: #226;
-	--main-color-text: #003;
+	--main-color-light: #ffd;
+	--main-color-med: #aa2;
+	--main-color-dark: #660;
+	--main-color-text: #330;
 }
 
 *:focus {
@@ -33,4 +34,17 @@ a:hover {
 	font-size: 12px;
 	border-radius: 8px;
 	font-weight: bold;
+}
+
+.form-control:focus {
+	box-shadow: 0 0 0 .2rem var(--main-color-med) !important;
+	border: 1px solid var(--main-color-med) !important;
+}
+
+.btn-outline-warning {
+	color: var(--main-color-dark) !important;
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+	background-color: var(--main-color-light) !important;
 }

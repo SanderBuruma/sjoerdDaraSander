@@ -31,5 +31,5 @@ Route::group(['middleware' => ['web','auth','role:3']], function(){
 	Route::get('/adminajax', 'AdminInterfaceController@indexAjax')->name('admin.index.ajax');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 

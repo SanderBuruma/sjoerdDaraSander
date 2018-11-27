@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 {{-- local files --}}
-<link rel="icon" href="{{ asset('svg/cubit32.svg') }}"> 
+<link rel="icon" href="{{ asset('svg/scales.svg') }}"> 
 <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
 {{-- fontawesome CDN --}}
@@ -22,5 +22,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 @yield('header')
-<title>Default Laravel @yield('title')</title>
+<title>Nervapolis @yield('title')</title>
 </head>
