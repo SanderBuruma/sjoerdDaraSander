@@ -14,12 +14,12 @@
 			</li>
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				@guest -Guest- @else {{ Auth::user()->name }} @endguest
+					<i class="fas fa-user"></i>@guest -Guest- @else {{ Auth::user()->name }} @endguest
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					@guest
-					<a class="dropdown-item" href="{{ route('login')}}">Log In!</a>
-					<a class="dropdown-item" href="{{ route('register') }}">Register!</a>
+					<a class="dropdown-item" href="{{ route('login')}}"><i class="fas fa-sign-in-alt"></i> Log In!</a>
+					<a class="dropdown-item" href="{{ route('register') }}"><i class="fas fa-user-plus"></i> Register!</a>
 					@else
 					
 					<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -28,11 +28,11 @@
 					<a class="dropdown-item" href="{{ route('logout') }}"
 						onclick="event.preventDefault();
 						document.getElementById('logout-form').submit();">
-						{{ __('Log Out!') }}
+						<i class="fas fa-sign-out-alt"></i> {{ __('Log Out!') }}
 					</a>
 
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="{{ route('admin.index') }}">Admin Interface</a>
+					<a class="dropdown-item" href="{{ route('admin.index') }}"><i class="fas fa-toolbox"></i> Admin Interface</a>
 					@endguest
 				</div>
 			</li>
