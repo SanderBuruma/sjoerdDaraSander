@@ -19,46 +19,18 @@ class CheckRole
      */
     public function handle($request, Closure $next, $checkRole)
     {
-        // | in checkrole parameter equals an OR statement. 2|3 means check whether user has role 2 OR 3.
-        // ! before a role id means NOT. !2 passes if user does NOT have role 2.
-        // & is an AND operator
-        // listed logical statements can be combined without issue as long as ! prefixes numbers and &| are inbetween role numbers. 1|!2 passes if user has NOT role 2 OR has role 1.  2&!3 passes if user is not role 3 and has role 2.
-        // And groups are resolved before or groups.
-
+        
         $saveCheckString = $checkRole."";
 
-
-        foreach (explode("|", $checkRole) as $orGroup) {
-            $andStatement = true;
-            foreach(explode("&", $orGroup) as $andGroup){
-                if ($andGroup[0] === "!") {
-                    if (isRole($request, substr($andGroup,1)) === true) {
-                        $andStatement = false; break;
-                    }
-                } else {
-                    if (isRole($request, $andGroup) === false) {
-                        $andStatement = false; break;
-                    }
-                }
-            }
-            if ($andStatement === true) {
-                return $next($request);
-            }
-        }
+        $user = $request->user();
+        if ($user->hasRole($user,$checkRole)) {
+            return $next($request);
+        };
         
         //error reporting
         $saveCheckString = preg_replace(['/\|/', '/\!/', '/\&/'], [" OR "," not:", " AND "], $saveCheckString);
-        Session::flash('error', "role check failed, access denied. roles $saveCheckString required");
+        Session::flash('error', "role check failed, access denied. Roles $saveCheckString required");
         return redirect('/home');
 
     }
 }
-
-function isRole($request, $roleId) {
-    foreach($request->user()->roles as $role){
-        if ($role->id == $roleId){
-            return true;
-        }
-    };
-    return false;
-};
