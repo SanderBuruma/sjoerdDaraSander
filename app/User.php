@@ -15,7 +15,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany('App\Role');
     }
 
-    function isRole($user, $roleId) {
+    function hasThisRole($user, $roleId) {
         foreach($user->roles as $role){
             if ($role->id == $roleId){
                 return true;
@@ -34,11 +34,11 @@ class User extends Authenticatable implements MustVerifyEmail
             $andStatement = true;
             foreach (explode("&", $orGroups) as $andGroups){
                 if ($andGroups[0] === "!") {
-                    if (self::isRole($user, substr($andGroups,1)) === true) {
+                    if (self::hasThisRole($user, substr($andGroups,1)) === true) {
                         $andStatement = false; break;
                     }
                 } else {
-                    if (self::isRole($user, $andGroups) === false) {
+                    if (self::hasThisRole($user, $andGroups) === false) {
                         $andStatement = false; break;
                     }
                 }
