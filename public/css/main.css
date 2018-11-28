@@ -48,3 +48,25 @@ a:hover {
 .dropdown-item:focus, .dropdown-item:hover {
 	background-color: var(--main-color-light) !important;
 }
+
+/* begin styling Sjoerd */
+
+.outer-container{
+	border: 1px;
+	border-style: solid;
+	border-color: grey;
+	border-radius: 6px;
+	
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px;
+	box-shadow: 4px 4px 4px rgba(0,0,0,0.3);
+}
+
+.container{
+	/* background-color: rgb(248, 245, 245); */
+	/* opacity: 0.7; */
+}
+
+/* eind styling Sjoerd */
