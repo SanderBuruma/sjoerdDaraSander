@@ -1,5 +1,5 @@
 <hr>
-<p class="text-center">Copyright {{date('Y', time())}} Sander Buruma - all Rights Reserved</p>
+<p class="text-center footer">Copyright {{date('Y', time())}} Nervamarkt - all Rights Reserved</p>
 <meta name="_token" content="{!! csrf_token() !!}"/>
 
 {{-- jquery --}}
