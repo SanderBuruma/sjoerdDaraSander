@@ -1,6 +1,7 @@
 :root {
 	--main-color-light: #ffd;
 	--main-color-med: #aa2;
+	--main-color-yellow: #ff4;
 	--main-color-dark: #660;
 	--main-color-text: #330;
 }
@@ -20,6 +21,11 @@ a {
 a:hover {
 	opacity: 1;
 	text-decoration: underline !important;
+}
+
+button {
+	margin: auto;
+	transition: background-color 0.2s ease-in-out;
 }
 
 .card-header,

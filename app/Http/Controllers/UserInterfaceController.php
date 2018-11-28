@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class UserInterfaceController extends Controller
 {
@@ -14,8 +16,8 @@ class UserInterfaceController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $user->roles;
-        return view ('user.index')->withUser($user);
+        $roles = $user->roles;
+        return view ('user.index')->withUser($user)->withRoles($roles);
     }
 
     /**
@@ -70,7 +72,48 @@ class UserInterfaceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if ($id == Auth::user()->id) {
+            if ($request->user()->name == Auth::user()->name) {
+                $this->validate($request, [
+                    'street'        => 'nullable|string|min:2',
+                    'streetnr'      => 'nullable|integer',
+                    'city'          => 'nullable|string|min:2',
+                    'province'      => 'nullable|string|min:2',
+                    'country'       => 'nullable|string|min:2',
+                    'telephone1'    => 'nullable|regex:/[0-9\-]+/',
+                    'telephone2'    => 'nullable|regex:/[0-9\-]+/',
+                ]);
+            } else {
+                $this->validate($request, [
+                    'name'          => 'required|string|unique:users|min:2',
+                    'street'        => 'nullable|string|min:2',
+                    'streetnr'      => 'nullable|integer',
+                    'city'          => 'nullable|string|min:2',
+                    'province'      => 'nullable|string|min:2',
+                    'country'       => 'nullable|string|min:2',
+                    'telephone1'    => 'nullable|regex:/[0-9\-]+/',
+                    'telephone2'    => 'nullable|regex:/[0-9\-]+/',
+                ]);
+            }
+            
+            $user = Auth::user();
+            $user->name         = $request->name;
+            $user->street       = $request->street;
+            $user->streetnr     = $request->streetnr;
+            $user->city         = $request->city;
+            $user->province     = $request->province;
+            $user->country      = $request->country;
+            $user->telephone1   = $request->telephone1;
+            $user->telephone2   = $request->telephone2;
+
+            $user->save();
+            return ["message"=>"Gebruiker opgeslagen!"];
+
+        } else {
+
+            return ["session userID does not match client submitted user id"];
+
+        }
     }
 
     /**
