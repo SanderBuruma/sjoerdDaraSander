@@ -1,4 +1,5 @@
 <body>
+		
 	<div id="app">
 		@include('partials._nav')
 
@@ -30,3 +31,10 @@
 			@yield('content')
 		</main>
 	</div>
+
+	<style>
+	body{
+		background-image: url("img/background-image.jpg");
+		background-size: cover;
+	}
+	</style>
