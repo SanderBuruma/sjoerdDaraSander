@@ -24,5 +24,5 @@ See https://trello.com/b/4jj2d8UO/defaultlaravel for features to come.
 ## Plugins
 
 - Bootstrap
-- Jquer
+- Jquery
 - Select2
