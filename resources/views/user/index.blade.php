@@ -28,6 +28,12 @@
 	input:focus {
 		box-shadow: 0 0 .5rem .2rem var(--main-color-med) !important;
 	}
+	input.invalid {
+		background-color: #f99 !important;
+	}
+	input.invalid:focus {
+		box-shadow: 0 0 .5rem .2rem #f99 !important;
+	}
 	button {
 		transition: color 0.2s, background-color 0.2s;
 	}
@@ -53,6 +59,17 @@
 		opacity: 0;
 		background-color: white;
 		color: black;
+		border: 1px solid var(--main-color-med);
+	}
+	#submit-changes-pw {
+		margin-top: 1rem;
+	}
+	.input-feedback {
+		color: red;
+		border: solid 1px red;
+		margin-top: 4px;
+		background-color: #f99;
+		width: auto;
 	}
 </style>
 @endsection
@@ -75,46 +92,75 @@
 		</nav>
 
 		<div class="row">
-			<div class="col-md-4">Uw naam</div>
+			<div class="col-md-4"><h4>Uw naam</h4></div>
 			<div class="col-md-8">
 				<label for="name">Naam:</label><br>
-				<input placeholder="John Doe" type="text" name="name" value="{{ $user->name }}" pattern="[ a-zA-Z]+" title="Adres: alleen letters en spaties"><br>
+				<input placeholder="John Doe" type="text" name="name" value="{{ $user->name }}" pattern="[ a-zA-Z]+" title="Naam: alleen letters en nummers">
+				<p id="input-name-feedback" class="input-feedback">Naam: alleen letters en nummers</p><br>
 				<label for="email">Email:</label><br>
 				<input placeholder="John Doe" type="text" name="email" value="{{ $user->email }}" disabled><br>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-4">Uw adres informatie</div>
+			<div class="col-md-4"><h4>Uw Gravatar afbeelding</h4><p>deze afbeelding hoort bij uw email en kan u op de Gravatar website instellen. Per default wordt een willekeurige afbeelding geselecteerd</p></div>
 			<div class="col-md-8">
-				<label for="street">Adres:</label><br>
-				<input placeholder="Hoofdstraat" type="text" name="street" value="{{ $user->street }}" pattern="[ a-zA-Z]+" title="Adres: alleen letters en spaties">  Huis Nr:<input placeholder="999" type="text" name="streetnr" class="col-lg-1" value="{{ $user->streetnr }}" pattern="[0-9]+" title="Adres Nr: alleen nummers"><br>
-				<label for="city">Stad:</label><br>
-				<input placeholder="Amsterdam" type="text" name="city" value="{{ $user->city }}" pattern="[ a-zA-Z]+" title="Adres: alleen letters en spaties"><br>
-				<label for="province">Provincie:</label><br>
-				<input placeholder="Noord Holland" type="text" name="province" value="{{ $user->province }}" pattern="[ a-zA-Z]+" title="Provincie: alleen letters en spaties"><br>
-				<label for="country">Land:</label><br>
-				<input placeholder="Nederland" type="text" name="country" value="{{ $user->country }}" pattern="[ a-zA-Z]+" title="Land: alleen letters en spaties"><br>
+				<label for="gravatar-picture"><a href="https://www.gravatar.com/">Gravatar</a> profiel afbeelding</label><br>
+				<img src="https://www.gravatar.com/avatar/{{ md5( strtolower( trim( "$user->email" ) ) ) }}?d=identicon" alt="">
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-4">Uw telefoon nrs</div>
+			<div class="col-md-4"><h4>Uw rollen</h4><p>U hebt deze rollen gekregen van een Admin. Admins kunnen u rollen toe en ontkennen via de admin interface.</p></div>
+			<div class="col-md-8">
+				<p>
+				@foreach($roles as $role)
+					<span class="role-list-item">{{$role->name}}</span>
+				@endforeach
+			</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4"><h4>Uw adres informatie</h4></div>
+			<div class="col-md-8">
+				<label for="street">Adres:</label><br>
+				<input placeholder="Hoofdstraat" type="text" name="street" value="{{ $user->street }}" pattern="[ a-zA-Z]+" title="Adres: alleen letters en spaties">  Huis Nr:<input placeholder="999" type="text" name="streetnr" class="col-sm-1" value="{{ $user->streetnr }}" pattern="[0-9]+" title="Adres Nr: alleen nummers"><br>
+				<p id="input-street-feedback" class="input-feedback">Adres: alleen letters en spaties</p><p id=input-streetnr-feedback>Adres Nr: alleen nummers</p>
+				<label for="city">Stad:</label><br>
+				<input placeholder="Amsterdam" type="text" name="city" value="{{ $user->city }}" pattern="[ a-zA-Z]+" title="Adres: alleen letters en spaties">
+				<p id="input-city-feedback" class="input-feedback">Adres: alleen letters en spaties</p><br>
+				<label for="province">Provincie:</label><br>
+				<input placeholder="Noord Holland" type="text" name="province" value="{{ $user->province }}" pattern="[ a-zA-Z]+" title="Provincie: alleen letters en spaties">
+				<p id="input-province-feedback" class="input-feedback">Provincie: alleen letters en spaties</p><br>
+				<label for="country">Land:</label><br>
+				<input placeholder="Nederland" type="text" name="country" value="{{ $user->country }}" pattern="[ a-zA-Z]+" title="Land: alleen letters en spaties">
+				<p id="input-country-feedback" class="input-feedback">Land: alleen letters en spaties</p><br>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4"><h4>Uw telefoon nrs</h4></div>
 			<div class="col-md-8">
 				<label for="country">Telefoon nr 1:</label><br>
-				<input placeholder="06-12345678" type="text" name="telephone1" value="{{ $user->telephone1 }}" pattern="[\-0-9]+" title="TelefoonNr: alleen nummers en -"><br>
+				<input placeholder="06-12345678" type="text" name="telephone1" value="{{ $user->telephone1 }}" pattern="[\-0-9]+" title="TelefoonNr: alleen nummers en -">
+				<p id="input-telephone1-feedback" class="input-feedback">Alleen nummers en -</p><br>
 				<label for="country">Telefoon nr 2:</label><br>
 				<input placeholder="030-6543210" type="text" name="telephone2" value="{{ $user->telephone2 }}" pattern="[\-0-9]+" title="TelefoonNr: alleen nummers en -">
+				<p id="input-telephone2-feedback" class="input-feedback">Alleen nummers en -</p>
 			</div>
 		</div>
 		<br>
-		<button id="submit-changes-nonpw" type="button" class="btn btn-warning col-md-4 offset-md-4" style="">Profiel Opslaan</button>
-		<p id="submit-changes-message">Gebruiker opgeslagen</p>
+		<button id="submit-changes-nonpw" type="button" class="btn btn-warning col-md-4 offset-md-4" style="">Profiel Bijwerken</button>
+		<h5 id="submit-changes-message">Gebruiker opgeslagen</h5>
 
 		<div class="row">
-			<div class="col-md-4">Paswoord Veranderen</div>
+			<div class="col-md-4"><h4>Paswoord Veranderen</h4></div>
 			<div class="col-md-8">
-				<input placeholder="paswoord" type="text" name="password" value="" pattern=".{8,128}" title="Paswoord: tussen 8 en 128 karakters">
-				<input placeholder="paswoord opnieuw" type="text" name="password_confirmation" value="" pattern=".{8,128}" title="Paswoord: tussen 8 en 128 karakters">
+				<input placeholder="huidig paswoord" type="password" name="password_old" value="" pattern=".{8,128}" title="Paswoord: tussen 8 en 128 karakters">
+				<p id="input-password_old-feedback" class="input-feedback">Verkeerd Paswoord</p><br><br>
+				<input placeholder="paswoord" type="password" name="password" value="" pattern=".{8,128}" title="Paswoord: tussen 8 en 128 karakters">
+				<p id="input-password-feedback" class="input-feedback">Minstens 8 tekens</p>
+				<input placeholder="paswoord opnieuw" type="password" name="password_confirmation" value="" pattern=".{8,128}" title="Paswoord: tussen 8 en 128 karakters">
+				<p id="input-password_confirmation-feedback" class="input-feedback">Paswoorden komen niet overeen</p>
 			</div>
+		<button id="submit-changes-pw" type="button" class="btn btn-warning col-md-4 offset-md-4" style="">Paswoord opslaan</button>
 		</div>
 		<br>
 			
@@ -125,6 +171,8 @@
 
 @section('footer')
 <script>
+
+	
 jQuery(document).ready(function(){
 
 	$.ajaxSetup({
@@ -133,9 +181,13 @@ jQuery(document).ready(function(){
 		}
 	});
 
+	for (let i of $('.input-feedback')){
+		i.hidden = true;
+	}
 	$('#submit-changes-nonpw')[0].onclick = function(e){
 		e.preventDefault();
 
+		
 		let url = "/user/"+{{ Auth::user()->id }};
 		$.ajax({
 			url: url, //atn hackers: this id is compared to the logged in user id serverside via the tokens
@@ -152,12 +204,36 @@ jQuery(document).ready(function(){
 			},
 			success: function(result){
 				console.log(result);
-				$('#submit-changes-message')[0].style = "opacity: 1";
+				for (let i of $('input')){
+					i.classList.remove('invalid');
+				}
+
+				for (let i of $('.input-feedback')){
+					i[0].hidden = true;
+				}
+
+
+				$('#submit-changes-message')[0].hidden = false;
 				setInterval(() => {
-					$('#submit-changes-message')[0].style = "opacity: 0";
+					$('#submit-changes-message')[0].hidden = true;
 				}, 5e3);
 			},
 			error: function(jqxhr, status, exception) {
+				if (jqxhr.status == 422){
+					//invalid data was passed and didn't get through backend validation
+					//so now we give feedback in the form showing which fields are invalid.
+					for (let i of $('input')){
+						i.classList.remove('invalid');
+					}
+					for (let i of $('.input-feedback')){
+						i.hidden = true;
+					}
+					let errors = jqxhr.responseJSON.errors;
+					for (let i in errors){
+						$(`input[name="${i}"]`)[0].classList.add('invalid');
+						$(`#input-${i}-feedback`)[0].hidden = false;
+					}
+				}
 				console.log(jqxhr);
 				console.log(exception);
 				console.log(status);

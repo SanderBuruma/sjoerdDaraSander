@@ -75,22 +75,22 @@ class UserInterfaceController extends Controller
         if ($id == Auth::user()->id) {
             if ($request->user()->name == Auth::user()->name) {
                 $this->validate($request, [
-                    'street'        => 'nullable|string|min:2',
-                    'streetnr'      => 'nullable|integer',
-                    'city'          => 'nullable|string|min:2',
-                    'province'      => 'nullable|string|min:2',
-                    'country'       => 'nullable|string|min:2',
+                    'street'        => 'nullable|string|min:2|regex:/[ a-zA-Z]+/',
+                    'streetnr'      => 'nullable|integer|regex:/[0-9]+/',
+                    'city'          => 'nullable|string|min:2|regex:/[ a-zA-Z]+/',
+                    'province'      => 'nullable|string|min:2|regex:/[ a-zA-Z]+/',
+                    'country'       => 'nullable|string|min:2|regex:/[ a-zA-Z]+/',
                     'telephone1'    => 'nullable|regex:/[0-9\-]+/',
                     'telephone2'    => 'nullable|regex:/[0-9\-]+/',
                 ]);
             } else {
                 $this->validate($request, [
-                    'name'          => 'required|string|unique:users|min:2',
-                    'street'        => 'nullable|string|min:2',
-                    'streetnr'      => 'nullable|integer',
-                    'city'          => 'nullable|string|min:2',
-                    'province'      => 'nullable|string|min:2',
-                    'country'       => 'nullable|string|min:2',
+                    'name'          => 'required|string|unique:users|min:2|regex:/[ a-zA-Z0-9]+/',
+                    'street'        => 'nullable|string|min:2|regex:/[ a-zA-Z]+/',
+                    'streetnr'      => 'nullable|integer|regex:/[0-9]+/',
+                    'city'          => 'nullable|string|min:2|regex:/[ a-zA-Z]+/',
+                    'province'      => 'nullable|string|min:2|regex:/[ a-zA-Z]+/',
+                    'country'       => 'nullable|string|min:2|regex:/[ a-zA-Z]+/',
                     'telephone1'    => 'nullable|regex:/[0-9\-]+/',
                     'telephone2'    => 'nullable|regex:/[0-9\-]+/',
                 ]);
@@ -111,7 +111,7 @@ class UserInterfaceController extends Controller
 
         } else {
 
-            return ["session userID does not match client submitted user id"];
+            return ["message"=>"authentication userID does not match client submitted user id"];
 
         }
     }
