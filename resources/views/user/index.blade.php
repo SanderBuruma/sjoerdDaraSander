@@ -34,6 +34,9 @@
 	input.invalid:focus {
 		box-shadow: 0 0 .5rem .2rem #f99 !important;
 	}
+	input[name="password_old"] {
+		margin-bottom: .5rem;
+	}
 	button {
 		transition: color 0.2s, background-color 0.2s;
 	}
@@ -83,18 +86,18 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav">
-					<a class="nav-item nav-link active" data-window="info" href="#">Gebruikersinformatie <span class="sr-only">(current)</span></a>
-					<a class="nav-item nav-link" data-window="password" href="#">Verander Paswoord</a>
+					<a class="nav-item nav-link active" data-window="info" href="#personal-information">Gebruikersinformatie <span class="sr-only">(current)</span></a>
+					<a class="nav-item nav-link" data-window="password" href="#password-change">Verander Paswoord</a>
 				</div>
 			</div>
 		</nav>
 
 		<div class="row">
-			<div class="col-md-4"><h4>Uw naam</h4></div>
+			<div class="col-md-4" id="personal-information"><h4>Uw naam</h4></div>
 			<div class="col-md-8">
 				<label for="name">Naam:</label><br>
 				<input placeholder="John Doe" type="text" name="name" value="{{ $user->name }}" pattern="[ a-zA-Z]+" title="Naam: alleen letters en nummers">
-				<p id="input-name-feedback" class="input-feedback">Naam: alleen letters en nummers</p><br>
+				<p id="input-name-feedback" hidden class="input-feedback">Naam: alleen letters en nummers</p><br>
 				<label for="email">Email:</label><br>
 				<input placeholder="John Doe" type="text" name="email" value="{{ $user->email }}" disabled><br>
 			</div>
@@ -120,17 +123,17 @@
 			<div class="col-md-4"><h4>Uw adres informatie</h4></div>
 			<div class="col-md-8">
 				<label for="street">Adres:</label><br>
-				<input placeholder="Hoofdstraat" type="text" name="street" value="{{ $user->street }}" pattern="[ a-zA-Z]+" title="Adres: alleen letters en spaties">  Huis Nr:<input placeholder="999" type="text" name="streetnr" class="col-sm-1" value="{{ $user->streetnr }}" pattern="[0-9]+" title="Adres Nr: alleen nummers"><br>
-				<p id="input-street-feedback" class="input-feedback">Adres: alleen letters en spaties</p><p id=input-streetnr-feedback>Adres Nr: alleen nummers</p>
+				<input placeholder="Hoofdstraat" type="text" name="street" value="{{ $user->street }}" pattern="[ a-zA-Z]+" title="Adres: alleen letters en spaties"> Huis Nr:<input placeholder="999" type="text" name="streetnr" class="col-sm-1" value="{{ $user->streetnr }}" pattern="[0-9]+" title="Adres Nr: alleen nummers"><br>
+				<p id="input-street-feedback" hidden class="input-feedback">Adres: alleen letters en spaties</p><p id=input-streetnr-feedback>Adres Nr: alleen nummers</p>
 				<label for="city">Stad:</label><br>
 				<input placeholder="Amsterdam" type="text" name="city" value="{{ $user->city }}" pattern="[ a-zA-Z]+" title="Adres: alleen letters en spaties">
-				<p id="input-city-feedback" class="input-feedback">Adres: alleen letters en spaties</p><br>
+				<p id="input-city-feedback" hidden class="input-feedback">Adres: alleen letters en spaties</p><br>
 				<label for="province">Provincie:</label><br>
 				<input placeholder="Noord Holland" type="text" name="province" value="{{ $user->province }}" pattern="[ a-zA-Z]+" title="Provincie: alleen letters en spaties">
-				<p id="input-province-feedback" class="input-feedback">Provincie: alleen letters en spaties</p><br>
+				<p id="input-province-feedback" hidden class="input-feedback">Provincie: alleen letters en spaties</p><br>
 				<label for="country">Land:</label><br>
 				<input placeholder="Nederland" type="text" name="country" value="{{ $user->country }}" pattern="[ a-zA-Z]+" title="Land: alleen letters en spaties">
-				<p id="input-country-feedback" class="input-feedback">Land: alleen letters en spaties</p><br>
+				<p id="input-country-feedback" hidden class="input-feedback">Land: alleen letters en spaties</p><br>
 			</div>
 		</div>
 		<div class="row">
@@ -138,10 +141,10 @@
 			<div class="col-md-8">
 				<label for="country">Telefoon nr 1:</label><br>
 				<input placeholder="06-12345678" type="text" name="telephone1" value="{{ $user->telephone1 }}" pattern="[\-0-9]+" title="TelefoonNr: alleen nummers en -">
-				<p id="input-telephone1-feedback" class="input-feedback">Alleen nummers en '-'</p><br>
+				<p id="input-telephone1-feedback" hidden class="input-feedback">Alleen nummers en '-'</p><br>
 				<label for="country">Telefoon nr 2:</label><br>
 				<input placeholder="030-6543210" type="text" name="telephone2" value="{{ $user->telephone2 }}" pattern="[\-0-9]+" title="TelefoonNr: alleen nummers en -">
-				<p id="input-telephone2-feedback" class="input-feedback">Alleen nummers en '-'</p>
+				<p id="input-telephone2-feedback" hidden class="input-feedback">Alleen nummers en '-'</p>
 			</div>
 		</div>
 		<br>
@@ -149,14 +152,12 @@
 		<h5 id="submit-changes-message" hidden>Gebruiker opgeslagen</h5>
 
 		<div class="row">
-			<div class="col-md-4"><h4>Paswoord Veranderen</h4></div>
+			<div class="col-md-4"><h4 id="password-change">Paswoord Veranderen</h4></div>
 			<div class="col-md-8">
-				<input placeholder="huidig paswoord" type="password" name="password_old" value="" pattern=".{8,128}" title="Paswoord: tussen 8 en 128 karakters">
-				<p id="input-password_old-feedback" class="input-feedback">Verkeerd Paswoord</p><br><br>
+				<input placeholder="huidig paswoord" type="password" name="password_old" value="" pattern=".{8,128}" title="Paswoord: tussen 8 en 128 karakters"><br><br>
 				<input placeholder="paswoord" type="password" name="password" value="" pattern=".{8,128}" title="Paswoord: tussen 8 en 128 karakters">
-				<p id="input-password-feedback" class="input-feedback">Minstens 8 tekens</p>
 				<input placeholder="paswoord opnieuw" type="password" name="password_confirmation" value="" pattern=".{8,128}" title="Paswoord: tussen 8 en 128 karakters">
-				<p id="input-password_confirmation-feedback" class="input-feedback">Paswoorden komen niet overeen</p>
+				<p id="input-password-feedback" hidden class="input-feedback">Paswoorden komen niet overeen</p>
 			</div>
 		<button id="submit-changes-pw" type="button" class="btn btn-warning col-md-4 offset-md-4" style="">Paswoord opslaan</button>
 		</div>
@@ -179,9 +180,9 @@ jQuery(document).ready(function(){
 		}
 	});
 
-	for (let i of $('.input-feedback')){
-		i.hidden = true;
-	}
+	// for (let i of $('.input-feedback')){
+	// 	i.hidden = true;
+	// }
 	$('#submit-changes-nonpw')[0].onclick = function(e){
 		e.preventDefault();
 
@@ -191,6 +192,7 @@ jQuery(document).ready(function(){
 			url: url, //atn hackers: this id is compared to the logged in user id serverside via the tokens
 			method: 'patch',
 			data: {
+				req:				1,
 				name: 			$('input[name="name"]').val(),
 				street: 		$('input[name="street"]').val(),
 				streetnr: 	$('input[name="streetnr"]').val(),
@@ -232,6 +234,36 @@ jQuery(document).ready(function(){
 						$(`#input-${i}-feedback`)[0].hidden = false;
 					}
 				}
+				console.log(jqxhr);
+				console.log(exception);
+				console.log(status);
+			}
+		});
+	};
+	$('#submit-changes-pw')[0].onclick = function(e){
+		e.preventDefault();
+		let url = "/user/"+{{ Auth::user()->id }};
+		$.ajax({
+			url: url, //atn hackers: this id is compared to the logged in user id serverside via the tokens
+			method: 'patch',
+			data: {
+				req:										2,
+				password_old: 					$('input[name="password_old"]').val(),
+				password: 							$('input[name="password"]').val(),
+				password_confirmation: 	$('input[name="password_confirmation"]').val(),
+			},
+			success: function(result){
+				console.log(result);
+				let inputPwFb = $('#input-password-feedback')[0];
+				if (result.failure) {
+					inputPwFb.innerHTML = result.message;
+					inputPwFb.hidden = false;
+					setInterval(() => {
+						inputPwFb.hidden = true
+					;}, 15e3);
+				}
+			},
+			error: function(jqxhr, status, exception) {
 				console.log(jqxhr);
 				console.log(exception);
 				console.log(status);
