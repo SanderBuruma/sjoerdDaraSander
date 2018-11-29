@@ -140,10 +140,10 @@
 			<div class="col-md-8">
 				<label for="country">Telefoon nr 1:</label><br>
 				<input placeholder="06-12345678" type="text" name="telephone1" value="{{ $user->telephone1 }}" pattern="[\-0-9]+" title="TelefoonNr: alleen nummers en -">
-				<p id="input-telephone1-feedback" class="input-feedback">Alleen nummers en -</p><br>
+				<p id="input-telephone1-feedback" class="input-feedback">Alleen nummers en '-'</p><br>
 				<label for="country">Telefoon nr 2:</label><br>
 				<input placeholder="030-6543210" type="text" name="telephone2" value="{{ $user->telephone2 }}" pattern="[\-0-9]+" title="TelefoonNr: alleen nummers en -">
-				<p id="input-telephone2-feedback" class="input-feedback">Alleen nummers en -</p>
+				<p id="input-telephone2-feedback" class="input-feedback">Alleen nummers en '-'</p>
 			</div>
 		</div>
 		<br>
