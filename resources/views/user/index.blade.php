@@ -54,9 +54,7 @@
 	#submit-changes-message {
 		margin-top: 1rem;
 		border-radius: 6px;
-		transition: opacity 0.5s;
 		text-align: center;
-		opacity: 0;
 		background-color: white;
 		color: black;
 		border: 1px solid var(--main-color-med);
@@ -148,7 +146,7 @@
 		</div>
 		<br>
 		<button id="submit-changes-nonpw" type="button" class="btn btn-warning col-md-4 offset-md-4" style="">Profiel Bijwerken</button>
-		<h5 id="submit-changes-message">Gebruiker opgeslagen</h5>
+		<h5 id="submit-changes-message" hidden>Gebruiker opgeslagen</h5>
 
 		<div class="row">
 			<div class="col-md-4"><h4>Paswoord Veranderen</h4></div>
@@ -209,7 +207,7 @@ jQuery(document).ready(function(){
 				}
 
 				for (let i of $('.input-feedback')){
-					i[0].hidden = true;
+					i.hidden = true;
 				}
 
 
