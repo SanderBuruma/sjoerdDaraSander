@@ -1,5 +1,5 @@
 <hr>
-<p class="text-center footer">Copyright {{date('Y', time())}} Nervamarkt - all Rights Reserved</p>
+<p class="text-center footer-style">Copyright {{date('Y', time())}} Nervamarkt - All Rights Reserved</p>
 <meta name="_token" content="{!! csrf_token() !!}"/>
 
 {{-- jquery --}}
@@ -28,6 +28,8 @@
 			a.appendChild(r);
 	})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
 </script>
+
+<hr>
 
 @yield('footer')
 </body>

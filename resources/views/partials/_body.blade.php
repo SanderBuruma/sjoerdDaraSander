@@ -34,7 +34,7 @@
 
 	<style>
 	body{
-		background-image: url("img/background-image.jpg");
+		background-image: url("img/background-image3.jpg");
 		background-size: cover;
 	}
 	</style>
