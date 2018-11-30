@@ -17,11 +17,17 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/about', function(){ return view('pages.about'); })->name('about');
 
 Route::group(['middleware' => ['web','auth','verified']], function(){
+
 	Route::group(['middleware' => ['role:3']], function(){
 		Route::resource('/admin', 'AdminInterfaceController');
 		Route::get('/adminajax', 'AdminInterfaceController@indexAjax')->name('admin.index.ajax');
 	});
-	Route::resource('/user', 'UserInterfaceController');
+	
+	Route::group(['middleware' => ['role:1']], function(){
+		Route::resource('message', 'MessagesController');
+	});
+	
+	Route::resource('/user', 'MessagesController');
 });
 
 // Route::group(['middleware' => ['web', 'auth', 'verified']], function (){

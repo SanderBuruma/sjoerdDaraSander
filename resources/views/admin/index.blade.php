@@ -3,27 +3,7 @@
 @section('title', '| Admin User Index')
 
 @section('header')
-<style>
-button {
-	all: unset;
-	color: var(--main-color-dark);
-	cursor: pointer;
-	background-color: var(--main-color-light);
-	border-radius: 3rem;
-	padding: 0 4px;
-	cursor: pointer;
-	transition: color 0.2s, background-color 0.2s;
-}
-button:hover,
-button:active {
-	background-color: var(--main-color-dark);
-	color: var(--main-color-light);
-}
-#main {
-	background-color: white;
-	border-radius: 1rem;
-}
-</style>
+<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 @endsection
 
 @section('content')

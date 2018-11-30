@@ -35,7 +35,6 @@ a {
 
 a:hover {
 	opacity: 1;
-	/* text-decoration: underline !important; */
 }
 
 button {
@@ -73,6 +72,10 @@ button {
 .search{
 	color: white !important;
 	font-weight: bold !important;
+}
+
+.row {
+	margin: 0;
 }
 
 /* begin styling Sjoerd */
