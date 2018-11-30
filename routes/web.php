@@ -28,7 +28,7 @@ Route::resource('/adverts', 'PostsController');
 // Route::get('/create', function () {
 //     return view('adverts.create');
 // });
-
+//committest
 
 // Route::get('post', 'PostsController@index');
 // Route::post('post', 'PostsController@create');
