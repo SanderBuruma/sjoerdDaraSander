@@ -29,7 +29,7 @@ Route::resource('/adverts', 'PostsController');
 //     return view('adverts.create');
 // });
 //committest
-
+// kkk
 // Route::get('post', 'PostsController@index');
 // Route::post('post', 'PostsController@create');
 // Route::post('delete','PostsController@delete');
