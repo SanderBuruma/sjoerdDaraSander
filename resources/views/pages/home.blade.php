@@ -3,17 +3,26 @@
 @section('title', '| Home')
 
 @section('content')
+
+
 <div class="row">
-	<div class="col-md-8 offset-md-2">
-		<div class="card">
-			<div class="card-header">
-				Sander Buruma's Template
-			</div>
-			<div class="card-body">
-				<p>This is Sander Buruma's default Laravel project, which includes several things and a setup which he wants to include in EVERY project and deems too time consuming to keep on including over and over for every new little project.</p>
-				<a href="https://trello.com/b/4jj2d8UO/defaultlaravel">Trello Board</a>
-			</div>
+	<div class="col-md-4"></div>
+
+	<div class="container_1 col-md-4">
+
+
+		<div class="container_2">
+			<button type="button" class="btn btn-success btn-lg btn-block">Plaats uw advertentie</button>
+			
+			<a class="btn btn-success low-buttons" href="#" role="button">Reageer</a>
+			<button class="btn btn-success low-buttons" type="submit">Wijzig</button>
+			<input class="btn btn-success low-buttons" type="button" value="Verwijderen">
 		</div>
 	</div>
+
+	<div class="col-md-4"></div>
 </div>
+
+
+
 @endsection
