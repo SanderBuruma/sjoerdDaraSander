@@ -50,6 +50,7 @@
 		border-bottom: 2px solid var(--main-color-med);
 		background-color: var(--main-color-light);
 		border-radius: 1rem;
+		
 	}
 	.row {
 		padding: 1rem;
@@ -148,7 +149,7 @@
 			</div>
 		</div>
 		<br>
-		<button id="submit-changes-nonpw" type="button" class="btn btn-warning col-md-4 offset-md-4" style="">Profiel Bijwerken</button>
+		<button id="submit-changes-nonpw" type="button" class="btn btn-dark col-md-4 offset-md-4" style="">Profiel Bijwerken</button>
 		<h5 id="submit-changes-message" hidden>Gebruiker opgeslagen</h5>
 
 		<div class="row">
@@ -159,7 +160,7 @@
 				<input placeholder="paswoord opnieuw" type="password" name="password_confirmation" value="" pattern=".{8,128}" title="Paswoord: tussen 8 en 128 karakters">
 				<p id="input-password-feedback" hidden class="input-feedback">Paswoorden komen niet overeen</p>
 			</div>
-		<button id="submit-changes-pw" type="button" class="btn btn-warning col-md-4 offset-md-4" style="">Paswoord opslaan</button>
+		<button id="submit-changes-pw" type="button" class="btn btn-dark col-md-4 offset-md-4" style="">Paswoord opslaan</button>
 		</div>
 		<br>
 			

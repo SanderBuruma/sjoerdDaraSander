@@ -19,12 +19,16 @@ button:active {
 	background-color: var(--main-color-dark);
 	color: var(--main-color-light);
 }
+#main {
+	background-color: white;
+	border-radius: 1rem;
+}
 </style>
 @endsection
 
 @section('content')
 <div class="row">
-	<div class="col-md-10 offset-md-1">
+	<div class="col-md-10 offset-md-1" id="main">
 		<table class="table">
 			<thead>
 				<th>#</th>
@@ -62,7 +66,7 @@ button:active {
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
-				<button type="button" class="btn btn-warning" data-dismiss="modal" id="save-user">Save</button>
+				<button type="button" class="btn btn-dark" data-dismiss="modal" id="save-user">Save</button>
 			</div>
 		</div>
 	</div>
