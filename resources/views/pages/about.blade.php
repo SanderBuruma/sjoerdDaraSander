@@ -7,10 +7,10 @@
 	<div class="col-md-8 offset-md-2">
 		<div class="card">
 			<div class="card-header">
-				Sander Buruma
+				Nervamarkt 
 			</div>
 			<div class="card-body">
-				<p>Astute fullstack web developer, at your service!</p>
+				<p>Welkom op Nervamarkt waarop u spullen of diensten kunt aanbieden.</p>
 			</div>
 		</div>
 	</div>

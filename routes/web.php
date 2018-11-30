@@ -23,3 +23,14 @@ Route::group(['middleware' => ['web','auth','role:3']], function(){
 
 Auth::routes(['verify' => true]);
 
+
+Route::resource('/adverts', 'PostsController');
+// Route::get('/create', function () {
+//     return view('adverts.create');
+// });
+
+
+// Route::get('post', 'PostsController@index');
+// Route::post('post', 'PostsController@create');
+// Route::post('delete','PostsController@delete');
+// Route::post('update','PostsController@update');
