@@ -16,6 +16,8 @@ class CreateRolesTable extends Migration
         Schema::create('roles', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->string('name');
+            $table->string('bgcolor')->default('var(--main-color-dark)');
+            $table->string('color')->default('#fff');
             $table->timestamps();
         });
     }

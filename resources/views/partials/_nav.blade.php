@@ -21,24 +21,30 @@
 				</a>
 				<div class="dropdown-menu menu" aria-labelledby="navbarDropdown">
 					@guest
-					<a class="dropdown-item" href="{{ route('login')}}"><i class="fas fa-sign-in-alt"></i> Log In!</a>
-					<a class="dropdown-item" href="{{ route('register') }}"><i class="fas fa-user-plus"></i> Register!</a>
-					@else
-					
-					<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-						@csrf
-					</form>
-					<a class="dropdown-item" href="{{ route('logout') }}"
-						onclick="event.preventDefault();
-						document.getElementById('logout-form').submit();">
-						<i class="fas fa-sign-out-alt"></i> {{ __('Log Out!') }}
-					</a>
 
-					<div class="dropdown-divider"></div>
-						@if(Auth::user()->hasRole(Auth::user(),'3'))
-							<a class="dropdown-item" href="{{ route('admin.index') }}"><i class="fas fa-toolbox"></i> Admin Interface</a>
-						@endif
-						<a class="dropdown-item" href="{{ route('user.index') }}"><i class="fas fa-user-edit"></i> User Interface</a>
+						<a class="dropdown-item" href="{{ route('login')}}"><i class="fas fa-sign-in-alt"></i> Log In!</a>
+						<a class="dropdown-item" href="{{ route('register') }}"><i class="fas fa-user-plus"></i> Register!</a>
+
+					@else
+
+						<a class="dropdown-item" href="{{ route('advertentie.create') }}"><i class="fas fa-paste"></i> Nieuwe Advertentie</a>
+
+						<div class="dropdown-divider"></div>
+							@if(Auth::user()->hasRole(Auth::user(),'3'))
+								<a class="dropdown-item" href="{{ route('admin.index') }}"><i class="fas fa-toolbox"></i> Admin Interface</a>
+							@endif
+							<a class="dropdown-item" href="{{ route('user.index') }}"><i class="fas fa-user-edit"></i> User Interface</a>
+						
+						<div class="dropdown-divider"></div>
+						<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+							@csrf
+						</form>
+						<a class="dropdown-item" href="{{ route('logout') }}"
+							onclick="event.preventDefault();
+							document.getElementById('logout-form').submit();">
+							<i class="fas fa-sign-out-alt"></i> {{ __('Log Out!') }}
+						</a>
+
 					@endguest
 				</div>
 			</li>

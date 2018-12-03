@@ -12,7 +12,10 @@ class DatabaseSeeder extends Seeder {
 		DB::table('users')->insert([
 			'name' => 'Sander Buruma',
 			'email' => 'sanderburuma@gmail.com',
-			'password' => '$2y$10$jQY5ljXUPHkKlkREkFhC8eJh6FiDSgo/tGFspsC.1phnt.UgcQhp.', //Bitwarden
+			'password' => '$2y$10$jQY5ljXUPHkKlkREkFhC8eJh6FiDSgo/tGFspsC.1phnt.UgcQhp.', //see the default laravel password entry in Bitwarden
+			'created_at' => '2018-12-03 09:49:03',
+			'updated_at' => '2018-12-03 09:49:03',
+			'email_verified_at' => '2018-12-03 09:50:33',
 		]);
 		
 		DB::table('roles')->insert([
@@ -23,6 +26,9 @@ class DatabaseSeeder extends Seeder {
 		]);
 		DB::table('roles')->insert([
 			'name' => 'Admin',
+		]);
+		DB::table('roles')->insert([
+			'name' => 'Banned',
 		]);
 		
 		DB::table('role_user')->insert([

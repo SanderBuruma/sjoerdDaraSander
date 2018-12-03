@@ -25,13 +25,11 @@ Route::group(['middleware' => ['web','auth','verified']], function(){
 	
 	Route::group(['middleware' => ['role:1']], function(){
 		Route::resource('message', 'MessagesController');
+		Route::resource('advertentie' , 'AdvertentieController');
 	});
 	
-	Route::resource('/user', 'MessagesController');
-});
-
-Route::group(['middleware' => ['web', 'auth', 'verified']], function (){
 	Route::resource('/user', 'UserInterfaceController');
+	
 });
 
 Auth::routes(['verify' => true]);
