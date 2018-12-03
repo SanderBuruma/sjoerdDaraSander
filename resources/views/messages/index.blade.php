@@ -41,8 +41,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				{{ Form::label('user_id', 'User:*') }}
-				{{ Form::label('user_id', 'User:*') }}
+				{{--  --}}
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuleer</button>

@@ -30,9 +30,9 @@ Route::group(['middleware' => ['web','auth','verified']], function(){
 	Route::resource('/user', 'MessagesController');
 });
 
-// Route::group(['middleware' => ['web', 'auth', 'verified']], function (){
-// 	Route::resource('/user', 'UserInterfaceController');
-// });
+Route::group(['middleware' => ['web', 'auth', 'verified']], function (){
+	Route::resource('/user', 'UserInterfaceController');
+});
 
 Auth::routes(['verify' => true]);
 
