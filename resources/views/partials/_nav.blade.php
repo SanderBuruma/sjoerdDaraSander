@@ -12,6 +12,9 @@
 			<li class="nav-item">
 				<a class="nav-link" href="{{ route('about') }}">About</a>
 			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{{ route('message.index') }}"><i class="fas fa-envelope"></i> Messages</a>
+			</li>
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<i class="fas fa-user nav-style"></i>@guest Guest @else {{ Auth::user()->name }} @endguest
@@ -32,7 +35,10 @@
 					</a>
 
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="{{ route('admin.index') }}"><i class="fas fa-toolbox"></i> Admin Interface</a>
+						@if(Auth::user()->hasRole(Auth::user(),'3'))
+							<a class="dropdown-item" href="{{ route('admin.index') }}"><i class="fas fa-toolbox"></i> Admin Interface</a>
+						@endif
+						<a class="dropdown-item" href="{{ route('user.index') }}"><i class="fas fa-user-edit"></i> User Interface</a>
 					@endguest
 				</div>
 			</li>

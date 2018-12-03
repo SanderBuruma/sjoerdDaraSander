@@ -1,8 +1,9 @@
 :root {
-	--main-color-light: #ffd;
-	--main-color-med: #aa2;
-	--main-color-dark: #660;
-	--main-color-text: #330;
+	--main-color-light: #fff;
+	--main-color-med: #aaa;
+	--main-color-yellow: #fff;
+	--main-color-dark: #666;
+	--main-color-text: #333;
 }
 
 *:focus {
@@ -34,7 +35,11 @@ a {
 
 a:hover {
 	opacity: 1;
-	/* text-decoration: underline !important; */
+}
+
+button {
+	margin: auto;
+	transition: background-color 0.2s ease-in-out;
 }
 
 .card-header,
@@ -67,6 +72,10 @@ a:hover {
 .search{
 	color: white !important;
 	font-weight: bold !important;
+}
+
+.row {
+	margin: 0;
 }
 
 /* begin styling Sjoerd */
