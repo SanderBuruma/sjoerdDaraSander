@@ -27,7 +27,7 @@
 
 					@else
 
-						<a class="dropdown-item" href="{{ route('advertentie.create') }}"><i class="fas fa-paste"></i> Nieuwe Advertentie</a>
+						<a class="dropdown-item" href="{{ route('advertentie.create') }}"><i class="fas fa-paste"></i> Advertentie Plaatsen</a>
 
 						<div class="dropdown-divider"></div>
 							@if(Auth::user()->hasRole(Auth::user(),'3'))
