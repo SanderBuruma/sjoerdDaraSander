@@ -25,7 +25,7 @@ class AdvertentieController extends Controller
      */
     public function create()
     {
-        return view('advertentie.create')->withCategorys(Category::all())->withSubcategorys(Subcategory::all());
+        return view('advertentie.create')->withCategories(Category::all())->withSubcategories(Subcategory::all());
     }
 
     /**
