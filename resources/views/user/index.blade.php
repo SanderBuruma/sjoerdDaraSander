@@ -73,6 +73,11 @@
 		background-color: #f99;
 		width: auto;
 	}
+
+	.map-container{
+		height: 400px;
+		width: 100%;
+	}
 </style>
 @endsection
 
@@ -131,6 +136,17 @@
 			</div>
 			<hr>
 
+		{{-- begin Map Marker ------------------------------------------------------------------------------------------------------------------------------ --}}
+		
+			<div class="map-container">
+					<h3>My Google Maps Demo</h3>
+					<!--The div element for the map -->
+					<div id="map"></div>
+			</div>
+
+		{{-- eind Map Marker ------------------------------------------------------------------------------------------------------------------------------ --}}
+			
+
 		<div class="row">
 			<div class="col-md-4"><h4>Uw adres-informatie</h4></div>
 			<div class="col-md-8">
@@ -182,7 +198,27 @@
 
 @section('footer')
 <script>
+		// begin map marker
 
+
+			// Initialize and add the map
+			function initMap() {
+			// The location of Uluru
+			var uluru = {lat: -25.344, lng: 131.036};
+			// The map, centered at Uluru
+			var map = new google.maps.Map(
+			document.getElementById('map'), {zoom: 4, center: uluru});
+			// The marker, positioned at Uluru
+			var marker = new google.maps.Marker({position: uluru, map: map});
+			}
+			</script>
+
+			 <script async defer
+    				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfM9rq072pO3kYg5hTX_69uA-6LeVKhF8&callback=initMap">
+			</script>
+		{{-- // eind map marker --}}
+
+<script>
 	var x = document.getElementById("latitude");
 
 	function getLocation() {
@@ -200,9 +236,6 @@
 
 		document.getElementById("longitude").value = position.coords.longitude;
 	}
-
-
-
 	
 jQuery(document).ready(function(){
 
