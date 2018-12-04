@@ -111,7 +111,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-4"><h4>Uw rollen</h4><p>U hebt deze rollen gekregen van een Admin. Admins kunnen u rollen toe en ontkennen via de admin interface.</p></div>
+			<div class="col-md-4"><h4>Uw rollen</h4><p>U hebt deze rollen gekregen van een Admin. Admins kunnen u rollen toe- en ontkennen via de admin interface.</p></div>
 			<div class="col-md-8">
 				<p>
 				@foreach($roles as $role)
@@ -120,8 +120,19 @@
 			</p>
 			</div>
 		</div>
+
 		<div class="row">
-			<div class="col-md-4"><h4>Uw adres informatie</h4></div>
+				<div class="col-md-4"><h4>Bepaal uw locatie:</h4><p>Hiernaast ziet u de coördinaten van uw directe omgeving.</p></div>
+				
+				<div class="col-md-8">
+				<input onload=getLocation() type="number" name="latitude" id="latitude"><br><h4>Lengtegraad</h4>
+				<input type="number" name="longitude" id="longitude"><br><h4>Breedtegraad</h4>
+				</div>
+			</div>
+			<hr>
+
+		<div class="row">
+			<div class="col-md-4"><h4>Uw adres-informatie</h4></div>
 			<div class="col-md-8">
 				<label for="street">Adres:</label><br>
 				<input placeholder="Hoofdstraat" type="text" name="street" value="{{ $user->street }}" pattern="[ a-zA-Z]+" title="Adres: alleen letters en spaties"> Huis Nr:<input placeholder="999" type="text" name="streetnr" class="col-sm-1" value="{{ $user->streetnr }}" pattern="[0-9]+" title="Adres Nr: alleen nummers"><br>
@@ -172,8 +183,30 @@
 @section('footer')
 <script>
 
+	var x = document.getElementById("latitude");
+
+	function getLocation() {
+		if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(showPosition);
+	} else { 
+
+	x.innerHTML = "Geolocation is not supported by this browser.";
+	}
+	}
+
+	function showPosition(position) {
+		console.log('getlocation');
+		document.getElementById("latitude").value = position.coords.latitude;
+
+		document.getElementById("longitude").value = position.coords.longitude;
+	}
+
+
+
 	
 jQuery(document).ready(function(){
+
+	getLocation();
 
 	$.ajaxSetup({
 		headers: {
@@ -196,12 +229,15 @@ jQuery(document).ready(function(){
 				req:				1,
 				name: 			$('input[name="name"]').val(),
 				street: 		$('input[name="street"]').val(),
-				streetnr: 	$('input[name="streetnr"]').val(),
+				streetnr: 		$('input[name="streetnr"]').val(),
 				city: 			$('input[name="city"]').val(),
-				province: 	$('input[name="province"]').val(),
+				province: 		$('input[name="province"]').val(),
 				country: 		$('input[name="country"]').val(),
-				telephone1: $('input[name="telephone1"]').val(),
-				telephone2: $('input[name="telephone2"]').val()
+				telephone1: 		$('input[name="telephone1"]').val(),
+				telephone2: 		$('input[name="telephone2"]').val(),
+				latitude: 		$('input[name="latitude"]').val(),
+				longitude: 		$('input[name="longitude"]').val(),
+
 			},
 			success: function(result){
 				console.log(result);

@@ -85,6 +85,9 @@ class UserInterfaceController extends Controller
                         'country'       => 'nullable|string|min:2|regex:/[ a-zA-Z]+/',
                         'telephone1'    => 'nullable|regex:/[0-9\-]+/',
                         'telephone2'    => 'nullable|regex:/[0-9\-]+/',
+                        'latitude'      => 'nullable|numeric',
+                        'longitude'     => 'nullable|numeric',
+
                     ]);
                 } else {
                     $this->validate($request, [
@@ -96,6 +99,9 @@ class UserInterfaceController extends Controller
                         'country'       => 'nullable|string|min:2|regex:/[ a-zA-Z]+/',
                         'telephone1'    => 'nullable|regex:/[0-9\-]+/',
                         'telephone2'    => 'nullable|regex:/[0-9\-]+/',
+                        'latitude'      => 'nullable|numeric',
+                        'longitude'     => 'nullable|numeric',
+
                     ]);
                 }
                 
@@ -108,6 +114,8 @@ class UserInterfaceController extends Controller
                 $user->country      = $request->country;
                 $user->telephone1   = $request->telephone1;
                 $user->telephone2   = $request->telephone2;
+                $user->latitude     = $request->latitude;
+                $user->longitude    = $request->longitude;
 
                 $user->save();
                 return ["message"=>"Gebruiker opgeslagen!"];
