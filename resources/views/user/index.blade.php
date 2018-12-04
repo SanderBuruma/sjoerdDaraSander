@@ -93,7 +93,7 @@
 			</div>
 		</nav>
 
-		<div class="row">
+		<div class="row"> 
 			<div class="col-md-4" id="personal-information"><h4>Uw naam</h4></div>
 			<div class="col-md-8">
 				<label for="name">Naam:</label><br>

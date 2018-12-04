@@ -172,9 +172,6 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
-        \Torann\GenIP\GeoIPServiceProvider::class,
-
     ],
 
     /*
@@ -225,7 +222,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
-        'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
     ],
 
 ];
