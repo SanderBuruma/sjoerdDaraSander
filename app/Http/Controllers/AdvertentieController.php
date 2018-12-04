@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Subcategory;
+use Illuminate\Support\Facades\Auth;
+use App\Advertentie;
+use Image;
 
 class AdvertentieController extends Controller
 {
@@ -36,7 +39,39 @@ class AdvertentieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
+        $this->validate($request, array(
+            'title' => 'required|string|max:255|min:3|unique:advertenties',
+            'body'  => 'required|string|max:25500',
+            'photo1' => 'sometimes|image|max:255',
+            'photo2' => 'sometimes|image|max:255',
+            'photo3' => 'sometimes|image|max:255',
+            'photo4' => 'sometimes|image|max:255',
+            'photo5' => 'sometimes|image|max:255',
+            'photo6' => 'sometimes|image|max:255',
+            'price'  => 'reqiured|numeric',
+            'subcategory_id' => 'exists:subcategories,id',
+        ));
+
+        $advertentie = new Advertentie;
+        $advertentie->title = $request->title;
+        $advertentie->body = $request->body;
+        $advertentie->subcategory_id = $request->subcategory_id;
+        $advertentie->price = $request->price;
+
+        foreach([1,2,3,4,5,6] as $v) {
+
+            if ($request->hasFile("photo$v")) {
+                $image = $request->file("photo$v");
+                $filename = time() . '.' . $image->getClientOriginalExtension();
+                $location = public_path('images/' . $filename);
+                Image::make($image)->save($location);
+                $oldFilename = $post->image;
+
+                $post->image = $filename;
+                File::delete('images/'.$oldFilename);
+            }
+        }
     }
 
     /**
