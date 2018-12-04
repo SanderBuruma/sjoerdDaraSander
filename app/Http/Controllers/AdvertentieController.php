@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
+use App\Subcategory;
 
 class AdvertentieController extends Controller
 {
@@ -23,7 +25,7 @@ class AdvertentieController extends Controller
      */
     public function create()
     {
-        return view('advertentie.create');
+        return view('advertentie.create')->withCategorys(Category::all())->withSubcategorys(Subcategory::all());
     }
 
     /**

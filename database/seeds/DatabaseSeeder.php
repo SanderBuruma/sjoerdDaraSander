@@ -67,8 +67,8 @@ class DatabaseSeeder extends Seeder {
 			'Watersport & Boten',
 			'Witgoed & Apparatuur',
 			'Zakelijke Goederen',
-			'Overige'] as $v) {
-			DB::table('categorys')->insert([
+			'Overig'] as $v) {
+			DB::table('categories')->insert([
 				'name' => $v
 			]);
 		}
@@ -110,12 +110,12 @@ class DatabaseSeeder extends Seeder {
 			[],// 'Overige'
 			] as $v) {
 				$count++;
-				DB::table('subcategorys')->insert([
+				DB::table('subcategories')->insert([
 					'name' => 'Overig',
 					'category_id' => $count,
 				]);
 				foreach($v as $vv) {
-					DB::table('subcategorys')->insert([
+					DB::table('subcategories')->insert([
 						'name' => $vv,
 						'category_id' => $count,
 					]);

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSubcategoryTable extends Migration
+class CreateSubcategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateSubcategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('subcategorys', function (Blueprint $table) {
+        Schema::create('subcategories', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('category_id')->unsigned();
-            $table->foreign('category_id')->references('id')->on('categorys');
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->string('name');
             $table->timestamps();
         });
         Schema::table('advertenties', function (Blueprint $table) {
             $table->integer('subcategory_id')->unsigned()->after('user_id');
-			$table->foreign('subcategory_id')->references('id')->on('subcategorys');
+			$table->foreign('subcategory_id')->references('id')->on('subcategories');
         });
     }
 
@@ -33,6 +33,9 @@ class CreateSubcategoryTable extends Migration
      */
     public function down()
     {
+        Schema::table('advertenties', function (){
+            $table->dropColumn('subcategory_id');
+        });
         Schema::dropIfExists('subcategory');
     }
 }
