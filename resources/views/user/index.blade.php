@@ -125,8 +125,8 @@
 				<div class="col-md-4"><h4>Bepaal uw locatie:</h4><p>Hiernaast ziet u de coördinaten van uw directe omgeving.</p></div>
 				
 				<div class="col-md-8">
-				<input onload=getLocation() type="number" name="latitude" id="latitude"><br><h4>Lengtegraad</h4>
-				<input type="number" name="longitude" id="longitude"><br><h4>Breedtegraad</h4>
+				<input onload=getLocation() type="number" name="latitude" id="latitude" step="0.0000001"><br><h4>Lengtegraad</h4>
+				<input type="number" name="longitude" id="longitude" step="0.0000001"><br><h4>Breedtegraad</h4>
 				</div>
 			</div>
 			<hr>
