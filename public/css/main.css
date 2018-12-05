@@ -1,8 +1,9 @@
 :root {
-	--main-color-light: #ffd;
-	--main-color-med: #aa2;
-	--main-color-dark: #660;
-	--main-color-text: #330;
+	--main-color-light: #fff;
+	--main-color-med: #aaa;
+	--main-color-yellow: #fff;
+	--main-color-dark: #666;
+	--main-color-text: #333;
 }
 
 *:focus {
@@ -11,20 +12,41 @@
 
 body {
 	color: var(--main-color-text);
+	background-image: url("/img/background-image3.jpg");
+	background-size: cover;
+}
+
+.title{
+	color: white !important;
+	font-weight: bold;
+	padding-left: 10px;
+}
+
+li a{
+	color: white !important;
+	font-weight: bold;
+}
+
+.menu{
+	background-color: grey;
 }
 
 a {
 	opacity: 0.8;
-	color: var(--main-color-dark) !important;
 }
+
 a:hover {
 	opacity: 1;
-	text-decoration: underline !important;
+}
+
+button {
+	margin: auto;
+	transition: background-color 0.2s ease-in-out;
 }
 
 .card-header,
 .navbar {
-	background-color: var(--main-color-light) !important;
+	background-color: rgb(255,255,255,0) !important;
 }
 
 .role-list-item {
@@ -48,3 +70,56 @@ a:hover {
 .dropdown-item:focus, .dropdown-item:hover {
 	background-color: var(--main-color-light) !important;
 }
+
+.search{
+	color: white !important;
+	font-weight: bold !important;
+}
+
+.row {
+	margin: 0;
+}
+
+/* begin styling Sjoerd */
+
+.container_1{
+	position: relative;
+
+	background-color: white;
+	height: 500px;
+	border-radius: 5%;
+	text-align: center;
+
+	box-shadow: 2px 2px 20px rgba(0,0,0,0.9);
+	opacity: 0.9;
+
+	border-style: groove;
+	border-width: 1px;
+	border-color: grey;
+}
+
+.container_2{
+	position: relative;
+  	top: 50%; left: 50%;
+  	transform: translate(-50%,-50%);
+
+	height: 94%;
+	width: 98%;
+	
+	border-radius: 3%;
+	border-style: dotted;
+	border-width: 1px;
+	border-color: grey;
+
+	box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+}
+
+.low-buttons{
+	position: relative;
+	top: 370px;
+}
+
+.footer-style{
+	color: white;
+}
+/* eind styling Sjoerd */

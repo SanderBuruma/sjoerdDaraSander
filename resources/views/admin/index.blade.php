@@ -3,28 +3,12 @@
 @section('title', '| Admin User Index')
 
 @section('header')
-<style>
-button {
-	all: unset;
-	color: var(--main-color-dark);
-	cursor: pointer;
-	background-color: var(--main-color-light);
-	border-radius: 3rem;
-	padding: 0 4px;
-	cursor: pointer;
-	transition: color 0.2s, background-color 0.2s;
-}
-button:hover,
-button:active {
-	background-color: var(--main-color-dark);
-	color: var(--main-color-light);
-}
-</style>
+<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 @endsection
 
 @section('content')
 <div class="row">
-	<div class="col-md-10 offset-md-1">
+	<div class="col-md-10 offset-md-1" id="main">
 		<table class="table">
 			<thead>
 				<th>#</th>
@@ -62,7 +46,7 @@ button:active {
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
-				<button type="button" class="btn btn-primary" data-dismiss="modal" id="save-user">Save</button>
+				<button type="button" class="btn btn-dark" data-dismiss="modal" id="save-user">Save</button>
 			</div>
 		</div>
 	</div>

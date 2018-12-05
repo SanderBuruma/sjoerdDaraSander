@@ -1,4 +1,5 @@
 <body>
+		
 	<div id="app">
 		@include('partials._nav')
 
