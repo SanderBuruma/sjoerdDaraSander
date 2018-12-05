@@ -147,7 +147,7 @@ class UserInterfaceController extends Controller
             }
         } else {
             return [
-                "message"=>"authentication userID does not match client submitted user id $id!=".Auth::user()->id,
+                "message"=>"authentication user id does not match client submitted user id $id!=".Auth::user()->id,
                 "failure"=>3,
             ];
         }

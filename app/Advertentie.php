@@ -11,7 +11,7 @@ class Advertentie extends Model
     public function user(){
         return $this->belongsTo('App\User');
     }
-    public function category(){
+    public function subcategory(){
         return $this->hasOne('App\Subcategory');
     }
 }
