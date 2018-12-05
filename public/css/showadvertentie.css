@@ -1,0 +1,11 @@
+.main {
+	padding: 1rem;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
+	background-color: #fff8;
+	border-radius: 1rem;
+}
+.main > div {
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
+	background-color: white;
+	border-radius: 1rem;
+}
