@@ -37,6 +37,6 @@ class CreateSubcategoriesTable extends Migration
             $table->dropForeign(['subcategory_id']);
             $table->dropColumn('subcategory_id');
         });
-        Schema::dropIfExists('subcategory');
+        Schema::dropIfExists('subcategories');
     }
 }

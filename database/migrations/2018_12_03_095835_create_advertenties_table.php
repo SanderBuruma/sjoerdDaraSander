@@ -18,6 +18,7 @@ class CreateAdvertentiesTable extends Migration
             $table->integer('user_id')->unsigned();
 			$table->foreign('user_id')->references('id')->on('users');
             $table->string('title');
+            $table->string('slug');
             $table->integer('price'); //in centen
             $table->text('description');
             $table->string('photo1')->nullable();
