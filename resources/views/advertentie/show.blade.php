@@ -9,29 +9,65 @@
 
 
 @section('content')
-<div class="row"><div class="row-md-10 offset-md-1 main"><div class="card">
+<div class="row"><div class="row-md-5 offset-md-1 main"><div class="card">
 	<div class="card-header">
 		<h1>{{$advertentie->title}}</h1>
+		<table class="table">
+			<thead>
+				<th>Categorie: </th>
+				<th>{{$category->name}}</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Subcategorie: </td>
+					<td>{{$subcategory->name}}</td>
+				</tr>
+				<tr>
+					<td>Prijs: </td>
+					<td>€{{$advertentie->price/100}},-</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 	<div class="card-body">
 		<p>{{$advertentie->description}}</p>
 	</div>
 	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 		<ol class="carousel-indicators">
-			<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-			<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-			<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+			<?php 
+				$count = 0;
+				foreach ([1,2,3,4,5,6] as $v)	{
+					if (isset($advertentie["photo$v"])) {
+						if ($count == 0) {
+							echo "<li data-target=\"#carouselExampleIndicators\" data-slide-to=\"$count\" class=\"active\"></li>";
+						} else {
+							echo "<li data-target=\"#carouselExampleIndicators\" data-slide-to=\"$count\"></li>";
+						}
+						$count++;
+					}
+				}
+			?>
 		</ol>
 		<div class="carousel-inner">
-			<div class="carousel-item active">
-				<img class="d-block w-100" src="/images/154400762373073291962.png" alt="First slide">
-			</div>
-			<div class="carousel-item">
-				<img class="d-block w-100" src="/images/154400762373073291962.png" alt="Second slide">
-			</div>
-			<div class="carousel-item">
-				<img class="d-block w-100" src="/images/154400762373073291962.png" alt="Third slide">
-			</div>
+			<?php 
+				$count = 0;
+				foreach([1,2,3,4,5,6] as $v) {
+					if (isset($advertentie["photo$v"])) {
+						if ($count == 0) {
+						echo "
+							<div class=\"carousel-item active\">
+								<img class=\"d-block w-100\" src=\"/".$advertentie["photo$v"]."\" alt=\"database image\">
+							</div>";
+						} else {
+						echo "
+							<div class=\"carousel-item\">
+								<img class=\"d-block w-100\" src=\"/".$advertentie["photo$v"]."\" alt=\"database image\">
+							</div>";
+						}
+						$count++;
+					}
+				}
+			?>
 		</div>
 		<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 			<span class="carousel-control-prev-icon" aria-hidden="true"></span>

@@ -9,3 +9,8 @@
 	background-color: white;
 	border-radius: 1rem;
 }
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+	color: black;
+	background-color: black;
+}

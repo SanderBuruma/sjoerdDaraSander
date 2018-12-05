@@ -10,6 +10,6 @@ class Subcategory extends Model
         return $this->belongsToMany('App\Advertentie');
     }
     public function category(){
-        return $this->belongsToMany('App\Category');
+        return $this->hasOne('App\Category');
     }
 }

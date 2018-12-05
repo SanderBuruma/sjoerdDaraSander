@@ -69,7 +69,7 @@ class AdvertentieController extends Controller
                 $image = $request->file("photo$v");
                 $randomNr = random_int(1e10,1e11-1);
                 $filename = time() . "$randomNr." . $image->getClientOriginalExtension();
-                $location = '/images/' . $filename;
+                $location = 'images/' . $filename;
                 Image::make($image)->save($location);
                 $advertentie["photo$v"] = $location;
             }
@@ -88,8 +88,13 @@ class AdvertentieController extends Controller
      */
     public function show($slug)
     {
-		$advertentie = Advertentie::where('slug', '=', $slug)->first();
-        return view('advertentie.show')->withAdvertentie($advertentie);
+        $advertentie = Advertentie::where('slug', '=', $slug)->first();
+        $subcategory = Subcategory::find($advertentie->subcategory_id);
+        $category = Category::find($subcategory->category_id);
+        return view('advertentie.show')->
+            withAdvertentie($advertentie)->
+            withSubcategory($subcategory)->
+            withCategory($category);
     }
 
     /**
