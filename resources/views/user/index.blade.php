@@ -197,7 +197,7 @@
 
 
 @section('footer')
-
+<script>
 var x = document.getElementById("latitude");
 
 function getLocation() {
