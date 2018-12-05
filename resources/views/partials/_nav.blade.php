@@ -15,9 +15,11 @@
 			<li class="nav-item">
 				<a class="nav-link" href="{{ route('message.index') }}"><i class="fas fa-envelope"></i> Messages</a>
 			</li>
+			@guest @else 
 			<li class="nav-item">
 				<a class="nav-link" href="{{ route('advertentie.create') }}"><i class="fas fa-paste"></i> Advertentie Plaatsen</a>
 			</li>
+			@endguest
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<i class="fas fa-user nav-style"></i>@guest Guest @else {{ Auth::user()->name }} @endguest
