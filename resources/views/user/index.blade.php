@@ -111,8 +111,8 @@
 		<div class="row">
 			<div class="col-md-4"><h4>Uw Gravatar afbeelding</h4><p>deze afbeelding hoort bij uw email en kan u op de Gravatar website instellen. Per default wordt een willekeurige afbeelding geselecteerd</p></div>
 			<div class="col-md-8">
-				<label for="gravatar-picture"><a href="https://www.gravatar.com/">Gravatar</a> profiel afbeelding</label><br>
-				<img src="https://www.gravatar.com/avatar/{{ md5( strtolower( trim( "$user->email" ) ) ) }}?d=identicon" alt="">
+				{{-- <label for="gravatar-picture"><a href="https://www.gravatar.com/">Gravatar</a> profiel afbeelding</label><br>
+				<img src="https://www.gravatar.com/avatar/{{ md5( strtolower( trim( "$user->email" ) ) ) }}?d=identicon" alt=""> --}}
 			</div>
 		</div>
 		<div class="row">
