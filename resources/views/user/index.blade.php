@@ -109,8 +109,8 @@
 		<div class="row">
 			<div class="col-md-4"><h4>Uw Gravatar afbeelding</h4><p>deze afbeelding hoort bij uw email en kan u op de Gravatar website instellen. Per default wordt een willekeurige afbeelding geselecteerd</p></div>
 			<div class="col-md-8">
-				<label for="gravatar-picture"><a href="https://www.gravatar.com/">Gravatar</a> profiel afbeelding</label><br>
-				<img src="https://www.gravatar.com/avatar/{{ md5( strtolower( trim( "$user->email" ) ) ) }}?d=identicon" alt="">
+				{{-- <label for="gravatar-picture"><a href="https://www.gravatar.com/">Gravatar</a> profiel afbeelding</label><br>
+				<img src="https://www.gravatar.com/avatar/{{ md5( strtolower( trim( "$user->email" ) ) ) }}?d=identicon" alt=""> --}}
 			</div>
 		</div>
 		<div class="row">
@@ -133,6 +133,17 @@
 				</div>
 			</div>
 			<hr>
+
+		{{-- begin Map Marker ------------------------------------------------------------------------------------------------------------------------------ --}}
+		
+			{{-- <div class="map-container">
+					<h3>My Google Maps Demo</h3>
+					<!--The div element for the map -->
+					<div id="map"></div>
+			</div> --}}
+
+		{{-- eind Map Marker ------------------------------------------------------------------------------------------------------------------------------ --}}
+			
 
 		<div class="row">
 			<div class="col-md-4"><h4>Uw adres-informatie</h4></div>
@@ -186,7 +197,6 @@
 
 
 @section('footer')
-<script>
 
 var x = document.getElementById("latitude");
 
@@ -225,7 +235,6 @@ function initMap() {
 		title: 'Hello World!'
 	});
 }
-
 	
 jQuery(document).ready(function(){
 

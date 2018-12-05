@@ -16,6 +16,7 @@ Route::get('/', function () { return view('pages.home'); });
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/about', function(){ return view('pages.about'); })->name('about');
 
+
 Route::group(['middleware' => ['web','auth','verified']], function(){
 
 	Route::group(['middleware' => ['role:3']], function(){
