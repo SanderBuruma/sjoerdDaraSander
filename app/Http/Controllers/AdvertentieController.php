@@ -39,7 +39,7 @@ class AdvertentieController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        
         $this->validate($request, array(
             'title' => 'required|string|max:255|min:3|unique:advertenties',
             'body'  => 'required|string|max:25500',
@@ -60,18 +60,18 @@ class AdvertentieController extends Controller
         $advertentie->price = $request->price;
 
         foreach([1,2,3,4,5,6] as $v) {
-
             if ($request->hasFile("photo$v")) {
                 $image = $request->file("photo$v");
-                $filename = time() . '.' . $image->getClientOriginalExtension();
+                $randomNr = random_int(1e10,1e11-1);
+                $filename = time() . "." . $image->getClientOriginalExtension();
                 $location = public_path('images/' . $filename);
                 Image::make($image)->save($location);
-                $oldFilename = $post->image;
-
-                $post->image = $filename;
-                File::delete('images/'.$oldFilename);
+                $advertentie["photo$v"] = $location;
             }
         }
+
+        $advertentie->save();
+        return "$advertentie->title geplaatst!";
     }
 
     /**
