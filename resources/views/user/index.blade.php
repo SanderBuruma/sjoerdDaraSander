@@ -73,6 +73,9 @@
 		background-color: #f99;
 		width: auto;
 	}
+	#map {
+		height: 400px;
+	}
 </style>
 @endsection
 
@@ -163,6 +166,8 @@
 		<button id="submit-changes-nonpw" type="button" class="btn btn-dark col-md-4 offset-md-4" style="">Profiel Bijwerken</button>
 		<h5 id="submit-changes-message" hidden>Gebruiker opgeslagen</h5>
 
+		<div id="map"></div>
+
 		<div class="row">
 			<div class="col-md-4"><h4 id="password-change">Paswoord Veranderen</h4></div>
 			<div class="col-md-8">
@@ -183,25 +188,43 @@
 @section('footer')
 <script>
 
-	var x = document.getElementById("latitude");
+var x = document.getElementById("latitude");
 
-	function getLocation() {
-		if (navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(showPosition);
-	} else { 
+function getLocation() {
+	if (navigator.geolocation) {
+	navigator.geolocation.getCurrentPosition(showPosition);
+} else { 
 
-	x.innerHTML = "Geolocation is not supported by this browser.";
-	}
-	}
+x.innerHTML = "Geolocation is not supported by this browser.";
+}
+}
 
-	function showPosition(position) {
-		console.log('getlocation');
-		document.getElementById("latitude").value = position.coords.latitude;
+function showPosition(position) {
+	console.log('getlocation');
+	document.getElementById("latitude").value = position.coords.latitude;
+	document.getElementById("longitude").value = position.coords.longitude;
+	initMap(position.coords.latitude,position.coords.longitude);
+}
 
-		document.getElementById("longitude").value = position.coords.longitude;
-	}
 
+function initMap() {
+	var myLatLng = {lat:53.2193133 , lng:6.5669632 };
+	console.log(myLatLng);
 
+	// Create a map object and specify the DOM element
+	// for display.
+	var map = new google.maps.Map(document.getElementById('map'), {
+		center: myLatLng,
+		zoom: 9
+	});
+
+	// Create a marker and set its position.
+	var marker = new google.maps.Marker({
+		map: map,
+		position: myLatLng,
+		title: 'Hello World!'
+	});
+}
 
 	
 jQuery(document).ready(function(){
@@ -227,14 +250,14 @@ jQuery(document).ready(function(){
 			method: 'patch',
 			data: {
 				req:				1,
-				name: 			$('input[name="name"]').val(),
-				street: 		$('input[name="street"]').val(),
+				name: 				$('input[name="name"]').val(),
+				street: 			$('input[name="street"]').val(),
 				streetnr: 		$('input[name="streetnr"]').val(),
-				city: 			$('input[name="city"]').val(),
+				city: 				$('input[name="city"]').val(),
 				province: 		$('input[name="province"]').val(),
-				country: 		$('input[name="country"]').val(),
-				telephone1: 		$('input[name="telephone1"]').val(),
-				telephone2: 		$('input[name="telephone2"]').val(),
+				country: 			$('input[name="country"]').val(),
+				telephone1: 	$('input[name="telephone1"]').val(),
+				telephone2: 	$('input[name="telephone2"]').val(),
 				latitude: 		$('input[name="latitude"]').val(),
 				longitude: 		$('input[name="longitude"]').val(),
 
@@ -309,4 +332,6 @@ jQuery(document).ready(function(){
 	};
 });
 </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfM9rq072pO3kYg5hTX_69uA-6LeVKhF8&callback=initMap"
+	async defer></script>
 @endsection
