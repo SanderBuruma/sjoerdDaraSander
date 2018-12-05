@@ -203,26 +203,27 @@ function showPosition(position) {
 	console.log('getlocation');
 	document.getElementById("latitude").value = position.coords.latitude;
 	document.getElementById("longitude").value = position.coords.longitude;
-	initMap(position.coords.latitude,position.coords.longitude);
 }
 
+let latitude = <?php echo $user->latitude?$user->latitude:53.2152292 ?>;
+let longitude = <?php echo $user->longitude?$user->longitude:6.5669632 ?>;
 
 function initMap() {
-	var myLatLng = {lat:53.2193133 , lng:6.5669632 };
+	var myLatLng = {lat: latitude , lng: longitude }
 	console.log(myLatLng);
 
 	// Create a map object and specify the DOM element
 	// for display.
 	var map = new google.maps.Map(document.getElementById('map'), {
 		center: myLatLng,
-		zoom: 9
+		zoom: 16
 	});
 
 	// Create a marker and set its position.
 	var marker = new google.maps.Marker({
 		map: map,
 		position: myLatLng,
-		title: 'Hello World!'
+		title: 'Uw Locatie!'
 	});
 }
 
