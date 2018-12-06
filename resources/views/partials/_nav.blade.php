@@ -9,13 +9,10 @@
 			<li class="nav-item active">
 				<a class="nav-link" href="{{ route('home') }}">Home<span class="sr-only">(current)</span></a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="{{ route('about') }}">About</a>
-			</li>
+			@guest @else 
 			<li class="nav-item">
 				<a class="nav-link" href="{{ route('message.index') }}"><i class="fas fa-envelope"></i> Messages</a>
 			</li>
-			@guest @else 
 			<li class="nav-item">
 				<a class="nav-link" href="{{ route('advertentie.create') }}"><i class="fas fa-paste"></i> Advertentie Plaatsen</a>
 			</li>
@@ -48,6 +45,7 @@
 						</a>
 
 					@endguest
+					<a class="dropdown-item" href="{{ route('about') }}">About</a>
 				</div>
 			</li>
 			{{-- <li class="nav-item">

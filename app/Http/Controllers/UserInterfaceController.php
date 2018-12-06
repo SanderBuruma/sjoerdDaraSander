@@ -87,6 +87,7 @@ class UserInterfaceController extends Controller
                         'telephone2'    => 'nullable|regex:/[0-9\-]+/',
                         'latitude'      => 'nullable|numeric',
                         'longitude'     => 'nullable|numeric',
+                        'websiteUrl'    => 'nullable|URL',
 
                     ]);
                 } else {
@@ -101,6 +102,7 @@ class UserInterfaceController extends Controller
                         'telephone2'    => 'nullable|regex:/[0-9\-]+/',
                         'latitude'      => 'nullable|numeric',
                         'longitude'     => 'nullable|numeric',
+                        'websiteUrl'    => 'nullable|URL',
 
                     ]);
                 }
@@ -116,6 +118,7 @@ class UserInterfaceController extends Controller
                 $user->telephone2   = $request->telephone2;
                 $user->latitude     = $request->latitude;
                 $user->longitude    = $request->longitude;
+                $user->websiteUrl   = $request->websiteUrl;
 
                 $user->save();
                 return ["message"=>"Gebruiker opgeslagen!"];
@@ -161,6 +164,13 @@ class UserInterfaceController extends Controller
      */
     public function destroy($id)
     {
+        //
+    }
+    
+    /* 
+    create message based on user name
+    */
+    public function namedCreate($name) {
         //
     }
 }

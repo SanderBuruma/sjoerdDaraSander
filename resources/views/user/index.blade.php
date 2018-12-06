@@ -161,6 +161,11 @@
 				<input placeholder="Nederland" type="text" name="country" value="{{ $user->country }}" pattern="[ a-zA-Z]+" title="Land: alleen letters en spaties">
 				<p id="input-country-feedback" hidden class="input-feedback">Land: alleen letters en spaties</p><br>
 			</div>
+			<div class="col-md-4"><h4>Website URL</h4></div>
+			<div class="col-md-8">
+				<label for="street">URL:</label><br>
+				<input placeholder="www.voorbeeld.nl" type="text" name="websiteUrl" value="{{ $user->websiteUrl }}" title="www.voorbeeld.nl"><br>
+			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-4"><h4>Uw telefoon nrs</h4></div>

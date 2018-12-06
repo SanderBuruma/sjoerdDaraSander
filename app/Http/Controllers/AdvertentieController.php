@@ -60,7 +60,7 @@ class AdvertentieController extends Controller
         $advertentie->title             = $request->title;
         $advertentie->description       = $request->description;
         $advertentie->subcategory_id    = $request->subcategory;
-        $advertentie->user_id    = auth()->id();
+        $advertentie->user_id           = auth()->id();
         $advertentie->price             = $request->price*100;
         $advertentie->slug              = random_int(1e15,1e16-1)."-".time();
 
@@ -69,7 +69,7 @@ class AdvertentieController extends Controller
                 $image = $request->file("photo$v");
                 $randomNr = random_int(1e10,1e11-1);
                 $filename = time() . "$randomNr." . $image->getClientOriginalExtension();
-                $location = 'images/' . $filename;
+                $location = $filename;
                 Image::make($image)->save($location);
                 $advertentie["photo$v"] = $location;
             }

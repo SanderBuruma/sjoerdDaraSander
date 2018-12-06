@@ -26,6 +26,7 @@ Route::group(['middleware' => ['web','auth','verified']], function(){
 	
 	Route::group(['middleware' => ['role:1']], function(){
 		Route::resource('message', 'MessagesController');
+		Route::get('message/{name}/create', 'MessagesController@namedCreate');
 		Route::resource('advertentie' , 'AdvertentieController');
 	});
 	

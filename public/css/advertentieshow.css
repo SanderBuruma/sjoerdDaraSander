@@ -18,3 +18,8 @@
 .card-header > h1 {
 	text-align: center;
 }
+
+.contact > div:first-child {
+	background-color: var(--color-main-med);
+	color: white;
+}

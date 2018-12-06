@@ -22,6 +22,7 @@ class AddUserTableColumns extends Migration
             $table->string('telephone1')->nullable()->after('remember_token');
             $table->string('telephone2')->nullable()->after('remember_token');
             $table->string('profilePic')->nullable()->after('remember_token');
+            $table->string('websiteUrl')->nullable()->after('remember_token');
         });
     }
 
@@ -41,6 +42,7 @@ class AddUserTableColumns extends Migration
             $table->dropColumn('telephone1');
             $table->dropColumn('telephone2');
             $table->dropColumn('profilePic');
+            $table->dropColumn('websiteUrl');
         });
     }
 }
