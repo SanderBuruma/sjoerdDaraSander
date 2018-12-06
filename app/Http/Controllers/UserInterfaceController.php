@@ -166,11 +166,5 @@ class UserInterfaceController extends Controller
     {
         //
     }
-    
-    /* 
-    create message based on user name
-    */
-    public function namedCreate($name) {
-        //
-    }
+
 }

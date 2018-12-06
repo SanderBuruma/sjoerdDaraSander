@@ -90,16 +90,18 @@
 		<div class="card-header">{{$advertentie->user->name}}</div>
 		<div class="card-body">
 			@if($advertentie->user->city) <p><i class="fas fa-map-marker-alt"></i> {{$advertentie->user->city}}</p> @endif
-			@if($advertentie->user->websiteUrl) <p><i class="fas fa-globe"></i> <a href="http://{{$advertentie->user->websiteUrl}}">{{$advertentie->user->websiteUrl}}</a></p> @endif
-			<div class="row contact">
-				<div class="col-md-4">
-					<i class="fas fa-globe"></i>
-					<a href="http://{{$advertentie->user->websiteUrl}}">{{$advertentie->user->websiteUrl}}</a>
-				</div>
-				<div class="col-md-4">
-					<i class="fas fa-globe"></i>
-					<a href="/message/create">{{$advertentie->user->websiteUrl}}</a>
-				</div>
+			<div class="contact">
+				@if($advertentie->user->websiteUrl) <p><i class="fas fa-globe"></i> <a href="http://{{$advertentie->user->websiteUrl}}">{{$advertentie->user->websiteUrl}}</a></p> @endif
+				<br>
+				{!! Form::open(['route' => 'message.namedcreate','data-parsley-validate' => '', 'method' => 'POST']) !!}
+					<i class="fas fa-envelope-open"></i>
+					<input type="text" class="form-control" required hidden value="{{$advertentie->user->name}}" name="name">
+					<input type="text" class="form-control" required hidden value="{{$advertentie->slug}}" name="advertentie_slug">
+					{{ Form::submit('Zend Bericht', array('class' => 'btn btn-info btn-sm')) }}
+				{!! Form::close() !!}
+				<br>
+				@if($advertentie->user->telephone1) <p><i class="fas fa-phone"></i> {{$advertentie->user->telephone1}}</p> @endif
+				@if($advertentie->user->telephone2) <p><i class="fas fa-phone"></i> {{$advertentie->user->telephone2}}</p> @endif
 			</div>
 		</div>
 	</div></div>

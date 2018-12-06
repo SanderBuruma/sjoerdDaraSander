@@ -333,7 +333,7 @@ jQuery(document).ready(function(){
 				if (result.failure) {
 					inputPwFb.innerHTML = result.message;
 					inputPwFb.hidden = false;
-					setInterval(() => {
+					setTimeout(() => {
 						inputPwFb.hidden = true
 					;}, 15e3);
 				}

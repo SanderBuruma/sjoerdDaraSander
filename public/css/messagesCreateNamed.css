@@ -1,0 +1,11 @@
+.main {
+	border-radius: 1rem;
+	background-color: #fffd;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
+	padding: 1rem 1rem !important;
+}
+
+.card {
+	border-radius: 1rem;
+	box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
+}

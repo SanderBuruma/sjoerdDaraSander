@@ -43,8 +43,8 @@ class DatabaseSeeder extends Seeder {
 					'name' => "$v $vv",
 					'email' => "$v$vv@gmail.com",
 					'password' => '$2y$10$jQY5ljXUPHkKlkREkFhC8eJh6FiDSgo/tGFspsC.1phnt.UgcQhp.', //see my default laravel password entry in Bitwarden
-					'latitude' => 53.1152292+random_int(0,199999)/1e6,
-					'longitude' => 6.4669632+random_int(0,199999)/1e6,
+					'latitude' => 53.1152292+random_int(-99999,99999)/1e6,
+					'longitude' => 6.5669632+random_int(-99999,99999)/cos(53.1152292/57.295),
 					'created_at' => '2018-12-03 09:49:03',
 					'updated_at' => '2018-12-03 09:49:03',
 					'email_verified_at' => '2018-12-03 09:50:33',
