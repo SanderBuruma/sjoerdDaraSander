@@ -14,11 +14,12 @@
 	<div class="card">
 		<div class="card-body">
 			{!! Form::open(['route' => 'message.store', 'method' => 'POST']) !!}
-				
-				<input name="redirect" type="text" hidden hidden required maxlength="255" value="{{$advertentie->slug}}">
+			
+				<input name="redirect2" type="text" hidden required value="advertentie.show">
+				<input name="redirect" type="text" hidden required value="{{$advertentie->slug}}">
 
 				{{ Form::label('receipient', 'Verstuur naar:') }}
-				<input name="receipient" type="text" hidden required maxlength="255" value="{{$user->name}}">
+				<input name="receipient" type="text" hidden required value="{{$user->name}}">
 
 				{{ Form::label('title', 'Onderwerp:') }}
 				<input name="title" type="text" class="form-control" required maxlength="255" value="{{$advertentie->title}} - €{{$advertentie->price/1e2}}">

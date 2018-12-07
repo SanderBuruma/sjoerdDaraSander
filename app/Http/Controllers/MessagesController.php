@@ -36,9 +36,18 @@ class MessagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $message = Message::find($request->id);
+        $receiver = User::find($message->user_id);
+        if (auth()->id() == $message->receiver_id) {
+            return view('messages.create')
+                ->withMessage($message)
+                ->withReceiver($receiver);
+        } else {
+            Session::flash('error', "Het is niet toegestaan dat u reageert op de berichten van anderen...");
+            return redirect('/message');
+        }
     }
 
     /**
@@ -52,7 +61,7 @@ class MessagesController extends Controller
         // dd($request);
         $this->validate($request, array(
             'title'        => 'required|string|max:255|min:3',
-            'message_body' => 'required|string|max:255|min:3',
+            'message_body' => 'required|string|max:40960|min:3',
             'receipient'   => 'required|string|max:255|min:3',
         ));
 
@@ -65,7 +74,7 @@ class MessagesController extends Controller
 
         $message->save();
         Session::flash('success', "Bericht verstuurd naar $receiver->name!");
-		return redirect()->route('advertentie.show', $request->redirect);
+		return redirect()->route($request->redirect2, $request->redirect);
     }
 
     /**
