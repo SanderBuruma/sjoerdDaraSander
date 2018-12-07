@@ -69,7 +69,7 @@ class AdvertentieController extends Controller
                 $image = $request->file("photo$v");
                 $randomNr = random_int(1e10,1e11-1);
                 $filename = time() . "$randomNr." . $image->getClientOriginalExtension();
-                $location = $filename;
+                $location = "/images/$filename";
                 Image::make($image)->save($location);
                 $advertentie["photo$v"] = $location;
             }

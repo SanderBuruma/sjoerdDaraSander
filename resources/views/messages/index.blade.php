@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', '| Berichten 📨')
+@section('title', '| 📨 Berichten 📨')
 
 
 @section('header')
@@ -15,6 +15,7 @@
 			<div class="card-header"><h3>📨 Inbox</h3></div>
 			<table class="table">
 				<thead>
+					<th>Ontvangen</th>
 					<th>Titel</th>
 					<th>Zender</th>
 					<th>{{--edit, delete & view buttons--}}</th>
@@ -42,14 +43,14 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Terug</button>
-				<button type="button" class="btn btn-primary" id="react">Reageer</button>
+				<button type="button" class="btn btn-primary" id="react" onclick=clickTitleReact()>Reageer</button>
 			</div>
 		</div>
 	</div>
 </div>
 
 <!-- Message Delete Modal -->
-<div class="modal fade" id="messageDeleteModal" tabindex="-1" role="dialog" aria-labelledby="messageDeleteModalLabel" aria-hidden="true">
+<div class="modal modal2 fade" id="messageDeleteModal" tabindex="-1" role="dialog" aria-labelledby="messageDeleteModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -62,8 +63,8 @@
 				{{-- javascript fills this in --}}
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Terug</button>
-				<button type="button" class="btn btn-primary" id="react">Delete</button>
+				<button type="button" class="btn btn-info" data-dismiss="modal">Terug</button>
+				<button type="button" class="btn btn-danger" id="reactDelete" onclick=clickDelete()>Delete</button>
 			</div>
 		</div>
 	</div>
@@ -84,44 +85,10 @@ jQuery(document).ready(function(){
 			'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
 		}
 	});
-
-	// $('#new-wish')[0].onkeydown = function(e){
-	// 	console.log('submit');
-	// 	if (e.keyCode == 13){
-
-	// 		console.log('keycode'+e.keyCode);
-	// 		e.preventDefault();
-
-	// 		jQuery.ajax({
-	// 			url: "/item",
-	// 			method: 'post',
-				
-	// 			data: {
-	// 				wish: jQuery('#new-wish').val(),
-	// 				user_id: jQuery('#user-id').val()
-	// 			},
-
-	// 			success: function(result){
-	// 				console.log('ajax success');
-	// 				$('#new-wish')[0].value = '';
-	// 				console.log(result);
-	// 				refreshMessageList();
-	// 			},
-
-	// 			error: function(jqxhr, status, exception) {
-	// 				console.log('Exception:', exception);
-	// 				console.log(status);
-	// 			}
-	// 		});
-
-	// 	};
-	// };
-
 });
 	
-
+//refresh message list
 refreshMessageList();
-
 function refreshMessageList(){
 	jQuery.ajax({
 
@@ -135,9 +102,10 @@ function refreshMessageList(){
 			for (let i of result){
 				tBodyString += `
 					<tr>
-						<td><button type="button" class="modal-button" data-toggle="modal" data-target="#messageShowModal" data-user-id="${i.id}" onclick=clickTitle(${i.id})>${i.title}</td>
+						<td>${i.created_at}</td>
+						<td><button type="button" class="modal-button" data-toggle="modal" data-target="#messageShowModal" onclick=clickTitle(${i.id})>${i.title}</button></td>
 						<td>${i.sender_name}</td>
-						<td><button type="button" class="modal-button" data-toggle="modal" data-target="#messageShowModal" data-user-id="${i.id}" onclick=clickTitle(${i.id})></td>
+						<td><button type="button" class="modal-button" data-toggle="modal" data-target="#messageDeleteModal" onclick=clickTrash(${i.id})><i class="fas fa-trash-alt" style="color:red;"></i></button></td>
 					</tr>
 				`;
 			};
@@ -154,7 +122,9 @@ function refreshMessageList(){
 	});
 };
 
-function clickTitle(e) {
+//message show functions
+function clickTitle(e){
+
 	for (let i of messagesArray) {
 		if (e == i.id) {
 			$('#messageShowModalLabel').html(i.title);
@@ -163,40 +133,41 @@ function clickTitle(e) {
 				<p>${i.message}</p>
 			`);
 			$('#react')[0].dataset.messageId = i.id;
-			function tempFunc (message_id) {
-				return function (e){
-					console.log(e);
-					window.location.replace(`/message/create?id=${message_id}`);
-				}
-			}
-			$('#react')[0].addEventListener('click', tempFunc(i.id));
-			return;
 		}
 	}
+
+	$('#react')[0].dataset.id = e;
+
 }
 
-function react(e) {
+function clickTitleReact() {
+	window.location.replace(`/message/create?id=${$('#react')[0].dataset.id}`);
+}
+
+// delete functions
+function clickTrash(e){
 	console.log(e);
+	$('#reactDelete')[0].dataset.id = e;
 }
 
-// function deleteMessage (e){
-// 	self = document.getElementById(e);
-// 	console.log("/item/"+self.dataset.wishId)
-// 	jQuery.ajax({
-// 		url: "/item/"+self.dataset.wishId,
-// 		method: 'delete',
-// 		data: {id: self.dataset.wishId},
-// 		success: function(msg){
-// 			//what to do on success
-// 			refreshMessageList();
-// 			console.log(msg);
-// 		},
-// 		error: function(jqxhr, status, exception) {
-// 			console.log('Exception:', exception);
-// 			console.log(status);
-// 			console.log(jqxhr);
-// 		}
-// 	});
-// }
+function clickDelete() {
+	deleteId = $('#reactDelete')[0].dataset.id;
+	jQuery.ajax({
+		url: "/message/"+deleteId,
+		method: 'delete',
+		data: {id: deleteId},
+		success: function(msg){
+			//what to do on success
+			refreshMessageList();
+			console.log(msg);
+		},
+		error: function(jqxhr, status, exception) {
+			console.log('Exception:', exception);
+			console.log(status);
+			console.log(jqxhr);
+		}
+	});
+}
+
 </script>
 @stop

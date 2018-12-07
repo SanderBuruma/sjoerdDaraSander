@@ -119,7 +119,13 @@ class MessagesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $message = Message::find($id);
+        if ($message->receiver_id == auth()->id()) {
+            $message->delete();
+            return "Bericht verwijdert";
+        } else {
+            return "U kunt dit bericht niet verwijderen omdat het niet van u is...";
+        }
     }
 
     /* 
