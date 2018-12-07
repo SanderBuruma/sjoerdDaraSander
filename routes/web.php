@@ -10,6 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\User;
+
+Route::get('/geotest', function(){
+	$users = User::all();
+	return view('user.geotest')->withUsers($users);
+});
 
 
 Route::get('/', function () { return view('pages.home'); });
