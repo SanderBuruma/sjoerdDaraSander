@@ -11,7 +11,7 @@
 			</li>
 			@guest @else 
 			<li class="nav-item">
-				<a class="nav-link" href="{{ route('message.index') }}"><i class="fas fa-envelope"></i> Messages</a>
+				<a class="nav-link" href="{{ route('message.index') }}"><i class="fas fa-envelope"></i> Berichten</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="{{ route('advertentie.create') }}"><i class="fas fa-paste"></i> Advertentie Plaatsen</a>

@@ -28,6 +28,7 @@ Route::group(['middleware' => ['web','auth','verified']], function(){
 		Route::resource('message', 'MessagesController');
 		Route::post('message', ['as' => 'message.namedcreate', 'uses'=>'MessagesController@namedCreate']);
 		Route::post('message.store', ['as' => 'message.store', 'uses'=>'MessagesController@store']);
+		Route::get('/messageajax', 'MessagesController@indexAjax')->name('message.index.ajax');
 		// Route::get('message/{name}/create', 'MessagesController@namedCreate');
 		Route::resource('advertentie' , 'AdvertentieController');
 	});

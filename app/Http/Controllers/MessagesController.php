@@ -19,7 +19,16 @@ class MessagesController extends Controller
     public function index()
     {
         return view('messages.index')
-        ->withMessages(Auth::user()->messages);
+            ->withMessages(Auth::user()->messages);
+    }
+
+    public function indexAjax()  {
+        $messages = Message::where('receiver_id',auth()->id())->get();
+        $returnMessages = [];
+        foreach($messages as $k => $v) {
+            $v->sender_name = User::find($v->sender_id)->name;
+        }
+        return ($messages);
     }
 
     /**
@@ -52,7 +61,7 @@ class MessagesController extends Controller
         $message->message       = $request->message_body;
         $message->title         = $request->title;
         $message->receiver_id   = $receiver->id;
-        $message->user_id       = auth()->id();
+        $message->sender_id       = auth()->id();
 
         $message->save();
         Session::flash('success', "Bericht verstuurd naar $receiver->name!");
