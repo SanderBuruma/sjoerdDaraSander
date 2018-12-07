@@ -75,7 +75,7 @@ jQuery(document).ready(function(){
 					method: 'post',
 					data: {
 						wish: jQuery('#new-wish').val(),
-						sender_id: jQuery('#user-id').val()
+						user_id: jQuery('#user-id').val()
 					},
 					success: function(result){
 						console.log('ajax success');

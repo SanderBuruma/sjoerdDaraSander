@@ -26,7 +26,7 @@ class MessagesController extends Controller
         $messages = Message::where('receiver_id',auth()->id())->get();
         $returnMessages = [];
         foreach($messages as $k => $v) {
-            $v->sender_name = User::find($v->sender_id)->name;
+            $v->sender_name = User::find($v->user_id)->name;
         }
         return ($messages);
     }
@@ -61,7 +61,7 @@ class MessagesController extends Controller
         $message->message       = $request->message_body;
         $message->title         = $request->title;
         $message->receiver_id   = $receiver->id;
-        $message->sender_id       = auth()->id();
+        $message->user_id       = auth()->id();
 
         $message->save();
         Session::flash('success', "Bericht verstuurd naar $receiver->name!");
