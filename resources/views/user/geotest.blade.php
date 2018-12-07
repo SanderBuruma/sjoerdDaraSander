@@ -55,6 +55,65 @@
 
           }
 
+
+          // locatie dichtbij 
+
+          function succes(postion){
+            console.log(position);
+            var latval = position.coords.latitude;
+            var lngval = position.coords.longitude;
+            myLatLng = new google.maps.LatLng(latval, lngval);
+            createMap(myLatLng);
+
+
+          }
+
+
+         // functie voor dichtbijzijnde users mbv lat en lng en die in controller  zetten.
+         // evt een controller maken en een 
+         //wat opzetjes voor functies en controllers 
+         // Route::get('/zoek', 'ZoekController@zoek');
+        
+        class ZoekController extends Conntroller{
+
+          public function zoekadusers(Request $request){
+
+            $lat=$request ->lat;
+            $lng=$request ->lng;
+
+
+            //bij 500 meter 
+            $users=User::whereBetween('lat', [$lat-0.005, $lat+0.005])->whereBetween('lng',[$lng-0.5, $lng+0.5])->get();
+            
+
+            //bij 10000meter 
+
+            $users=User::whereBetween('lat, [$lat-0.1, $lat+0.1')
+
+
+            return $users;
+
+ 
+
+
+
+          }
+
+
+
+          function zoekadverteerders(lat,lng){
+            $.post('http://localhost/')
+          }
+
+
+
+        }
+
+
+
+
+
+
           // var marker = new google.maps.Marker({
           //   position: myLatLng,
           //   map: map,

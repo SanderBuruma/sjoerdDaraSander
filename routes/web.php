@@ -18,6 +18,10 @@ Route::get('/geotest', function(){
 });
 
 
+//refereren naar je functie in controller]
+//Route::get('/zoek', 'onzecontroler@zoekadverteerders');
+
+
 Route::get('/', function () { return view('pages.home'); });
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/about', function(){ return view('pages.about'); })->name('about');
