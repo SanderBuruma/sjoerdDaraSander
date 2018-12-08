@@ -86,7 +86,7 @@
 		
 		{{-- contact informatie --}}
 	</div></div>
-	<div class="col-md-3 main"><div class="card">
+	<div class="col-md-3 secondary"><div class="card">
 		<div class="card-header">{{$advertentie->user->name}}</div>
 		<div class="card-body">
 			@if($advertentie->user->city) <p><i class="fas fa-map-marker-alt"></i> {{$advertentie->user->city}}</p> @endif
