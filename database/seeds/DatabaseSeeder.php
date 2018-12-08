@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder {
 		DB::table('users')->insert([
 			'name' => 'Sander Buruma',
 			'email' => 'sanderburuma@gmail.com',
+			'websiteUrl' => "www.sanderburuma.nl",
 			'password' => '$2y$10$jQY5ljXUPHkKlkREkFhC8eJh6FiDSgo/tGFspsC.1phnt.UgcQhp.', //see my default laravel password entry in Bitwarden
 			'latitude' => 53.2152292,
 			'longitude' => 6.5669632,
@@ -36,25 +37,25 @@ class DatabaseSeeder extends Seeder {
 			]);
 		}
 
-		$count = 2;
-		foreach (["Piet","Jan","Joris","Ali","Mickey","Mark","Lucas","Jonah","Angela","Maria","Elise","Johanna","Katherina","Margriet","Judith","Hosea"] as $v) {
-			foreach (["Buruma","Voorwaarts","Linkswaards","Jongsma","Vossens","Jager","Schoenmaker","Botergoed","Smit","Voerenaar","vd Werf"] as $vv) {
-				DB::table('users')->insert([
-					'name' => "$v $vv",
-					'email' => "$v$vv@gmail.com",
-					'password' => '$2y$10$jQY5ljXUPHkKlkREkFhC8eJh6FiDSgo/tGFspsC.1phnt.UgcQhp.', //see my default laravel password entry in Bitwarden
-					'latitude' => 53.1152292+random_int(-99999,99999)/1e6,
-					'longitude' => 6.5669632+random_int(-99999,99999)/cos(53.1152292/57.295),
-					'created_at' => '2018-12-03 09:49:03',
-					'updated_at' => '2018-12-03 09:49:03',
-					'email_verified_at' => '2018-12-03 09:50:33',
-				]);
-				DB::table('role_user')->insert([
-					'user_id' => $count++,
-					'role_id' => 1,
-				]);
-			}
-		}
+		// $count = 2;
+		// foreach (["Piet","Jan","Joris","Ali","Mickey","Mark","Lucas","Jonah","Angela","Maria","Elise","Johanna","Katherina","Margriet","Judith","Hosea"] as $v) {
+		// 	foreach (["Buruma","Voorwaarts","Linkswaards","Jongsma","Vossens","Jager","Schoenmaker","Botergoed","Smit","Voerenaar","vd Werf"] as $vv) {
+		// 		DB::table('users')->insert([
+		// 			'name' => "$v $vv",
+		// 			'email' => "$v$vv@gmail.com",
+		// 			'password' => '$2y$10$jQY5ljXUPHkKlkREkFhC8eJh6FiDSgo/tGFspsC.1phnt.UgcQhp.', //see my default laravel password entry in Bitwarden
+		// 			'latitude' => 53.1152292+random_int(-99999,99999)/1e6,
+		// 			'longitude' => 6.5669632+random_int(-99999,99999)/cos(53.1152292/57.295),
+		// 			'created_at' => '2018-12-03 09:49:03',
+		// 			'updated_at' => '2018-12-03 09:49:03',
+		// 			'email_verified_at' => '2018-12-03 09:50:33',
+		// 		]);
+		// 		DB::table('role_user')->insert([
+		// 			'user_id' => $count++,
+		// 			'role_id' => 1,
+		// 		]);
+		// 	}
+		// }
 
 		foreach ([
 			'Antiek & Kunst',
@@ -142,7 +143,11 @@ class DatabaseSeeder extends Seeder {
 						'category_id' => $count,
 					]);
 				}
+			}
 
-		}
+			$this->call([
+				UsersTableSeeder::class,
+				AdvertentieSeeder::class,
+			]);
 	}
 }
