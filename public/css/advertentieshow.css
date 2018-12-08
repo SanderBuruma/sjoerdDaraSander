@@ -4,6 +4,9 @@
 	background-color: #fff8;
 	border-radius: 1rem;
 }
+.secondary {
+	padding: 1rem;
+}
 .main > div,
 .secondary > div {
 	box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
