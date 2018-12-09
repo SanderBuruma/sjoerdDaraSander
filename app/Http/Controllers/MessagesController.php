@@ -18,17 +18,16 @@ class MessagesController extends Controller
      */
     public function index()
     {
-        return view('messages.index')
-            ->withMessages(Auth::user()->messages);
+        return view('messages.index');
     }
 
     public function indexAjax()  {
-        $messages = Message::where('receiver_id',auth()->id())->get();
+        $messages = Message::where('receiver_id',auth()->id())->orderBy('created_at', 'desc')->get();
         $returnMessages = [];
         foreach($messages as $k => $v) {
             $v->sender_name = User::find($v->user_id)->name;
         }
-        return ($messages);
+        return $messages;
     }
 
     /**
