@@ -68,10 +68,12 @@ function refreshResults(searchResults){
 	searchResultList = $('.inside')[0];
 	insideStr = '';
 	let count = 1;
+
 	for (let i of searchResults){
 		let createdAtSplit = i.created_at.split(/[\D]/);
 		console.log(createdAtSplit);
-		let date = parseInt(createdAtSplit[2])+
+		let date = 
+			parseInt(createdAtSplit[2])+
 			[ " Jan ", " Feb ", " Mar ", " Apr ", " Mei ", " Jun ", " Jul ", " Aug ", " Sep ", " Oct ", " Nov ", " Dec "][createdAtSplit[1]-1]+
 			createdAtSplit[0]+" - "+
 			createdAtSplit[3]+":"+createdAtSplit[4];
@@ -81,11 +83,13 @@ function refreshResults(searchResults){
 				<h6 class="title" style="font-size: 2rem;">${i.title.substr(1, 25)}</h6>
 				<p class="price" style="font-size: 1.4rem;">€${i.price/100}</p>
 				<p class="date">${date}</p>
+				<p class="date">Stad: ${i.city}</p>
 				<img src="/images/${i.photo1||"empty-box.jpeg"}" width= "380" height= "300">
 				<p class="description">${i.description.substr(1, 100)}</p>
 			</a></div>
 		`;
 	};
+
 	searchResultList.innerHTML = insideStr;
 };
 </script>

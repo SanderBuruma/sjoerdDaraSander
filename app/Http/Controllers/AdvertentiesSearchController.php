@@ -18,7 +18,8 @@ class AdvertentiesSearchController extends Controller
 		$advertenties = Advertentie::
 				where('price', '<', 1e9)
 			->join('subcategories', 'advertenties.subcategory_id', '=', 'subcategories.id')
-			->select('advertenties.*', 'subcategories.category_id')
+			->join('users', 'advertenties.user_id', '=', 'users.id')
+			->select('advertenties.*', 'subcategories.category_id', 'users.city')
 			->where($queryWhereArr)
 			->limit(12)
 			->orderByDesc('advertenties.created_at')

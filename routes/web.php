@@ -11,6 +11,15 @@
 |
 */
 
+// TEMP CODE
+use App\User;
+
+Route::get('/geotest', function(){
+	$users = User::all();
+	return view('user.geotest')->withUsers($users);
+});
+// TEMP CODE
+
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
@@ -35,11 +44,10 @@ Route::group(['middleware' => ['web','auth','verified', 'role:!4']], function(){
 	
 	Route::resource('/user', 'UserInterfaceController');
 
-	Route::post('advertenties.search.index', ['as' => 'advertenties.search.index', 'uses'=>'AdvertentiesSearchController@homeSearch']);
-
 });
 
 Route::group(['middleware' => ['web']], function(){
+	Route::post('advertenties.search.index', ['as' => 'advertenties.search.index', 'uses'=>'AdvertentiesSearchController@homeSearch']);
 	Route::get('advertentie/{slug}', 'AdvertentieController@show')->name('advertentie.show');
 });
 
