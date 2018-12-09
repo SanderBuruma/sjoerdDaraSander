@@ -11,10 +11,10 @@
 			</li>
 			@guest @else 
 			<li class="nav-item">
-				<a class="nav-link" href="{{ route('message.index') }}"><i class="fas fa-envelope"></i> Berichten</a>
+				<a class="nav-link" href="{{ route('message.index') }}">📨 Berichten</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="{{ route('advertentie.create') }}"><i class="fas fa-paste"></i> Advertentie Plaatsen</a>
+				<a class="nav-link" href="{{ route('advertentie.create') }}">📋 Advertentie Plaatsen</a>
 			</li>
 			@endguest
 			<li class="nav-item dropdown">
@@ -30,9 +30,9 @@
 					@else
 
 						@if(Auth::user()->hasRole(Auth::user(),'3'))
-							<a class="dropdown-item" href="{{ route('admin.index') }}"><i class="fas fa-toolbox"></i> Admin Interface</a>
+							<a class="dropdown-item" href="{{ route('admin.index') }}">🔧 Admin Interface</a>
 						@endif
-						<a class="dropdown-item" href="{{ route('user.index') }}"><i class="fas fa-user-edit"></i> User Interface</a>
+						<a class="dropdown-item" href="{{ route('user.index') }}">👤 User Interface</a>
 						
 						<div class="dropdown-divider"></div>
 						<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -52,9 +52,9 @@
 				<a class="nav-link" href="{{ route('admin.index') }}">Admin</a>
 			</li> --}}
 		</ul>
-		<form class="form-inline my-2 my-lg-0">
+		{{-- <form class="form-inline my-2 my-lg-0">
 		<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 		<button class="btn btn-outline-warning my-2 my-sm-0 search" type="submit">Search</button>
-		</form>
+		</form> --}}
 	</div>
 </nav>

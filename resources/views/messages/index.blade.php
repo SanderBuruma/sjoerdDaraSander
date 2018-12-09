@@ -64,7 +64,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-info" data-dismiss="modal">Terug</button>
-				<button type="button" class="btn btn-danger" id="reactDelete" onclick=clickDelete()>Delete</button>
+				<button type="button" class="btn btn-danger" id="reactDelete" data-dismiss="modal" onclick=clickDelete()>Delete</button>
 			</div>
 		</div>
 	</div>
