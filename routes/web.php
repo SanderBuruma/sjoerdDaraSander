@@ -30,11 +30,15 @@ Route::group(['middleware' => ['web','auth','verified']], function(){
 		Route::post('message.store', ['as' => 'message.store', 'uses'=>'MessagesController@store']);
 		Route::get('/messageajax', 'MessagesController@indexAjax')->name('message.index.ajax');
 		// Route::get('message/{name}/create', 'MessagesController@namedCreate');
-		Route::resource('advertentie' , 'AdvertentieController');
+		Route::resource('advertentie' , 'AdvertentieController', ['except' => ['show']]);
 	});
 	
 	Route::resource('/user', 'UserInterfaceController');
-	
+
+});
+
+Route::group(['middleware' => ['web']], function(){
+	Route::get('advertentie/{slug}', 'AdvertentieController@show')->name('advertentie.show');
 });
 
 Auth::routes(['verify' => true]);
