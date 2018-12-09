@@ -32,7 +32,7 @@
 						@if(Auth::user()->hasRole(Auth::user(),'3'))
 							<a class="dropdown-item" href="{{ route('admin.index') }}">🔧 Admin Interface</a>
 						@endif
-						<a class="dropdown-item" href="{{ route('user.index') }}">👤 User Interface</a>
+						<a class="dropdown-item" href="{{ route('user.index') }}"><i class="fas fa-user-edit"></i> User Interface</a>
 						
 						<div class="dropdown-divider"></div>
 						<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

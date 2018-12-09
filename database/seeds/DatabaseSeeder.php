@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder {
 		}
 
 		foreach ([
-			'Overig', //index 1 so that if categories are added the id doesn't change
+			'Alles', //index 1 so that if categories are added the id doesn't change
 			'Antiek & Kunst',
 			'Audio',
 			'Auto-onderdelen',
