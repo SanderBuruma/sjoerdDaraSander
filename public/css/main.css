@@ -70,6 +70,9 @@ button {
 .dropdown-item:focus, .dropdown-item:hover {
 	background-color: var(--main-color-light) !important;
 }
+.dropdown-menu {
+	background-color: var(--main-color-dark) !important;
+}
 
 .search{
 	color: white !important;

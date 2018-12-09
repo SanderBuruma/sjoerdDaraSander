@@ -42,6 +42,7 @@ class DatabaseSeeder extends Seeder {
 		}
 
 		foreach ([
+			'Overig', //index 1 so that if categories are added the id doesn't change
 			'Antiek & Kunst',
 			'Audio',
 			'Auto-onderdelen',
@@ -73,8 +74,7 @@ class DatabaseSeeder extends Seeder {
 			'Verzamelen',
 			'Watersport & Boten',
 			'Witgoed & Apparatuur',
-			'Zakelijke Goederen',
-			'Overig'] as $v) {
+			'Zakelijke Goederen'] as $v) {
 			DB::table('categories')->insert([
 				'name' => $v
 			]);
@@ -82,6 +82,7 @@ class DatabaseSeeder extends Seeder {
 
 		$count = 0;
 		foreach ([
+			[], //overige
 			['Antiek | Eetgererij', 'Antiek | Meubels', 'Antiek | Gebruiksvoorwerpen', 'Edelsmeden & Sieradenmakers', 'Fotografen', 'Kunst', 'Kunst | Schilderijen', 'Kunstenaars & Portret Schilders', 'Reparatie & Onderhoud', 'Timmerlieden & Meubelmakers'], // 'Antiek & Kunst',
 			['Accesoires', 'Audio', 'Audio Draagbaar', 'Film, video & tv', 'Film & Videobewerking', 'Fotografen', 'Fotografie', 'Optische Apparatuur', 'Reparaties'],// 'Audio',
 			['Auto-onderdelen', 'Vrachtwagen-onderdelen'],// 'Auto-onderdelen',
@@ -114,7 +115,7 @@ class DatabaseSeeder extends Seeder {
 			["Accessoires en Toebehoren","Bootverhuur","Hengelsport","Motorboten","Reparatie en Onderhoud","Roeien en Kanoën","Surfen, Zwemmen en Waterskiën","Zeilboten en Toebehoren"],// 'Watersport & Boten',
 			["Huishouden","Keuken","Onderdelen","Persoonlijke apparatuur","Reparaties"],// 'Witgoed & Apparatuur',
 			["Agrarisch","Horeca","Kantoor, Winkel en Bedrijf","Machines en Bouw","Partijgoederen en Retail","Verhuur | Gereedschap"],// 'Zakelijke Goederen',
-			[],// 'Overige'
+			// 'Overige'
 			] as $v) {
 				$count++;
 				DB::table('subcategories')->insert([

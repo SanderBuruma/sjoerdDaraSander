@@ -12,12 +12,12 @@
 */
 
 
-Route::get('/', function () { return view('pages.home'); });
+Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/about', function(){ return view('pages.about'); })->name('about');
 
 
-Route::group(['middleware' => ['web','auth','verified']], function(){
+Route::group(['middleware' => ['web','auth','verified', 'role:!4']], function(){
 
 	Route::group(['middleware' => ['role:3']], function(){
 		Route::resource('/admin', 'AdminInterfaceController');
@@ -34,6 +34,8 @@ Route::group(['middleware' => ['web','auth','verified']], function(){
 	});
 	
 	Route::resource('/user', 'UserInterfaceController');
+
+	Route::post('advertenties.search.index', ['as' => 'advertenties.search.index', 'uses'=>'AdvertentiesSearchController@homeSearch']);
 
 });
 
