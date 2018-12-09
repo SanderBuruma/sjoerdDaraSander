@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
 					'name' => "$v $vv",
                     'email' => "$v$vv@gmail.com",
                     'websiteUrl' => "www.$vv$v.nl",
-					'password' => '$2y$10$jQY5ljXUPHkKlkREkFhC8eJh6FiDSgo/tGFspsC.1phnt.UgcQhp.', //see my default laravel password entry in Bitwarden
+					'password' => '$2y$10$0LXS7kFPXV3lqzxeONNNiuWPBGBynLvDgPqXOO4ftOtzWJMX4QI82', //aaaaaaaa
 					'latitude' => 53.1152292+random_int(-99999,99999)/1e6,
                     'longitude' => 6.5669632+random_int(-99999,99999)/1e6/cos(53.1152292/57.295),
                     'telephone1' => "06-".random_int(1e7,1e8-1),

@@ -37,10 +37,10 @@ class AdvertentieSeeder extends Seeder
 			DB::table('advertenties')->insert([
 				'user_id' => random_int(1,177), //max is same as the nr of users from initial seed.
 				'subcategory_id' => random_int(1,336), // ^
-				'title' => jibberish(random_int(12,random_int(13,55))),
-				'description' => jibberish(random_int(64,random_int(65,512))),
+				'title' => jibberish(random_int(12,random_int(12,55))),
+				'description' => jibberish(random_int(64,random_int(64,512))),
 				'slug' => random_int(1e15,1e16-1)."-".time(),
-				'price' => random_int(1,99)*10**(random_int(0,5)),
+				'price' => random_int(1,99)*10**(random_int(0,random_int(0,random_int(0,5)))),
 				'photo1' => 'placeholder'.random_int(1,14).'.jpeg',
 				'photo2' => 'placeholder'.random_int(1,14).'.jpeg',
 				'photo3' => 'placeholder'.random_int(1,14).'.jpeg',
