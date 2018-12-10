@@ -17,8 +17,8 @@
         padding: 0;
       }
     </style>
-    link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" id="bootstrap-css" rel="stylesheet" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script  defer src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en&key=AIzaSyCGU0PK5ks0K4jqqAZ6l2A6FKWUknklPkM"  type="text/javascript"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" id="bootstrap-css" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script  defer src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en&key=AIzaSyBfM9rq072pO3kYg5hTX_69uA-6LeVKhF8"  type="text/javascript"></script>
     
   </head>
   <body>
@@ -74,40 +74,15 @@
                 title: i
                 
                 //hier wil ik eigelijk nog de naam van de gebruiker die vertoont wordt als je op de marker klikt. 
-            }));
+          }));
           
-
           }
-
-          // var marker = new google.maps.Marker({
-          //   position: myLatLng,
-          //   map: map,
-          //   title: 'Hello World!'
-          // });
-          // var marker2 = new google.maps.Marker({
-          //   position: {lat: 53.2183133, lng: 6.5669632},
-          //   map: map,
-          //   title: 'Hello World!'
-          // });
           
-  
-          // var myLatlng = new google.maps.LatLng(53.2193133,6.5669632);
-          
-          // var mapOptions = {
-          //   zoom: 4,
-          //   center: myLatlng
-          // }
-          // // var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-  
-          // // var marker = new google.maps.Marker({
-          // //   position: myLatlng,
-          // //   title:"Hello World!"
-          // });
   }
   
-   </script>
+  </script> 
 // {{-- begin locatie-berekening --}}
-   <script>
+<script>
     $(function() {
         // add input listeners
         google.maps.event.addDomListener(window, 'load', function () {

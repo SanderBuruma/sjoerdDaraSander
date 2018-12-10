@@ -7,11 +7,11 @@
 @stop
 
 @section('content')
-<div class="form-row"><div class="col-md-10 offset-md-1 main">
-	<div id="search-bar" class="justify-content-center"><h4>
+<div class="form-row"><div class="col-md-6 offset-md-3 main">
+	<div id="search-bar" class="justify-content-center"><h6>
 		{{-- {!! Form::open(['route' => 'advertenties.search.index', 'method' => 'POST']) !!} --}}
 		
-			<input name="home_search_text" id="home-search-text" class ="search" type="text" placeholder="Zoekterm">
+			<input name="home_search_text" id="home-search-text" class ="search-bar" type="text" placeholder="Zoekterm">
 		
 	
 			<select name="home_search_select" id="home-search-text" class="select-category">
@@ -28,6 +28,8 @@
 {{-- <div class= " row "><div class="col-md-12 results"><div class="inside flex-row"> --}}
 
 </div></div></div>
+
+<div class="filler"></div>
 @endsection
 
 @section('footer')

@@ -34,13 +34,13 @@
 	color: white;
 }
 
-.search{
-	/* border-radius: 5%; */
+.search-bar{
+	border: none;
+	padding: 6px;
+	border-radius: 2px;
 }
 
-.select-category{
-	/* width: 40%;
-	margin-top: 10px; */
-	
+.filler{
+	height: 300px;
+	/* display: hidden; */
 }
-

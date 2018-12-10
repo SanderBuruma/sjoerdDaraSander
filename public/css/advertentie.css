@@ -13,8 +13,8 @@
 }
 
 .btn-success {
-	background-color: var(--main-color-dark);
-	border: var(--main-color-dark);
+	/* background-color: var(--main-color-dark);
+	border: var(--main-color-dark); */
 }
 .btn-success:hover,
 .btn-success:active,
