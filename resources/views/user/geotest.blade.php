@@ -8,7 +8,7 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 50%;
+        height: 100%;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -37,7 +37,7 @@
           var myLatLng = {lat: 53.2193133, lng: 6.5669632};
   
           var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 11,
+            zoom: 12,
             center: myLatLng
           });
   
