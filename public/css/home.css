@@ -33,3 +33,22 @@
 	background-color: var(--main-color-dark);
 	color: white;
 }
+
+.paginate-bar {
+	background-color: white;
+	border-radius: 1rem;
+	margin: auto;
+	width: 61px;
+	display: flex;
+	flex-direction: row
+}
+
+.paginate-bar > * {
+	background-color: unset;
+	border: unset;
+}
+
+#paginate-number {
+	width: 36px;
+	text-align: center;
+}

@@ -21,9 +21,14 @@
 	</h4></div>
 </div></div>
 
-<div class= " row "><div class="col-md-12 results"><div class="inside flex-row">
-
-</div></div></div>
+<div class= "row"><div class="col-md-12 results">
+	<div class="paginate-bar">
+		<a id="paginate-left" href="#">◀</a><input type="text" id="paginate-number" width="24" value="1"><a id="paginate-right" href="#">▶</a>
+	</div>
+	<div class="inside flex-row">
+		
+	</div>
+</div></div>
 @endsection
 
 @section('footer')
@@ -37,7 +42,23 @@ jQuery(document).ready(function(){
 	});
 
 	$('#home-search-button')[0].onclick = searchQuery;
+	$('#paginate-left')[0].onclick = function(){
+		let pagNr = $('#paginate-number');
+		pagNr.val((parseInt(pagNr.val())-1)||1);
+		searchQuery();
+	}
+	$('#paginate-right')[0].onclick = function(){
+		let pagNr = $('#paginate-number');
+		pagNr.val(parseInt(pagNr.val())+1);
+		searchQuery();
+	}
 	$('#home-search-text')[0].onkeydown = function(e) {
+		if (e.keyCode == 13){
+			e.preventDefault();
+			searchQuery();
+		}
+	};
+	$('#paginate-number')[0].onkeydown = function(e) {
 		if (e.keyCode == 13){
 			e.preventDefault();
 			searchQuery();
@@ -51,7 +72,8 @@ function searchQuery(){
 		method: 'post',
 		data: {
 			search_text: jQuery('#home-search-text').val(),
-			search_select: jQuery('#home-search-select').val()
+			search_select: jQuery('#home-search-select').val(),
+			search_paginate_nr: jQuery('#paginate-number').val(),
 		},
 		success: function(result){
 			console.log(result);
@@ -89,6 +111,8 @@ function refreshResults(searchResults){
 			</a></div>
 		`;
 	};
+	insideStr += `
+	`
 
 	searchResultList.innerHTML = insideStr;
 };
