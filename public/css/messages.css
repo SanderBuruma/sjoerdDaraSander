@@ -21,7 +21,7 @@ button:active {
 	background-color: white;
 	border-radius: 1rem;
 	margin: auto;
-	width: 61px;
+	width: 94px;
 	display: flex;
 	flex-direction: row
 }
@@ -29,9 +29,10 @@ button:active {
 .paginate-bar > * {
 	background-color: unset;
 	border: unset;
+	font-size: 30px;
 }
 
 #paginate-number {
-	width: 36px;
+	width: 48px;
 	text-align: center;
 }

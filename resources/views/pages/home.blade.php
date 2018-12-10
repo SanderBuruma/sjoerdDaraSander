@@ -28,6 +28,9 @@
 	<div class="inside flex-row">
 		
 	</div>
+	<div class="paginate-bar">
+		<a id="paginate-left-bot" href="#">◀</a><a id="paginate-right-bot" href="#" style="margin-left: auto;">▶</a>
+	</div>
 </div></div>
 @endsection
 
@@ -54,7 +57,17 @@ jQuery(document).ready(function(){
 		pagNr.val((parseInt(pagNr.val())-1)||1);
 		searchQuery();
 	}
+	$('#paginate-left-bot')[0].onclick = function(){
+		let pagNr = $('#paginate-number');
+		pagNr.val((parseInt(pagNr.val())-1)||1);
+		searchQuery();
+	}
 	$('#paginate-right')[0].onclick = function(){
+		let pagNr = $('#paginate-number');
+		pagNr.val(parseInt(pagNr.val())+1);
+		searchQuery();
+	}
+	$('#paginate-right-bot')[0].onclick = function(){
 		let pagNr = $('#paginate-number');
 		pagNr.val(parseInt(pagNr.val())+1);
 		searchQuery();
@@ -73,6 +86,7 @@ jQuery(document).ready(function(){
 			searchQuery();
 		}
 	};
+	searchQuery();
 });
 
 function searchQuery(){

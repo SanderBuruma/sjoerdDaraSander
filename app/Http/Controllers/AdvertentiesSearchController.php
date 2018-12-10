@@ -18,7 +18,7 @@ class AdvertentiesSearchController extends Controller
 			$queryWhereArr[] = ['subcategories.category_id','=',$request->search_select];
 		}
 
-		$offset = 12;
+		$offset = 6;
 		$advertenties = Advertentie::
 				where('price', '<', 1e9)
 			->join('subcategories', 'advertenties.subcategory_id', '=', 'subcategories.id')
