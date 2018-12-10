@@ -33,6 +33,8 @@
 
 @section('footer')
 <script>
+let resultLength;
+
 jQuery(document).ready(function(){
 
 	$.ajaxSetup({
@@ -41,7 +43,12 @@ jQuery(document).ready(function(){
 		}
 	});
 
-	$('#home-search-button')[0].onclick = searchQuery;
+	$('#home-search-button')[0].onclick = function(){
+
+		let pagNr = $('#paginate-number');
+		pagNr.val(1);
+		searchQuery();
+	}
 	$('#paginate-left')[0].onclick = function(){
 		let pagNr = $('#paginate-number');
 		pagNr.val((parseInt(pagNr.val())-1)||1);
@@ -54,6 +61,8 @@ jQuery(document).ready(function(){
 	}
 	$('#home-search-text')[0].onkeydown = function(e) {
 		if (e.keyCode == 13){
+			let pagNr = $('#paginate-number');
+			pagNr.val(1);
 			e.preventDefault();
 			searchQuery();
 		}
@@ -67,6 +76,10 @@ jQuery(document).ready(function(){
 });
 
 function searchQuery(){
+	if (resultLength == 1){
+		let pagNr = $('#paginate-number');
+		pagNr.val(1);
+	}
 	jQuery.ajax({
 		url: "/advertenties.search.index",
 		method: 'post',
@@ -77,6 +90,11 @@ function searchQuery(){
 		},
 		success: function(result){
 			console.log(result);
+			resultLength = result.length;
+			if (!resultLength) {
+				let pagNr = $('#paginate-number');
+				pagNr.val(1);
+			}
 			refreshResults(result);
 		},
 		error: function(jqxhr, status, exception) {
