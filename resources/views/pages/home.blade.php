@@ -76,7 +76,7 @@ jQuery(document).ready(function(){
 });
 
 function searchQuery(){
-	if (resultLength == 1){
+	if (resultLength < 2){
 		let pagNr = $('#paginate-number');
 		pagNr.val(1);
 	}

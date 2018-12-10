@@ -19,13 +19,13 @@
 			@endguest
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<i class="fas fa-user nav-style"></i>@guest Guest @else {{ Auth::user()->name }} @endguest
+					<i class="fas fa-user nav-style"></i>@guest Gast @else {{ Auth::user()->name }} @endguest
 				</a>
 				<div class="dropdown-menu menu" aria-labelledby="navbarDropdown">
 					@guest
 
 						<a class="dropdown-item" href="{{ route('login')}}"><i class="fas fa-sign-in-alt"></i> Log In!</a>
-						<a class="dropdown-item" href="{{ route('register') }}"><i class="fas fa-user-plus"></i> Register!</a>
+						<a class="dropdown-item" href="{{ route('register') }}"><i class="fas fa-user-plus"></i> Registreer!</a>
 
 					@else
 

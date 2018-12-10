@@ -21,8 +21,14 @@ class MessagesController extends Controller
         return view('messages.index');
     }
 
-    public function indexAjax()  {
-        $messages = Message::where('receiver_id',auth()->id())->orderBy('created_at', 'desc')->get();
+    public function indexAjax(Request $request)  {
+        $offset = 12;
+        $messages = Message::
+              where('receiver_id',auth()->id())
+            ->orderBy('created_at', 'desc')
+			->limit($offset)
+			->offset(($request->page-1)*$offset)
+            ->get();
         $returnMessages = [];
         foreach($messages as $k => $v) {
             $v->sender_name = User::find($v->user_id)->name;

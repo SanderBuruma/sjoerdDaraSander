@@ -13,6 +13,9 @@
 	<div class="col-md-8 offset-md-2">
 		<div class="card">
 			<div class="card-header"><h3>📨 Inbox</h3></div>
+			<div class="paginate-bar">
+				<a id="paginate-left" href="#">◀</a><input type="text" id="paginate-number" width="24" value="1"><a id="paginate-right" href="#">▶</a>
+			</div>
 			<table class="table">
 				<thead>
 					<th>Ontvangen</th>
@@ -76,6 +79,7 @@
 @section('footer')
 <script>
 
+let resultLength;
 let messagesArray;
 
 jQuery(document).ready(function(){
@@ -85,18 +89,41 @@ jQuery(document).ready(function(){
 			'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
 		}
 	});
+	$('#paginate-left')[0].onclick = function(){
+		let pagNr = $('#paginate-number');
+		pagNr.val((parseInt(pagNr.val())-1)||1);
+		refreshMessageList();
+	}
+	$('#paginate-right')[0].onclick = function(){
+		let pagNr = $('#paginate-number');
+		pagNr.val(parseInt(pagNr.val())+1);
+		refreshMessageList();
+	}
+	$('#paginate-number')[0].onkeydown = function(e) {
+		if (e.keyCode == 13){
+			e.preventDefault();
+			refreshMessageList();
+		}
+	};
 });
 	
 //refresh message list
 refreshMessageList();
 function refreshMessageList(){
+	let pagNr = $('#paginate-number');
+	if (resultLength < 2){
+		;
+		pagNr.val(1);
+	}
 	jQuery.ajax({
 
-		url: "/messageajax",
+		url: `/messageajax?page=${pagNr.val()}`,
 		method: 'get',
 		success: function(result){
+
 			//what to do on success
 			messagesArray = result;
+			resultLength = result.length;
 			wishTable = $('tbody')[0];
 			let count = 1, tBodyString = '';
 			for (let i of result){
@@ -109,8 +136,8 @@ function refreshMessageList(){
 					</tr>
 				`;
 			};
+
 			$('tbody').html(tBodyString);
-			
 			
 		},
 		error: function(jqxhr, status, exception) {
