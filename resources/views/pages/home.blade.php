@@ -7,21 +7,25 @@
 @stop
 
 @section('content')
-<div class= " row "><div class="col-md-10 offset-md-1 main">
+<div class="form-row"><div class="col-md-10 offset-md-1 main">
 	<div id="search-bar" class="justify-content-center"><h4>
 		{{-- {!! Form::open(['route' => 'advertenties.search.index', 'method' => 'POST']) !!} --}}
-			<input name="home_search_text" id="home-search-text" type="text" placeholder="Zoekterm">
-			<select name="home_search_select" id="home-search-select">
+		
+			<input name="home_search_text" id="home-search-text" class ="search" type="text" placeholder="Zoekterm">
+		
+	
+			<select name="home_search_select" id="home-search-text" class="select-category">
 				@foreach($categories as $category)
 					<option value="{{$category->id}}">{{$category->name}}</option>
 				@endforeach
 			</select>
-			<button id="home-search-button">Zoek!</button>
+		
+			<button id="home-search-button" class="btn btn-success">Zoek!</button>
 		{{-- {!! Form::close() !!} --}}
 	</h4></div>
 </div></div>
 
-<div class= " row "><div class="col-md-12 results"><div class="inside flex-row">
+{{-- <div class= " row "><div class="col-md-12 results"><div class="inside flex-row"> --}}
 
 </div></div></div>
 @endsection

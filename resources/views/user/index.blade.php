@@ -134,17 +134,6 @@
 			</div>
 			<hr>
 
-		{{-- begin Map Marker ------------------------------------------------------------------------------------------------------------------------------ --}}
-		
-			{{-- <div class="map-container">
-					<h3>My Google Maps Demo</h3>
-					<!--The div element for the map -->
-					<div id="map"></div>
-			</div> --}}
-
-		{{-- eind Map Marker ------------------------------------------------------------------------------------------------------------------------------ --}}
-			
-
 		<div class="row">
 			<div class="col-md-4"><h4>Uw adres-informatie</h4></div>
 			<div class="col-md-8">
