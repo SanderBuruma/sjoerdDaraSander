@@ -40,7 +40,7 @@
 	margin: auto;
 	width: 94px;
 	display: flex;
-	flex-direction: row
+	flex-direction: row;
 }
 
 .paginate-bar > * {
@@ -50,6 +50,10 @@
 }
 
 #paginate-number {
-	width: 48px;
+	width: 44px;
 	text-align: center;
+}
+
+#map {
+	height: 200px;
 }
