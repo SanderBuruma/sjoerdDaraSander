@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder {
 			'created_at' => '2018-12-03 09:49:03',
 			'updated_at' => '2018-12-03 09:49:03',
 			'email_verified_at' => '2018-12-03 09:50:33',
+			'city' => 'Groningen',
 		]);		
 		foreach ([1,2,3] as $v) {
 			DB::table('role_user')->insert([

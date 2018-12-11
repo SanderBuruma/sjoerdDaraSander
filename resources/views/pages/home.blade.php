@@ -109,7 +109,7 @@ function searchQuery(){
 			search_text: jQuery('#home-search-text').val(),
 			search_select: jQuery('#home-search-select').val(),
 			search_paginate_nr: jQuery('#paginate-number').val(),
-			search_distance: jQuery('#home-search-distance').val()||,
+			search_distance: jQuery('#home-search-distance').val()||0,
 		},
 		success: function(result){
 			console.log(result);
@@ -121,6 +121,7 @@ function searchQuery(){
 			refreshResults(result);
 		},
 		error: function(jqxhr, status, exception) {
+			console.log(jqxhr);
 			console.log('Exception:', exception);
 			console.log(status);
 		}
@@ -159,6 +160,7 @@ function refreshResults(searchResults){
 				<p class="price" style="font-size: 1.4rem;">€${i.price/100}</p>
 				<p class="date">${date}</p>
 				<p class="date">Stad: ${i.city}</p>
+				<p>${i.distance.toFixed(2)} km afstand</p>
 				<img src="/images/${i.photo1||"empty-box.jpeg"}" width= "380" height= "300">
 				<p class="description">${i.description.substr(1, 100)}</p>
 			</a></div>

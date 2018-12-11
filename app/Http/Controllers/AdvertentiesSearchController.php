@@ -36,10 +36,31 @@ class AdvertentiesSearchController extends Controller
 			->join('users', 'advertenties.user_id', '=', 'users.id')
 			->select('advertenties.*', 'subcategories.category_id', 'users.city', 'users.latitude', 'users.longitude')
 			->where($queryWhereArr)
-			->limit($offset)
-			->offset(($request->search_paginate_nr-1)*$offset)
+			// ->limit($offset)
+			// ->offset(($request->search_paginate_nr-1)*$offset)
 			->orderByDesc('advertenties.created_at')
 			->get();
-		return $advertenties;
+
+		//calculate distances and filter out far away advertenties
+		$tempArr = [];
+		$debug = [];
+		foreach ($advertenties as $advertentie) {
+			$advertentie->distance = (($advertentie->latitude - $user->latitude)**2)+((($advertentie->longitude - $user->longitude)/cos($advertentie->latitude/57.295))**2)**.5 / .009;
+			if ($advertentie->distance < $request->search_distance) {
+				$tempArr[] = $advertentie;
+			}
+		}
+
+		$offset = 6;
+		$count = 0;
+		$data = [];
+		while ($count++ < $offset) {
+			if (isset($tempArr[$count+$offset*($request->search_paginate_nr-1)])) {
+				$data[] = $tempArr[$count+$offset*($request->search_paginate_nr-1)];
+			}
+		}
+
+		return $data;
+
 	}
 }
