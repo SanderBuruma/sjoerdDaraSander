@@ -215,7 +215,6 @@ function mapMarkersRefresh(advertenties) {
 
 	var markers = [];
 	for (let i of advertenties) {
-		console.log(i);
 		markers.push(
 		new google.maps.Marker({
 			position: {lat: parseFloat(i.latitude), lng: parseFloat(i.longitude)},
