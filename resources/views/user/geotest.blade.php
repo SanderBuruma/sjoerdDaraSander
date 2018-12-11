@@ -34,51 +34,23 @@
   console.log(users);
   
   function initMap() {
-          var myLatLng = {lat: 53.2193133, lng: 6.5669632};
-  
-          var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 12,
-            center: myLatLng
-          });
-  
-          var markers = [];
-          for (let i of users) {
-            markers.push(
-              new google.maps.Marker({
-                position: {lat: parseFloat(i.latitude), lng: parseFloat(i.longitude)},
-                map: map,
-                title: i
-                
-                //hier wil ik eigelijk nog de naam van de gebruiker die vertoont wordt als je op de marker klikt. 
-            }));
-          
+    var myLatLng = {lat: 53.2193133, lng: 6.5669632};
 
-          }
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: myLatLng
+    });
 
-          // var marker = new google.maps.Marker({
-          //   position: myLatLng,
-          //   map: map,
-          //   title: 'Hello World!'
-          // });
-          // var marker2 = new google.maps.Marker({
-          //   position: {lat: 53.2183133, lng: 6.5669632},
-          //   map: map,
-          //   title: 'Hello World!'
-          // });
+    var markers = [];
+    for (let i of users) {
+      markers.push(
+        new google.maps.Marker({
+          position: {lat: parseFloat(i.latitude), lng: parseFloat(i.longitude)},
+          map: map,
+          title: i
           
-  
-          // var myLatlng = new google.maps.LatLng(53.2193133,6.5669632);
-          
-          // var mapOptions = {
-          //   zoom: 4,
-          //   center: myLatlng
-          // }
-          // // var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-  
-          // // var marker = new google.maps.Marker({
-          // //   position: myLatlng,
-          // //   title:"Hello World!"
-          // });
+      }));
+    }
   }
   
    </script>

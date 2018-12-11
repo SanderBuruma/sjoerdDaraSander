@@ -16,6 +16,14 @@
 					<option value="{{$category->id}}">{{$category->name}}</option>
 				@endforeach
 			</select>
+			@auth
+				<select name="home_search_distance" id="home-search-distance">
+					<option value="0">Alle</option>
+					@foreach([0.1,0.2,0.5,1,1.5,2,3,5,10,15,20,30,50] as $distance)
+						<option value="{{$distance}}">Max {{$distance}} km</option>
+					@endforeach
+				</select>
+			@endauth
 			<button id="home-search-button">Zoek!</button>
 		{{-- {!! Form::close() !!} --}}
 	</h4></div>
@@ -36,7 +44,7 @@
 
 @section('footer')
 <script>
-let resultLength;
+let resultLength, userLocation;
 
 jQuery(document).ready(function(){
 
@@ -101,6 +109,7 @@ function searchQuery(){
 			search_text: jQuery('#home-search-text').val(),
 			search_select: jQuery('#home-search-select').val(),
 			search_paginate_nr: jQuery('#paginate-number').val(),
+			search_distance: jQuery('#home-search-distance').val()||,
 		},
 		success: function(result){
 			console.log(result);
@@ -118,6 +127,19 @@ function searchQuery(){
 	});
 };
 
+function getLocation() {
+		if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(showPosition);
+	} else { 
+		x.innerHTML = "Geolocation is not supported by this browser.";
+	}
+}
+
+function showPosition(position) {
+	userLocation = position.coords;
+	console.log(userLocation);
+}
+
 function refreshResults(searchResults){
 	searchResultList = $('.inside')[0];
 	insideStr = '';
@@ -125,7 +147,6 @@ function refreshResults(searchResults){
 
 	for (let i of searchResults){
 		let createdAtSplit = i.created_at.split(/[\D]/);
-		console.log(createdAtSplit);
 		let date = 
 			parseInt(createdAtSplit[2])+
 			[ " Jan ", " Feb ", " Mar ", " Apr ", " Mei ", " Jun ", " Jul ", " Aug ", " Sep ", " Oct ", " Nov ", " Dec "][createdAtSplit[1]-1]+
@@ -143,8 +164,6 @@ function refreshResults(searchResults){
 			</a></div>
 		`;
 	};
-	insideStr += `
-	`
 
 	searchResultList.innerHTML = insideStr;
 };

@@ -5,78 +5,7 @@
 
 
 @section('header')
-<style>
-	body {
-		color: var(--main-color-dark);
-	}
-	div>nav {
-		padding: 6px;
-		border-bottom: 1px solid var(--main-color-med);
-	}
-	div>.main {
-		padding: 1rem;
-	}
-	input {
-		background: unset;
-		border: unset;
-		border-bottom: 1px solid var(--main-color-med);
-		background-color: white;
-		margin-left: 1rem;
-		transition: box-shadow 0.2s ease-in;
-		padding: 4px;
-	}
-	input:focus {
-		box-shadow: 0 0 .5rem .2rem var(--main-color-med) !important;
-	}
-	input.invalid {
-		background-color: #f99 !important;
-	}
-	input.invalid:focus {
-		box-shadow: 0 0 .5rem .2rem #f99 !important;
-	}
-	input[name="password_old"] {
-		margin-bottom: .5rem;
-	}
-	button {
-		transition: color 0.2s, background-color 0.2s;
-	}
-	label {
-		margin-top: 4px;
-	}
-	#container {
-		border-top: 2px solid var(--main-color-dark);
-		border-left: 2px solid var(--main-color-dark);
-		border-right: 2px solid var(--main-color-med);
-		border-bottom: 2px solid var(--main-color-med);
-		background-color: var(--main-color-light);
-		border-radius: 1rem;
-		
-	}
-	.row {
-		padding: 1rem;
-	}
-	#submit-changes-message {
-		margin-top: 1rem;
-		border-radius: 6px;
-		text-align: center;
-		background-color: white;
-		color: black;
-		border: 1px solid var(--main-color-med);
-	}
-	#submit-changes-pw {
-		margin-top: 1rem;
-	}
-	.input-feedback {
-		color: red;
-		border: solid 1px red;
-		margin-top: 4px;
-		background-color: #f99;
-		width: auto;
-	}
-	#map {
-		height: 400px;
-	}
-</style>
+<link rel="stylesheet" href="{{ asset('css/userinterface.css') }}">
 @endsection
 
 
@@ -206,12 +135,11 @@
 var x = document.getElementById("latitude");
 
 function getLocation() {
-	if (navigator.geolocation) {
-	navigator.geolocation.getCurrentPosition(showPosition);
-} else { 
-
-x.innerHTML = "Geolocation is not supported by this browser.";
-}
+		if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(showPosition);
+	} else { 
+		x.innerHTML = "Geolocation is not supported by this browser.";
+	}
 }
 
 function showPosition(position) {

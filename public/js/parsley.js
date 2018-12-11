@@ -35,7 +35,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       var attributes;
       var regex = new RegExp('^' + namespace, 'i');
 
-      if ('undefined' === typeof obj) obj = {};else {
+      if ('undefined' === typeof obj) obj = {}; else {
         // Clear all own properties. This won't affect prototype's values
         for (i in obj) {
           if (obj.hasOwnProperty(i)) delete obj[i];
@@ -205,7 +205,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
     // Object.create polyfill, see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create#Polyfill
     objectCreate: Object.create || (function () {
-      var Object = function Object() {};
+      var Object = function Object() { };
       return function (prototype) {
         if (arguments.length > 1) {
           throw Error('Second argument not supported');
@@ -275,11 +275,11 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
     // Return the `$element` that will receive these above success or error classes
     // Could also be (and given directly from DOM) a valid selector like `'#div'`
-    classHandler: function classHandler(Field) {},
+    classHandler: function classHandler(Field) { },
 
     // Return the `$element` where errors will be appended
     // Could also be (and given directly from DOM) a valid selector like `'#div'`
-    errorsContainer: function errorsContainer(Field) {},
+    errorsContainer: function errorsContainer(Field) { },
 
     // ul elem that would receive errors' list
     errorsWrapper: '<ul class="parsley-errors-list"></ul>',
@@ -505,31 +505,31 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     },
 
     url: new RegExp("^" +
-    // protocol identifier
-    "(?:(?:https?|ftp)://)?" + // ** mod: make scheme optional
-    // user:pass authentication
-    "(?:\\S+(?::\\S*)?@)?" + "(?:" +
-    // IP address exclusion
-    // private & local networks
-    // "(?!(?:10|127)(?:\\.\\d{1,3}){3})" +   // ** mod: allow local networks
-    // "(?!(?:169\\.254|192\\.168)(?:\\.\\d{1,3}){2})" +  // ** mod: allow local networks
-    // "(?!172\\.(?:1[6-9]|2\\d|3[0-1])(?:\\.\\d{1,3}){2})" +  // ** mod: allow local networks
-    // IP address dotted notation octets
-    // excludes loopback network 0.0.0.0
-    // excludes reserved space >= 224.0.0.0
-    // excludes network & broacast addresses
-    // (first & last IP address of each class)
-    "(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])" + "(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}" + "(?:\\.(?:[1-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))" + "|" +
-    // host name
-    '(?:(?:[a-zA-Z\\u00a1-\\uffff0-9]-*)*[a-zA-Z\\u00a1-\\uffff0-9]+)' +
-    // domain name
-    '(?:\\.(?:[a-zA-Z\\u00a1-\\uffff0-9]-*)*[a-zA-Z\\u00a1-\\uffff0-9]+)*' +
-    // TLD identifier
-    '(?:\\.(?:[a-zA-Z\\u00a1-\\uffff]{2,}))' + ")" +
-    // port number
-    "(?::\\d{2,5})?" +
-    // resource path
-    "(?:/\\S*)?" + "$")
+      // protocol identifier
+      "(?:(?:https?|ftp)://)?" + // ** mod: make scheme optional
+      // user:pass authentication
+      "(?:\\S+(?::\\S*)?@)?" + "(?:" +
+      // IP address exclusion
+      // private & local networks
+      // "(?!(?:10|127)(?:\\.\\d{1,3}){3})" +   // ** mod: allow local networks
+      // "(?!(?:169\\.254|192\\.168)(?:\\.\\d{1,3}){2})" +  // ** mod: allow local networks
+      // "(?!172\\.(?:1[6-9]|2\\d|3[0-1])(?:\\.\\d{1,3}){2})" +  // ** mod: allow local networks
+      // IP address dotted notation octets
+      // excludes loopback network 0.0.0.0
+      // excludes reserved space >= 224.0.0.0
+      // excludes network & broacast addresses
+      // (first & last IP address of each class)
+      "(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])" + "(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}" + "(?:\\.(?:[1-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))" + "|" +
+      // host name
+      '(?:(?:[a-zA-Z\\u00a1-\\uffff0-9]-*)*[a-zA-Z\\u00a1-\\uffff0-9]+)' +
+      // domain name
+      '(?:\\.(?:[a-zA-Z\\u00a1-\\uffff0-9]-*)*[a-zA-Z\\u00a1-\\uffff0-9]+)*' +
+      // TLD identifier
+      '(?:\\.(?:[a-zA-Z\\u00a1-\\uffff]{2,}))' + ")" +
+      // port number
+      "(?::\\d{2,5})?" +
+      // resource path
+      "(?:/\\S*)?" + "$")
   };
   typeTesters.range = typeTesters.number;
 
@@ -540,10 +540,10 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       return 0;
     }
     return Math.max(0,
-    // Number of digits right of decimal point.
-    (match[1] ? match[1].length : 0) - (
-    // Adjust for scientific notation.
-    match[2] ? +match[2] : 0));
+      // Number of digits right of decimal point.
+      (match[1] ? match[1].length : 0) - (
+        // Adjust for scientific notation.
+        match[2] ? +match[2] : 0));
   };
 
   // parseArguments('number', ['1', '2']) => [1, 2]
@@ -631,7 +631,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     // Old API was addValidator(name, function, priority)
     //
     addValidator: function addValidator(name, arg1, arg2) {
-      if (this.validators[name]) Utils.warn('Validator "' + name + '" is already defined.');else if (Defaults.hasOwnProperty(name)) {
+      if (this.validators[name]) Utils.warn('Validator "' + name + '" is already defined.'); else if (Defaults.hasOwnProperty(name)) {
         Utils.warn('"' + name + '" is a restricted keyword and is not a valid validator name.');
         return;
       }
@@ -821,7 +821,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       equalto: {
         validateString: function validateString(value, refOrValue) {
           var $reference = $(refOrValue);
-          if ($reference.length) return value === $reference.val();else return value === refOrValue;
+          if ($reference.length) return value === $reference.val(); else return value === refOrValue;
         },
         priority: 256
       }
@@ -842,7 +842,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         break;
       }
 
-      if (found) kept.push(newResult[i]);else added.push(newResult[i]);
+      if (found) kept.push(newResult[i]); else added.push(newResult[i]);
     }
 
     return {
@@ -983,7 +983,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     },
 
     _manageStatusClass: function _manageStatusClass() {
-      if (this.hasConstraints() && this.needsValidation() && true === this.validationResult) this._successClass();else if (this.validationResult.length > 0) this._errorClass();else this._resetClass();
+      if (this.hasConstraints() && this.needsValidation() && true === this.validationResult) this._successClass(); else if (this.validationResult.length > 0) this._errorClass(); else this._resetClass();
     },
 
     _manageErrorsMessages: function _manageErrorsMessages(diff) {
@@ -1104,7 +1104,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       if (0 !== this._ui.$errorsWrapper.parent().length) return this._ui.$errorsWrapper.parent();
 
       if ('string' === typeof $errorsContainer) {
-        if ($($errorsContainer).length) return $($errorsContainer).append(this._ui.$errorsWrapper);else if ('function' === typeof window[$errorsContainer]) $errorsContainer = window[$errorsContainer];else Utils.warn('The errors container `' + $errorsContainer + '` does not exist in DOM nor as a global JS function');
+        if ($($errorsContainer).length) return $($errorsContainer).append(this._ui.$errorsWrapper); else if ('function' === typeof window[$errorsContainer]) $errorsContainer = window[$errorsContainer]; else Utils.warn('The errors container `' + $errorsContainer + '` does not exist in DOM nor as a global JS function');
       }
 
       if ('function' === typeof $errorsContainer) $errorsContainer = $errorsContainer.call(this, this);
@@ -1124,7 +1124,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       $toBind.off('.Parsley');
       if (this._failedOnce) $toBind.on(Utils.namespaceEvents(this.options.triggerAfterFailure, 'Parsley'), function () {
         _this3._validateIfNeeded();
-      });else if (trigger = Utils.namespaceEvents(this.options.trigger, 'Parsley')) {
+      }); else if (trigger = Utils.namespaceEvents(this.options.trigger, 'Parsley')) {
         $toBind.on(trigger, function (event) {
           _this3._validateIfNeeded(event);
         });
@@ -1223,13 +1223,13 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         // All good, let event go through. We make this distinction because browsers
         // differ in their handling of `submit` being called from inside a submit event [#1047]
       } else {
-          // Rejected or pending: cancel this submit
-          event.stopImmediatePropagation();
-          event.preventDefault();
-          if ('pending' === promise.state()) promise.done(function () {
-            _this5._submit(submitSource);
-          });
-        }
+        // Rejected or pending: cancel this submit
+        event.stopImmediatePropagation();
+        event.preventDefault();
+        if ('pending' === promise.state()) promise.done(function () {
+          _this5._submit(submitSource);
+        });
+      }
     },
 
     onSubmitButton: function onSubmitButton(event) {
@@ -1275,7 +1275,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
     whenValidate: function whenValidate() {
       var _Utils$all$done$fail$always,
-          _this6 = this;
+        _this6 = this;
 
       var _ref7 = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 
@@ -1285,10 +1285,12 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
       this.submitEvent = event;
       if (event) {
-        this.submitEvent = _extends({}, event, { preventDefault: function preventDefault() {
+        this.submitEvent = _extends({}, event, {
+          preventDefault: function preventDefault() {
             Utils.warnOnce("Using `this.submitEvent.preventDefault()` is deprecated; instead, call `this.validationResult = false`");
             _this6.validationResult = false;
-          } });
+          }
+        });
       }
       this.validationResult = true;
 
@@ -1528,7 +1530,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     // or `undefined` if field is not in the given `group`.
     whenValidate: function whenValidate() {
       var _whenValid$always$done$fail$always,
-          _this10 = this;
+        _this10 = this;
 
       var _ref9 = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 
@@ -1663,7 +1665,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       var value;
 
       // Value could be overriden in DOM or with explicit options
-      if ('function' === typeof this.options.value) value = this.options.value(this);else if ('undefined' !== typeof this.options.value) value = this.options.value;else value = this.$element.val();
+      if ('function' === typeof this.options.value) value = this.options.value(this); else if ('undefined' !== typeof this.options.value) value = this.options.value; else value = this.$element.val();
 
       // Handle wrong DOM or configurations
       if ('undefined' === typeof value || null === value) return '';
@@ -1780,8 +1782,8 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       // HTML5 min
       else if (null !== min) this.addConstraint('min', min, undefined, true);
 
-        // HTML5 max
-        else if (null !== max) this.addConstraint('max', max, undefined, true);
+      // HTML5 max
+      else if (null !== max) this.addConstraint('max', max, undefined, true);
 
       // length
       if (null !== this.element.getAttribute('minlength') && null !== this.element.getAttribute('maxlength')) this.addConstraint('length', [this.element.getAttribute('minlength'), this.element.getAttribute('maxlength')], undefined, true);
@@ -1789,8 +1791,8 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       // HTML5 minlength
       else if (null !== this.element.getAttribute('minlength')) this.addConstraint('minlength', this.element.getAttribute('minlength'), undefined, true);
 
-        // HTML5 maxlength
-        else if (null !== this.element.getAttribute('maxlength')) this.addConstraint('maxlength', this.element.getAttribute('maxlength'), undefined, true);
+      // HTML5 maxlength
+      else if (null !== this.element.getAttribute('maxlength')) this.addConstraint('maxlength', this.element.getAttribute('maxlength'), undefined, true);
 
       // html5 types
       var type = Utils.getType(this.element);
@@ -1803,8 +1805,8 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         }], undefined, true);
         // Regular other HTML5 supported types
       } else if (/^(email|url|range|date)$/i.test(type)) {
-          return this.addConstraint('type', type, undefined, true);
-        }
+        return this.addConstraint('type', type, undefined, true);
+      }
       return this;
     },
 
@@ -1913,7 +1915,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     // See `Field.getValue()`
     getValue: function getValue() {
       // Value could be overriden in DOM
-      if ('function' === typeof this.options.value) return this.options.value(this);else if ('undefined' !== typeof this.options.value) return this.options.value;
+      if ('function' === typeof this.options.value) return this.options.value(this); else if ('undefined' !== typeof this.options.value) return this.options.value;
 
       // Radio input case
       if (this.element.nodeName === 'INPUT') {
@@ -2016,9 +2018,9 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
         // Else for radio / checkboxes, we need a `name` or `data-parsley-multiple` to properly bind it
       } else if (!this.options.multiple) {
-          Utils.warn('To be bound by Parsley, a radio, a checkbox and a multiple select input must have either a name or a multiple option.', this.$element);
-          return this;
-        }
+        Utils.warn('To be bound by Parsley, a radio, a checkbox and a multiple select input must have either a name or a multiple option.', this.$element);
+        return this;
+      }
 
       // Remove special chars
       this.options.multiple = this.options.multiple.replace(/(:|\.|\[|\]|\{|\}|\$)/g, '');
@@ -2458,7 +2460,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       behavesOk: function behavesOk(evt) {
         if (_this14.isNativeEvent(evt)) {
           $(document) // Simply unbinds the testing handler
-          .off('input.inputevent', evt.data.selector, _this14.behavesOk).off('change.inputevent', evt.data.selector, _this14.misbehaves);
+            .off('input.inputevent', evt.data.selector, _this14.behavesOk).off('change.inputevent', evt.data.selector, _this14.misbehaves);
         }
       },
 

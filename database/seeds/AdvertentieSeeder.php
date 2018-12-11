@@ -33,7 +33,7 @@ class AdvertentieSeeder extends Seeder
 
 		$count = 0;
 		while ($count++ < 5e2) {
-			$createdAt = '2018-12-0'.random_int(1,9).' '.random_int(10,23).':'.random_int(10,59).':'.random_int(10,59);
+			$createdAt = '2018-'.str_pad(random_int(1,12),2,"0",STR_PAD_LEFT).'-'.str_pad(random_int(1,28),2,"0",STR_PAD_LEFT).' '.str_pad(random_int(0,23),2,"0",STR_PAD_LEFT).':'.str_pad(random_int(0,59),2,"0",STR_PAD_LEFT).':'.str_pad(random_int(0,59),2,"0",STR_PAD_LEFT);
 			DB::table('advertenties')->insert([
 				'user_id' => random_int(1,177), //max is same as the nr of users from initial seed.
 				'subcategory_id' => random_int(1,336), // ^

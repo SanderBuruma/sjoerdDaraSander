@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Advertentie;
+use App\User;
 
 class AdvertentiesSearchController extends Controller
 {
@@ -18,12 +19,22 @@ class AdvertentiesSearchController extends Controller
 			$queryWhereArr[] = ['subcategories.category_id','=',$request->search_select];
 		}
 
+		$user = User::find(auth()->id());
+		if ($request->search_distance > 0) {
+			$queryWhereArr[] = ['users.latitude','>',$user->latitude-(1/111.1111)*$request->search_distance];
+			$queryWhereArr[] = ['users.latitude','<',$user->latitude+(1/111.1111)*$request->search_distance];
+			$longitudeMargin = (1/111.1111)/cos(abs($user->latitude)/57.295);
+			$queryWhereArr[] = ['users.longitude','>',$user->longitude-$longitudeMargin*$request->search_distance];
+			$queryWhereArr[] = ['users.longitude','<',$user->longitude+$longitudeMargin*$request->search_distance];
+		}
+		// return $queryWhereArr;
+
 		$offset = 6;
 		$advertenties = Advertentie::
 				where('price', '<', 1e9)
 			->join('subcategories', 'advertenties.subcategory_id', '=', 'subcategories.id')
 			->join('users', 'advertenties.user_id', '=', 'users.id')
-			->select('advertenties.*', 'subcategories.category_id', 'users.city')
+			->select('advertenties.*', 'subcategories.category_id', 'users.city', 'users.latitude', 'users.longitude')
 			->where($queryWhereArr)
 			->limit($offset)
 			->offset(($request->search_paginate_nr-1)*$offset)
