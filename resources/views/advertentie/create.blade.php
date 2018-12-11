@@ -9,7 +9,7 @@
 
 
 @section('content')
-<div class="row"><div class="col-md-8 offset-md-2 main"><div class="card">
+<div class="row"><div class="col-md-4 offset-md-4 main"><div class="card">
 	<div class="card-header">
 		<h4>Plaats Uw Advertentie</h4>
 	</div>

@@ -8,11 +8,13 @@
 .card {
 	border-radius: 1rem;
 	box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
+	/* opacity: 0.6; */
+	/* background-color: lightgrey; */
 }
 
 .btn-success {
-	background-color: var(--main-color-dark);
-	border: var(--main-color-dark);
+	/* background-color: var(--main-color-dark);
+	border: var(--main-color-dark); */
 }
 .btn-success:hover,
 .btn-success:active,

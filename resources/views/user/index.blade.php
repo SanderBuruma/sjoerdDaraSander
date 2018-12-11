@@ -11,7 +11,7 @@
 
 @section('content')
 <div class="row">
-	<div class="col-md-10 offset-md-1" id="container">
+	<div class="col-md-6 offset-md-3" id="container">
 
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,17 +62,6 @@
 				</div>
 			</div>
 			<hr>
-
-		{{-- begin Map Marker ------------------------------------------------------------------------------------------------------------------------------ --}}
-		
-			{{-- <div class="map-container">
-					<h3>My Google Maps Demo</h3>
-					<!--The div element for the map -->
-					<div id="map"></div>
-			</div> --}}
-
-		{{-- eind Map Marker ------------------------------------------------------------------------------------------------------------------------------ --}}
-			
 
 		<div class="row">
 			<div class="col-md-4"><h4>Uw adres-informatie</h4></div>

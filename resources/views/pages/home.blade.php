@@ -7,39 +7,25 @@
 @stop
 
 @section('content')
-<div class= " row "><div class="col-md-10 offset-md-1 main">
-	<div id="search-bar" class="justify-content-center"><h4>
-		{{-- {!! Form::open(['route' => 'advertenties.search.index', 'method' => 'POST']) !!} --}}
-			<input name="home_search_text" id="home-search-text" type="text" placeholder="Zoekterm">
-			<select name="home_search_select" id="home-search-select">
-				@foreach($categories as $category)
-					<option value="{{$category->id}}">{{$category->name}}</option>
-				@endforeach
-			</select>
-			@auth
-				<select name="home_search_distance" id="home-search-distance">
-					<option value="0">Alle</option>
-					@foreach([0.1,0.2,0.5,1,1.5,2,3,5,10,15,20,30,50] as $distance)
-						<option value="{{$distance}}">Max {{$distance}} km</option>
-					@endforeach
-				</select>
-			@endauth
-			<button id="home-search-button">Zoek!</button>
-		{{-- {!! Form::close() !!} --}}
-	</h4></div>
-</div></div>
 
-<div class= "row"><div class="col-md-12 results">
-	<div class="paginate-bar">
-		<a id="paginate-left" href="#">◀</a><input type="text" id="paginate-number" width="24" value="1"><a id="paginate-right" href="#">▶</a>
+	<div class="filler1"></div>
+
+	<div class="container2 col-md-8 offset-md-2">
+		<div class="input-group">
+			<input type="text" class="form-control search-bar" aria-label="Text input with dropdown button"  placeholder="Zoeken in Nervamarkt...">
+				<div class="input-group-append">
+					
+						<select name="home_search_select" id="home-search-text" class="select-category category">
+								@foreach($categories as $category)
+									<option value="{{$category->id}}">{{$category->name}}</option>
+								@endforeach
+						</select>
+				</div>
+			<button class="btn btn-outline-secondary search-button" type="button" id="button-addon2">Zoek!</button>
+		</div>
 	</div>
-	<div class="inside flex-row">
-		
-	</div>
-	<div class="paginate-bar">
-		<a id="paginate-left-bot" href="#">◀</a><a id="paginate-right-bot" href="#" style="margin-left: auto;">▶</a>
-	</div>
-</div></div>
+
+	<div class="filler2"></div>
 @endsection
 
 @section('footer')
