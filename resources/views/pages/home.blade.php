@@ -17,7 +17,7 @@
 						@foreach($categories as $category)
 							<option value="{{$category->id}}">{{$category->name}}</option>
 						@endforeach
-				</select>
+				</select><div class="vertical-row"></div>
 				</div>
 				<select id="home-search-distance" class="category">
 					<option value="0">Alle</option>

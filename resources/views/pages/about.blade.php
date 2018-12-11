@@ -2,15 +2,19 @@
 
 @section('title', '| About')
 
+<link rel="stylesheet" href="{{ asset('css/about.css') }}">
+
 @section('content')
-<div class="row">
-	<div class="col-md-8 offset-md-2">
+<div class="row"><div class="col-md-6 offset-md-3 main">
+	{{-- <div class="col-md-6 offset-md-3"> --}}
 		<div class="card">
 			<div class="card-header">
-				Sander Buruma
+				<b>Nervamarkt</b>
 			</div>
 			<div class="card-body">
-				<p>Astute fullstack web developer, at your service!</p>
+				<p>Bij Nervamarkt kunt u in uw eigen omgeving eenvoudig reageren op advertenties en producten kopen bij u in de buurt. Met onze online vlooienmarkt kunt u op afstanden van een, twee en drie kilometer producten selecteren van andere gebruikers, chatten, een bod doen en een mooie prijs overeenkomen.</p> 
+
+				<hr>
 				<p>Click the button to get your coordinates.</p>
 
 				<button onclick="getLocation()">Bepaal uw locatie </button>
@@ -21,7 +25,8 @@
 
 			</div>
 		</div>
-	</div>
+	{{-- </div> end 6-3--}}
+	</div><!-- end main -->
 </div>
 
 
