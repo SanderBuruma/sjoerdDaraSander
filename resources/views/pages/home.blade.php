@@ -8,24 +8,31 @@
 
 @section('content')
 
-	<div class="filler1"></div>
-
 	<div class="container2 col-md-8 offset-md-2">
 		<div class="input-group">
-			<input type="text" class="form-control search-bar" aria-label="Text input with dropdown button"  placeholder="Zoeken in Nervamarkt...">
+			<input type="text" class="form-control search-bar" aria-label="Text input with dropdown button"  placeholder="Zoeken in Nervamarkt..." id="home-search-text">
 				<div class="input-group-append">
 					
-						<select name="home_search_select" id="home-search-text" class="select-category category">
+						<select name="home_search_select" id="home-search-select" class="select-category category">
 								@foreach($categories as $category)
 									<option value="{{$category->id}}">{{$category->name}}</option>
 								@endforeach
 						</select>
 				</div>
-			<button class="btn btn-outline-secondary search-button" type="button" id="button-addon2">Zoek!</button>
+			<button class="btn btn-outline-secondary search-button" type="button" id="home-search-button">Zoek!</button>
 		</div>
 	</div>
+	
 
-	<div class="filler2"></div>
+<div class="paginate-bar">
+	<a id="paginate-left" href="#"><</a><input type="text" id="paginate-number" width="24" value="1"><a id="paginate-right" href="#" style="margin-left: auto;">></a>
+</div>
+<div class="inside flex-row">
+	
+</div>
+<div class="paginate-bar">
+	<a id="paginate-left-bot" href="#"><</a><a id="paginate-right-bot" href="#" style="margin-left: auto;">></a>
+</div>
 @endsection
 
 @section('footer')

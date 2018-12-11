@@ -69,7 +69,7 @@ input.form-control:focus{
 	padding: 4px;
 	cursor: pointer;
 	font-weight: bold;
-	font-size: 18px;
+	font-size: 17px;
 }
 
 .search-button{
@@ -80,7 +80,7 @@ input.form-control:focus{
 	border-left: 1px grey solid;
 	margin: 0;
 	font-weight: bold;
-	font-size: 18px;
+	font-size: 17px;
 	border-radius: 0px 5px 5px 0px;
 }
 
@@ -92,4 +92,23 @@ input.form-control:focus{
 .filler2{
 	height: 50px;
 	display: hidden;
+}
+.paginate-bar {
+	background-color: white;
+	border-radius: 1rem;
+	margin: auto;
+	width: 94px;
+	display: flex;
+	flex-direction: row
+}
+
+.paginate-bar > * {
+	background-color: unset;
+	border: unset;
+	font-size: 30px;
+}
+
+#paginate-number {
+	width: 48px;
+	text-align: center;
 }
