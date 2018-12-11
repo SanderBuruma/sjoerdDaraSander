@@ -13,12 +13,18 @@
 			<input type="text" class="form-control search-bar" aria-label="Text input with dropdown button"  placeholder="Zoeken in Nervamarkt..." id="home-search-text">
 				<div class="input-group-append">
 					
-						<select name="home_search_select" id="home-search-select" class="select-category category">
-								@foreach($categories as $category)
-									<option value="{{$category->id}}">{{$category->name}}</option>
-								@endforeach
-						</select>
+				<select id="home-search-select" class="category">
+						@foreach($categories as $category)
+							<option value="{{$category->id}}">{{$category->name}}</option>
+						@endforeach
+				</select>
 				</div>
+				<select id="home-search-distance" class="category">
+					<option value="0">Alle</option>
+					@foreach([0.1,0.2,0.5,1,1.5,2,3,5,10,15,20,30,50] as $distance)
+						<option value="{{$distance}}">Max {{$distance}} km</option>
+					@endforeach
+				</select>
 			<button class="btn btn-outline-secondary search-button" type="button" id="home-search-button">Zoek!</button>
 		</div>
 	</div>
