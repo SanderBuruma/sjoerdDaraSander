@@ -155,12 +155,12 @@ function refreshResults(searchResults){
 			createdAtSplit[3]+":"+createdAtSplit[4];
 
 		insideStr += `
-			<div class="advertentie"><a href="/advertentie/${i.slug}" target="_blank" rel="noopener noreferrer">
+			<div class="advertentie" title="${i.description}"><a href="/advertentie/${i.slug}" target="_blank" rel="noopener noreferrer">
 				<h6 class="title" style="font-size: 2rem;">${i.title.substr(1, 25)}</h6>
 				<p class="price" style="font-size: 1.4rem;">€${i.price/100}</p>
-				<p class="date">${date}</p>
-				<p class="date">Stad: ${i.city}</p>
-				<p>${i.distance.toFixed(2)} km afstand</p>
+				<p class="date">${date}<br>
+					Stad: ${i.city}<br>
+					${i.distance.toFixed(2)} km afstand</p>
 				<img src="/images/${i.photo1||"empty-box.jpeg"}" width= "380" height= "300">
 				<p class="description">${i.description.substr(1, 100)}</p>
 			</a></div>
