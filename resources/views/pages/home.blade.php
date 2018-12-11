@@ -7,29 +7,25 @@
 @stop
 
 @section('content')
-<div class="form-row"><div class="col-md-6 offset-md-3 main">
-	<div id="search-bar" class="justify-content-center"><h6>
-		{{-- {!! Form::open(['route' => 'advertenties.search.index', 'method' => 'POST']) !!} --}}
-		
-			<input name="home_search_text" id="home-search-text" class ="search-bar" type="text" placeholder="Zoekterm">
-		
-	
-			<select name="home_search_select" id="home-search-text" class="select-category">
-				@foreach($categories as $category)
-					<option value="{{$category->id}}">{{$category->name}}</option>
-				@endforeach
-			</select>
-		
-			<button id="home-search-button" class="btn btn-success">Zoek!</button>
-		{{-- {!! Form::close() !!} --}}
-	</h4></div>
-</div></div>
 
-{{-- <div class= " row "><div class="col-md-12 results"><div class="inside flex-row"> --}}
+	<div class="filler1"></div>
 
-</div></div></div>
+	<div class="container2 col-md-8 offset-md-2">
+		<div class="input-group">
+			<input type="text" class="form-control search-bar" aria-label="Text input with dropdown button"  placeholder="Zoeken in Nervamarkt...">
+				<div class="input-group-append">
+					
+						<select name="home_search_select" id="home-search-text" class="select-category category">
+								@foreach($categories as $category)
+									<option value="{{$category->id}}">{{$category->name}}</option>
+								@endforeach
+						</select>
+				</div>
+			<button class="btn btn-outline-secondary search-button" type="button" id="button-addon2">Zoek!</button>
+		</div>
+	</div>
 
-<div class="filler"></div>
+	<div class="filler2"></div>
 @endsection
 
 @section('footer')
