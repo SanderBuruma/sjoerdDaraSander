@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<div class="row"><div class="col-md-8 offset-md-2 main">
+<div class="row"><div class="col-md-6 offset-md-3 main">
 	<div class="paginate-bar">
 		<a id="paginate-left" href="#">◀</a><input type="text" id="paginate-number" value="1"><a id="paginate-right" href="#">▶</a>
 	</div>
@@ -44,7 +44,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
-				<button type="button" class="btn btn-dark" data-dismiss="modal" id="save-advertentie">Save</button>
+				<button type="button" class="btn btn-dark" data-dismiss="modal" id="delete-advertentie" onclick=modalDelete()>Save</button>
 			</div>
 		</div>
 	</div>
@@ -83,19 +83,26 @@ $(document).ready(function(){
 
 function clickDelete (e) {
 	for (let i of advertenties){
-		if (i.id == e){
-			console.log(i);
-			let arr = [];
-			for (let j of i.roles){
-				arr.push(j.id);
-			}
-			console.log(arr);
-			editadvertentieId = i.id;
-			$('#select-roles').val(arr).trigger('change');
-			$('#modal-name')[0].value = i.name;
+		if (i.slug == e){
+			$('#delete-advertentie')[0].dataset.slug = i.slug;
+			$('#modal-name')[0].value = i.title;
 			return;
 		}
 	}
+}
+
+function modalDelete() {
+	let slug = $('#delete-advertentie')[0].data.slug;
+	$.ajax({
+		url: `/advertentie/${slug}`,
+		method: 'DELETE',
+		data: {
+			slug: $('#paginate-number').val(),
+		},
+		success: function(result){
+			console.log(result);
+		},
+	})
 }
 
 function refreshIndex () {

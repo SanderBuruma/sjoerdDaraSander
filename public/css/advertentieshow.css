@@ -5,20 +5,13 @@
 	padding: 1rem 1rem;
 }
 
-.card {
-	border-radius: 1rem;
-	box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
-	/* opacity: 0.6; */
-	/* background-color: lightgrey; */
-	background-color: rgb(180, 218, 236);
-}
 .secondary {
 	padding: 1rem;
 }
 .main > div,
 .secondary > div {
 	box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
-	background-color: white;
+	background-color: rgb(180, 218, 236);
 	border-radius: 1rem;
 }
 .carousel-control-next-icon,

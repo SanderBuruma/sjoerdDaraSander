@@ -10,7 +10,7 @@
 
 
 @section('content')
-<div class="row"><div class="col-md-8 offset-md-2 main">
+<div class="row"><div class="col-md-6 offset-md-3 main">
 	
 	<div class="card" id="container">
 
