@@ -20,6 +20,13 @@ class AdvertentiesSearchController extends Controller
 		}
 
 		$user = User::find(auth()->id());
+		if (!$user || !$user->latitude) {
+			$user = (object) [
+				"latitude" => $request->user_lat,
+				"longitude" => $request->user_lng,
+			];
+		}
+
 		if ($request->search_distance > 0) {
 			$queryWhereArr[] = ['users.latitude','>',$user->latitude-(1/111.1111)*$request->search_distance];
 			$queryWhereArr[] = ['users.latitude','<',$user->latitude+(1/111.1111)*$request->search_distance];
@@ -40,14 +47,25 @@ class AdvertentiesSearchController extends Controller
 			// ->offset(($request->search_paginate_nr-1)*$offset)
 			->orderByDesc('advertenties.created_at')
 			->get();
-
-		//calculate distances and filter out far away advertenties
+		
+		//calculate distances and filter out far away advertenties (if necessary)
 		$tempArr = [];
 		$debug = [];
-		foreach ($advertenties as $advertentie) {
-			$advertentie->distance = (($advertentie->latitude - $user->latitude)**2)+((($advertentie->longitude - $user->longitude)/cos($advertentie->latitude/57.295))**2)**.5 / .009;
-			if ($advertentie->distance < $request->search_distance) {
-				$tempArr[] = $advertentie;
+		if ($request->search_distance == 0) {
+			foreach ($advertenties as $advertentie) {
+				$advertentie->distance = null;
+			}
+			$tempArr = $advertenties;
+		} else {
+			foreach ($advertenties as $advertentie) {
+	
+				if (!$advertentie->latitude) {continue;}
+	
+				$advertentie->distance = (($advertentie->latitude - $user->latitude)**2)+((($advertentie->longitude - $user->longitude)/cos($advertentie->latitude/57.295))**2)**.5 / .009;
+				if ($advertentie->distance < $request->search_distance) {
+					$tempArr[] = $advertentie;
+	
+				}
 			}
 		}
 
@@ -55,8 +73,9 @@ class AdvertentiesSearchController extends Controller
 		$count = 0;
 		$data = [];
 		while ($count++ < $offset) {
-			if (isset($tempArr[$count+$offset*($request->search_paginate_nr-1)])) {
-				$data[] = $tempArr[$count+$offset*($request->search_paginate_nr-1)];
+			$arrPos = $count+$offset*($request->search_paginate_nr-1);
+			if (isset($tempArr[$arrPos])) {
+				$data[] = $tempArr[$arrPos];
 			}
 		}
 

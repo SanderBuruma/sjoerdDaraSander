@@ -20,7 +20,7 @@
 				</select>
 				</div>
 				<select id="home-search-distance" class="category">
-					<option value="0">Alle</option>
+					<option value="0">Geen Max km</option>
 					@foreach([0.1,0.2,0.5,1,1.5,2,3,5,10,15,20,30,50] as $distance)
 						<option value="{{$distance}}">Max {{$distance}} km</option>
 					@endforeach
@@ -43,7 +43,21 @@
 
 @section('footer')
 <script>
-let resultLength, userLocation;
+let resultLength, userLocation, userLat, userLng;
+
+function getLocation() {
+		if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(showPosition);
+	} else { 
+		x.innerHTML = "Geolocation is not supported by this browser.";
+	}
+}
+
+function showPosition(position) {
+	console.log('getlocation');
+	userLat = position.coords.latitude;
+	userLng = position.coords.longitude;
+}
 
 jQuery(document).ready(function(){
 
@@ -52,6 +66,8 @@ jQuery(document).ready(function(){
 			'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
 		}
 	});
+
+	getLocation();
 
 	$('#home-search-button')[0].onclick = function(){
 
@@ -109,6 +125,8 @@ function searchQuery(){
 			search_select: jQuery('#home-search-select').val(),
 			search_paginate_nr: jQuery('#paginate-number').val(),
 			search_distance: jQuery('#home-search-distance').val()||0,
+			user_lat: userLat||null,
+			user_lng: userLng||null, 
 		},
 		success: function(result){
 			console.log(result);
@@ -149,19 +167,22 @@ function refreshResults(searchResults){
 		let createdAtSplit = i.created_at.split(/[\D]/);
 		let date = 
 			parseInt(createdAtSplit[2])+
-			[ " Jan ", " Feb ", " Mar ", " Apr ", " Mei ", " Jun ", " Jul ", " Aug ", " Sep ", " Oct ", " Nov ", " Dec "][createdAtSplit[1]-1]+
+			[" Jan ", " Feb ", " Mar ", " Apr ", " Mei ", " Jun ", " Jul ", " Aug ", " Sep ", " Oct ", " Nov ", " Dec "][createdAtSplit[1]-1]+
 			createdAtSplit[0]+" - "+
 			createdAtSplit[3]+":"+createdAtSplit[4];
 
 		insideStr += `
 			<div class="advertentie" title="${i.description}"><a href="/advertentie/${i.slug}" target="_blank" rel="noopener noreferrer">
-				<h6 class="title" style="font-size: 2rem;">${i.title.substr(1, 25)}</h6>
+				<h6 class="title" style="font-size: 2rem;">${i.title.substr(1, 25)}...</h6>
 				<p class="price" style="font-size: 1.4rem;">€${i.price/100}</p>
 				<p class="date">${date}<br>
-					Stad: ${i.city}<br>
-					${i.distance.toFixed(2)} km afstand</p>
+					Stad: ${i.city}<br>`;
+		
+		if (i.distance != null) {insideStr += `
+					${i.distance.toFixed(2)} km afstand</p>`};
+		insideStr += `
 				<img src="/images/${i.photo1||"empty-box.jpeg"}" width= "380" height= "300">
-				<p class="description">${i.description.substr(1, 100)}</p>
+				<p class="description">${i.description.substr(1, 100)}...</p>
 			</a></div>
 		`;
 	};
