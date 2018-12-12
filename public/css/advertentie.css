@@ -1,6 +1,6 @@
 .main {
 	border-radius: 1rem;
-	background-color: #fffd;
+	background-color: rgba(180, 180, 236, 0.401);
 	box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
 	padding: 1rem 1rem;
 }
@@ -10,12 +10,9 @@
 	box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
 	/* opacity: 0.6; */
 	/* background-color: lightgrey; */
+	background-color: rgb(180, 218, 236);
 }
 
-.btn-success {
-	/* background-color: var(--main-color-dark);
-	border: var(--main-color-dark); */
-}
 .btn-success:hover,
 .btn-success:active,
 .btn-success:focus {
@@ -26,7 +23,8 @@
 }
 
 input[name="price"]{
-	border:none;
+	background-color:white;
+border:none;
 }
 #priceDiv{
 	max-width: -moz-fit-content;
@@ -39,4 +37,8 @@ input[name="price"]{
 #priceDiv:active{
 	max-width: -moz-fit-content;
 	box-shadow: 0px 0px 3px rgba(0,0,0,0.7) !important;
+}
+
+.prijs{
+	background-color: white;
 }

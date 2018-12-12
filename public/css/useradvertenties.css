@@ -1,0 +1,40 @@
+
+.paginate-bar {
+	background-color: white;
+	border-radius: 1rem;
+	margin: auto;
+	width: 94px;
+	display: flex;
+	flex-direction: row;
+	background-color:rgba(255,0,0,0.0);
+}
+
+.paginate-bar > * {
+	background-color: unset;
+	border: unset;
+	font-size: 30px;
+}
+
+#paginate-number {
+	width: 44px;
+	text-align: center;
+	color: white;
+}
+
+
+
+#paginate-left{
+	color: white;
+}
+
+#paginate-right{
+	color: white;
+}
+
+#paginate-left-bot{
+	color: white;
+}
+
+#paginate-right-bot{
+	color: white;
+}

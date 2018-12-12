@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Category;
 use App\Subcategory;
 use App\Advertentie;
+use App\User;
 
 class AdvertentieController extends Controller
 {
@@ -21,7 +22,7 @@ class AdvertentieController extends Controller
      */
     public function index()
     {
-        //
+        return view("advertentie.index");
     }
 
     /**
@@ -131,5 +132,20 @@ class AdvertentieController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function ajaxIndex(Request $request)
+    {
+        $user = User::find(Auth()->id());
+        $offset = 10;
+        $advertenties = Advertentie::
+              where('user_id', $user->id)
+            ->orderByDesc('created_at')
+            ->limit($offset)
+            ->offset($offset*($request->paginate-1))
+            ->select('price','created_at','description','title','slug')
+            ->get();
+        
+        return $advertenties;
     }
 }

@@ -31,7 +31,7 @@
 			</select>
 			<br>
 			{{ Form::label('price', 'Prijs:') }}
-			<div id="priceDiv"> €<input type="number" required maxlength="6" step="0.01" min="0.01" name="price"></div>
+			<div class="prijs" id="priceDiv"> €<input type="number" required maxlength="6" step="0.01" min="0.01" name="price"></div>
 			{{-- {{ Form::number('price', null, ['class' => 'form-control', 'required' => '', 'maxlength' => '6','step' => '0.01'])}} --}}
 			<br>
 			{{ Form::label('photo1', 'Foto 1:') }}
@@ -52,7 +52,7 @@
 			{{ Form::label('photo6', 'Foto 6:') }}
 			{{ Form::file('photo6') }}
 
-			{{ Form::submit('Plaats!', array('class' => 'btn btn-success btn-lg btn-block', 'style'=>'margin-top: 20px;')) }}
+			{{ Form::submit('Plaats!', array('class' => 'btn btn-info btn-lg btn-block', 'style'=>'margin-top: 20px;')) }}
 		{!! Form::close() !!}
 	</div>
 </div></div></div>

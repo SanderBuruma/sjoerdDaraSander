@@ -10,7 +10,7 @@
 
 @section('content')
 <div class="row">
-	<div class="col-md-7 offset-md-1 main"><div class="card">
+	<div class="col-md-6 offset-md-2 main"><div class="card">
 	<div class="card-header">
 		<h1>{{$advertentie->title}}</h1>
 		<table class="table">
@@ -32,7 +32,7 @@
 	</div>
 	<div class="card-body">
 		<p>{{$advertentie->description}}</p>
-		<div class="row"><div class="col-sm-6 offset-md-3">
+		<div class="row"><div class="col-md-6 offset-md-3">
 			
 				<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 						<ol class="carousel-indicators">

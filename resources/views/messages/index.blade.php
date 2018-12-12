@@ -45,8 +45,8 @@
 				{{-- javascript fills this in --}}
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Terug</button>
-				<button type="button" class="btn btn-primary" id="react" onclick=clickTitleReact()>Reageer</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Terug</button>
+				<button type="button" class="btn btn-info" id="react" onclick=clickTitleReact()>Reageer</button>
 			</div>
 		</div>
 	</div>

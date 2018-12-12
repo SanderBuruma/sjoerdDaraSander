@@ -32,7 +32,8 @@ input.form-control:focus{
 	width: 300px;
 	border-radius: 6px;
 	font-size: 1.2em;
-	background-color: rgb(209, 236, 217);
+	background-color: rgb(180, 218, 236);
+	/* background-color: rgb(209, 227, 236); */
 }
 .advertentie > a {
 	color: black;
@@ -46,7 +47,8 @@ input.form-control:focus{
 	text-align: center;
 }
 .advertentie > a > .price {
-	background-color: var(--main-color-dark);
+	/* background-color: var(--main-color-dark); */
+	background-color: rgb(154, 209, 235);
 	color: white;
 }
 .advertentie > img {
@@ -123,6 +125,7 @@ input.form-control:focus{
 #paginate-number {
 	width: 44px;
 	text-align: center;
+	color: white;
 }
 
 #map {
@@ -133,10 +136,6 @@ input.form-control:focus{
 }
 
 #paginate-left{
-	color:white;
-}
-
-#paginate-number{
 	color: white;
 }
 

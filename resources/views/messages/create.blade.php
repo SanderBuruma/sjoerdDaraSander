@@ -9,7 +9,7 @@
 
 
 @section('content')
-<div class="row"><div class="col-md-10 offset-md-1 main">
+<div class="row"><div class="col-md-8 offset-md-2 main">
 
 	<div class="card">
 		<div class="card-body">
@@ -33,7 +33,7 @@ Met vriendelijke groet,
 
 {{$message->message}}</textarea>
 				<br>
-				{{ Form::submit('Verstuur!', array('class' => 'btn btn-success btn-lg btn-block', 'style'=>'margin-top: 20px;')) }}
+				{{ Form::submit('Verstuur!', array('class' => 'btn btn-info btn-lg btn-block', 'style'=>'margin-top: 20px;')) }}
 			{!! Form::close() !!}
 		</div>
 	</div>

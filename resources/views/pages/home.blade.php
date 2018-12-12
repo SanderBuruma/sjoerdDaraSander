@@ -25,6 +25,7 @@
 					<option value="{{$distance}}">Max {{$distance}} km</option>
 				@endforeach
 			</select>
+
 		<button class="btn btn-outline-secondary search-button" type="button" id="home-search-button">Zoek!</button>
 	</div>
 	<!-- input groep 2, waar opties zoals sorteer op prijs, afstand, etc word gedaan -->
@@ -45,7 +46,7 @@
 	
 
 
-<div class= "row"><div class="col-md-12 results">
+<div class= "row"><div class="col-md-8 offset-md-2 results">
 	<div class="paginate-bar">
 		<a id="paginate-left" href="#">◀</a><input type="text" id="paginate-number" width="20" value="1"><a id="paginate-right" href="#">▶</a>
 	</div>

@@ -40,6 +40,7 @@ Route::group(['middleware' => ['web','auth','verified', 'role:!4']], function(){
 		Route::get('/messageajax', 'MessagesController@indexAjax')->name('message.index.ajax');
 		// Route::get('message/{name}/create', 'MessagesController@namedCreate');
 		Route::resource('advertentie' , 'AdvertentieController', ['except' => ['show']]);
+		Route::post('advertentieAjax', 'AdvertentieController@ajaxIndex')->name('advertentie.ajax.index');
 	});
 	
 	Route::resource('/user', 'UserInterfaceController');
