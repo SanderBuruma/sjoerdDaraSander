@@ -106,7 +106,7 @@ input.form-control:focus{
 	margin: auto;
 	width: 94px;
 	display: flex;
-	flex-direction: row
+	flex-direction: row;
 }
 
 .paginate-bar > * {
@@ -116,6 +116,10 @@ input.form-control:focus{
 }
 
 #paginate-number {
-	width: 48px;
+	width: 44px;
 	text-align: center;
+}
+
+#map {
+	height: 600px;
 }

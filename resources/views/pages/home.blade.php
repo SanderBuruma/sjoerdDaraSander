@@ -30,15 +30,21 @@
 	</div>
 	
 
-<div class="paginate-bar">
-	<a id="paginate-left" href="#"><</a><input type="text" id="paginate-number" width="24" value="1"><a id="paginate-right" href="#" style="margin-left: auto;">></a>
-</div>
-<div class="inside flex-row">
-	
-</div>
-<div class="paginate-bar">
-	<a id="paginate-left-bot" href="#"><</a><a id="paginate-right-bot" href="#" style="margin-left: auto;">></a>
-</div>
+
+<div class= "row"><div class="col-md-12 results">
+	<div class="paginate-bar">
+		<a id="paginate-left" href="#">◀</a><input type="text" id="paginate-number" width="20" value="1"><a id="paginate-right" href="#">▶</a>
+	</div>
+	<div class="inside flex-row">
+		
+	</div>
+	<div class="paginate-bar">
+		<a id="paginate-left-bot" href="#">◀</a><a id="paginate-right-bot" href="#" style="margin-left: auto;">▶</a>
+	</div>
+</div></div>
+
+<div id="map"></div>
+
 @endsection
 
 @section('footer')
@@ -185,9 +191,63 @@ function refreshResults(searchResults){
 				<p class="description">${i.description.substr(1, 100)}...</p>
 			</a></div>
 		`;
+
+		mapMarkersRefresh(searchResults);
 	};
 
 	searchResultList.innerHTML = insideStr;
 };
+
+//   function initMap() {
+//         var pyrmont = {lat: 53.2193133, lng: 6.5669632};
+  
+
+
+//         map = new google.maps.Map(document.getElementById('map'), {
+//           center: pyrmont,
+//           zoom: 8
+//         });
+// }
+
+
+function initMap() {
+  var myLatLng = {lat: 53.2152292, lng: 6.5669632};
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 11,
+    center: myLatLng
+  });
+
+  var marker = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+    title: 'Hello World!'
+  });
+
+}
+
+function mapMarkersRefresh(advertenties) {
+	let myLatLng = {lat: 53.21252292, lng: 6.5669632};
+	var map = new google.maps.Map(document.getElementById('map'), {
+		zoom: 11,
+		center: myLatLng
+	});
+
+	var markers = [];
+	for (let i of advertenties) {
+		markers.push(
+		new google.maps.Marker({
+			position: {lat: parseFloat(i.latitude), lng: parseFloat(i.longitude)},
+			map: map,
+			title: i.title
+			
+			//hier wil ik eigelijk nog de naam van de gebruiker die vertoont wordt als je op de marker klikt. 
+		}))
+	}
+}
+  
 </script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfM9rq072pO3kYg5hTX_69uA-6LeVKhF8&libraries=places&callback=initMap" async defer></script>
+
 @stop
