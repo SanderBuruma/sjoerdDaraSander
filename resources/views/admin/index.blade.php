@@ -7,8 +7,8 @@
 @endsection
 
 @section('content')
-<div class="row">
-	<div class="col-md-10 offset-md-1" id="main">
+<div class="row"><div class="col-md-8 offset-md-2 main">
+	<div class="card" id="main">
 		<table class="table">
 			<thead>
 				<th>#</th>
@@ -23,6 +23,7 @@
 			</tbody>
 		</table>
 	</div>
+	</div><!-- end main -->
 </div>
 
 <!-- Modal Body -->

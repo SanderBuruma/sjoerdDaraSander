@@ -72,6 +72,13 @@ input.form-control:focus{
 	font-size: 17px;
 }
 
+.vertical-row {
+	float: left;
+	height: 100%;
+	width: 1px;
+	background-color: grey;
+}
+
 .search-button{
 	background-color: white;
 	color: black;

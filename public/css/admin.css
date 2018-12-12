@@ -17,3 +17,19 @@ button:active {
 	background-color: white;
 	border-radius: 1rem;
 }
+
+
+.main {
+	border-radius: 1rem;
+	background-color: #fffd;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
+	/* padding: 1em 1rem; */
+	padding: 10px 10px;
+}
+
+.card {
+	border-radius: 1rem;
+	box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
+	/* opacity: 0.6; */
+	/* background-color: lightgrey; */
+}
