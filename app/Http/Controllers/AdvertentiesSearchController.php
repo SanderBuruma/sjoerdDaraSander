@@ -36,17 +36,28 @@ class AdvertentiesSearchController extends Controller
 		}
 		// return $queryWhereArr;
 
+		$expl = explode(".",$request->search_sort_by);
+		$sortBy = $expl[0].".".$expl[1];
 		$offset = 6;
-		$advertenties = Advertentie::
-				where('price', '<', 1e9)
-			->join('subcategories', 'advertenties.subcategory_id', '=', 'subcategories.id')
-			->join('users', 'advertenties.user_id', '=', 'users.id')
-			->select('advertenties.*', 'subcategories.category_id', 'users.city', 'users.latitude', 'users.longitude')
-			->where($queryWhereArr)
-			// ->limit($offset)
-			// ->offset(($request->search_paginate_nr-1)*$offset)
-			->orderByDesc('advertenties.created_at')
-			->get();
+		if ($expl[2] == "desc") {
+			$advertenties = Advertentie::
+					where('price', '<', 1e9)
+				->join('subcategories', 'advertenties.subcategory_id', '=', 'subcategories.id')
+				->join('users', 'advertenties.user_id', '=', 'users.id')
+				->select('advertenties.*', 'subcategories.category_id', 'users.city', 'users.latitude', 'users.longitude')
+				->where($queryWhereArr)
+				->orderByDesc($sortBy)
+				->get();
+		} else {
+			$advertenties = Advertentie::
+					where('price', '<', 1e9)
+				->join('subcategories', 'advertenties.subcategory_id', '=', 'subcategories.id')
+				->join('users', 'advertenties.user_id', '=', 'users.id')
+				->select('advertenties.*', 'subcategories.category_id', 'users.city', 'users.latitude', 'users.longitude')
+				->where($queryWhereArr)
+				->orderBy($sortBy)
+				->get();
+		}
 		
 		//calculate distances and filter out far away advertenties (if necessary)
 		$tempArr = [];
@@ -61,7 +72,10 @@ class AdvertentiesSearchController extends Controller
 	
 				if (!$advertentie->latitude) {continue;}
 	
-				$advertentie->distance = (($advertentie->latitude - $user->latitude)**2)+((($advertentie->longitude - $user->longitude)/cos($advertentie->latitude/57.295))**2)**.5 / .009;
+				$advertentie->distance = 
+				 (($advertentie ->latitude  - $user->latitude)																			**2)
+				+((($advertentie->longitude - $user->longitude)/cos($advertentie->latitude/57.295))	**2)
+				**.5 / .009;
 				if ($advertentie->distance < $request->search_distance) {
 					$tempArr[] = $advertentie;
 	

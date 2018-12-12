@@ -28,11 +28,11 @@ input.form-control:focus{
 
 .advertentie {
 	margin: 1rem 4px;
-	background-color: white;
 	padding: 10px;
-	width: 400px;
+	width: 300px;
 	border-radius: 6px;
 	font-size: 1.2em;
+	background-color: rgb(209, 236, 217);
 }
 .advertentie > a {
 	color: black;
@@ -48,6 +48,10 @@ input.form-control:focus{
 .advertentie > a > .price {
 	background-color: var(--main-color-dark);
 	color: white;
+}
+.advertentie > img {
+	width: 100% !important;
+	height: 100%;
 }
 
 .container2{
@@ -107,6 +111,7 @@ input.form-control:focus{
 	width: 94px;
 	display: flex;
 	flex-direction: row;
+	background-color:rgba(255,0,0,0.0);
 }
 
 .paginate-bar > * {
@@ -121,5 +126,29 @@ input.form-control:focus{
 }
 
 #map {
-	height: 600px;
+	height: 400px;
+	width: 66%;
+	margin-left: 17%;
+	margin-right: 17%;
 }
+
+#paginate-left{
+	color:white;
+}
+
+#paginate-number{
+	color: white;
+}
+
+#paginate-right{
+	color: white;
+}
+
+#paginate-left-bot{
+	color: white;
+}
+
+#paginate-right-bot{
+	color: white;
+}
+

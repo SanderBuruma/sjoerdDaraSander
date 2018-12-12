@@ -8,26 +8,40 @@
 
 @section('content')
 
-	<div class="container2 col-md-8 offset-md-2">
-		<div class="input-group">
-			<input type="text" class="form-control search-bar" aria-label="Text input with dropdown button"  placeholder="Zoeken in Nervamarkt..." id="home-search-text">
-				<div class="input-group-append">
-					
-				<select id="home-search-select" class="category">
-						@foreach($categories as $category)
-							<option value="{{$category->id}}">{{$category->name}}</option>
-						@endforeach
-				</select><div class="vertical-row"></div>
-				</div>
-				<select id="home-search-distance" class="category">
-					<option value="0">Geen Max km</option>
-					@foreach([0.1,0.2,0.5,1,1.5,2,3,5,10,15,20,30,50] as $distance)
-						<option value="{{$distance}}">Max {{$distance}} km</option>
-					@endforeach
-				</select>
-			<button class="btn btn-outline-secondary search-button" type="button" id="home-search-button">Zoek!</button>
-		</div>
+<div class="container2 col-md-8 offset-md-2">
+	<div class="input-group">
+		<input type="text" class="form-control search-bar" aria-label="Text input with dropdown button"  placeholder="Zoeken in Nervamarkt..." id="home-search-text">
+			<div class="input-group-append">
+				
+			<select id="home-search-select" class="category">
+				@foreach($categories as $category)
+					<option value="{{$category->id}}">{{$category->name}}</option>
+				@endforeach
+			</select><div class="vertical-row"></div>
+			</div>
+			<select id="home-search-distance" class="category">
+				<option value="0">Geen Max km</option>
+				@foreach([0.1,0.2,0.5,1,1.5,2,3,5,10,15,20,30,50] as $distance)
+					<option value="{{$distance}}">Max {{$distance}} km</option>
+				@endforeach
+			</select>
+		<button class="btn btn-outline-secondary search-button" type="button" id="home-search-button">Zoek!</button>
 	</div>
+	<!-- input groep 2, waar opties zoals sorteer op prijs, afstand, etc word gedaan -->
+	<div class="input-group-2">
+	</div>
+</div>
+
+<div class="container2 col-md-8 offset-md-2">
+	<select id="select-sort-by" class="form-control">
+		<option value="advertenties.price.asc">⬆ Prijs</option>
+		<option value="advertenties.price.desc">⬇ Prijs</option>
+		<!-- <option value="advertenties.distance.asc">⬆ Afstand</option>
+		<option value="advertenties.distance.desc">⬇ Afstand</option> -->
+		<option value="advertenties.created_at.asc">⬆ Datum</option>
+		<option value="advertenties.created_at.desc">⬇ Datum</option>
+	</select>
+</div>
 	
 
 
@@ -133,6 +147,7 @@ function searchQuery(){
 			search_distance: jQuery('#home-search-distance').val()||0,
 			user_lat: userLat||null,
 			user_lng: userLng||null, 
+			search_sort_by: jQuery('#select-sort-by').val(),
 		},
 		success: function(result){
 			console.log(result);
@@ -184,10 +199,12 @@ function refreshResults(searchResults){
 				<p class="date">${date}<br>
 					Stad: ${i.city}<br>`;
 		
-		if (i.distance != null) {insideStr += `
-					${i.distance.toFixed(2)} km afstand</p>`};
-		insideStr += `
-				<img src="/images/${i.photo1||"empty-box.jpeg"}" width= "380" height= "300">
+		if (i.distance > 0) {
+			insideStr += `
+					${i.distance.toFixed(2)} km afstand</p>`
+				};
+		insideStr += `</p>
+				<img src="/images/${i.photo1||"empty-box.jpeg"}" width="100%" height="200px">
 				<p class="description">${i.description.substr(1, 100)}...</p>
 			</a></div>
 		`;
@@ -214,7 +231,7 @@ function initMap() {
   var myLatLng = {lat: 53.2152292, lng: 6.5669632};
 
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 11,
+    zoom: 12,
     center: myLatLng
   });
 
@@ -229,7 +246,7 @@ function initMap() {
 function mapMarkersRefresh(advertenties) {
 	let myLatLng = {lat: 53.21252292, lng: 6.5669632};
 	var map = new google.maps.Map(document.getElementById('map'), {
-		zoom: 11,
+		zoom: 12,
 		center: myLatLng
 	});
 
