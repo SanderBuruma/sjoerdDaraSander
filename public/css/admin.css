@@ -16,15 +16,15 @@ button:active {
 #main {
 	background-color: white;
 	border-radius: 1rem;
+	background-color: rgb(180, 218, 236);
 }
 
 
 .main {
 	border-radius: 1rem;
-	background-color: #fffd;
+	background-color: rgba(236, 180, 192, 0.401);
 	box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
-	/* padding: 1em 1rem; */
-	padding: 10px 10px;
+	padding: 1rem 1rem;
 }
 
 .card {
@@ -32,4 +32,7 @@ button:active {
 	box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
 	/* opacity: 0.6; */
 	/* background-color: lightgrey; */
+	background-color: rgb(180, 218, 236);
 }
+
+/* 0.401 */

@@ -131,7 +131,11 @@ class AdvertentieController extends Controller
      */
     public function destroy($slug)
     {
-        //
+        $advertentie = Advertentie::where("slug",$slug)->first();
+        if ($advertentie->user_id == auth()->id()) {
+            $advertentie->delete();
+        }
+        return $advertentie;
     }
 
     public function ajaxIndex(Request $request)

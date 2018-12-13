@@ -31,20 +31,14 @@
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="advertentieModalCenterTitle">Edit Advertentie</h5>
+				<h5 class="modal-title" id="advertentieModalCenterTitle">Delete | </h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<div class="modal-body">
-				{{ Form::text('name', null, ["class"=>'form-control form-control-lg', 'id'=>'modal-name']) }}
-				<hr>
-				<select name="roles[]" id="select-roles" multiple="multiple" style="width: 100%;">
-				</select>
-			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
-				<button type="button" class="btn btn-dark" data-dismiss="modal" id="delete-advertentie" onclick=modalDelete()>Save</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Terug</button>
+				<button type="button" class="btn btn-danger" data-dismiss="modal" id="delete-advertentie" onclick=modalDelete()>Delete</button>
 			</div>
 		</div>
 	</div>
@@ -84,23 +78,24 @@ $(document).ready(function(){
 function clickDelete (e) {
 	for (let i of advertenties){
 		if (i.slug == e){
+			console.log(i.slug);
 			$('#delete-advertentie')[0].dataset.slug = i.slug;
-			$('#modal-name')[0].value = i.title;
+			$('#advertentieModalCenterTitle')[0].innerHTML = `Delete: ${i.title}`;
 			return;
 		}
 	}
 }
 
 function modalDelete() {
-	let slug = $('#delete-advertentie')[0].data.slug;
+	let slug = $('#delete-advertentie')[0].dataset.slug;
 	$.ajax({
 		url: `/advertentie/${slug}`,
 		method: 'DELETE',
-		data: {
-			slug: $('#paginate-number').val(),
-		},
+		// data: {
+		// 	slug: $('#paginate-number').val(),
+		// },
 		success: function(result){
-			console.log(result);
+			refreshIndex();
 		},
 	})
 }
@@ -125,7 +120,7 @@ function refreshIndex () {
 						<td><a href="/advertentie/${advertentie.slug}">${advertentie.title.substr(0,25)}</a></td>
 						<td>€${advertentie.price/1e2},-</td>
 						<td>
-							<button type="button" class="modal-button" data-toggle="modal" data-target="#advertentieModalCenter" data-advertentie-slug="${advertentie.slug}" onclick=clickDelete(${advertentie.slug})>
+							<button type="button" class="modal-button" data-toggle="modal" data-target="#advertentieModalCenter" data-advertentie-slug="${advertentie.slug}" onclick=clickDelete("${advertentie.slug}")>
 								<i class="fas fa-trash-alt" style="color:red;"></i>
 							</button>
 						</td>
