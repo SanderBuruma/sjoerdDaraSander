@@ -61,7 +61,13 @@ class AdvertentiesSearchController extends Controller
 						->get();
 				}
 			} else {
-			
+				$advertenties = Advertentie::
+						where('price', '<', 1e9)
+					->join('subcategories', 'advertenties.subcategory_id', '=', 'subcategories.id')
+					->join('users', 'advertenties.user_id', '=', 'users.id')
+					->select('advertenties.*', 'subcategories.category_id', 'users.city', 'users.latitude', 'users.longitude')
+					->where($queryWhereArr)
+					->get();
 			}
 		
 		//calculate distances and filter out far away advertenties (if necessary)
@@ -85,6 +91,15 @@ class AdvertentiesSearchController extends Controller
 					$tempArr[] = $advertentie;
 	
 				}
+			}
+		}
+
+		//sort by distance
+		if ($expl[1] == "distance") {
+			if ($expl[2] == "desc") {
+				$advertenties->sortByDesc("distance");
+			} else {
+				$advertenties->sortBy("distance");
 			}
 		}
 

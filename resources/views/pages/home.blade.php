@@ -28,18 +28,15 @@
 
 		<button class="btn btn-outline-secondary search-button" type="button" id="home-search-button">Zoek!</button>
 	</div>
-	<!-- input groep 2, waar opties zoals sorteer op prijs, afstand, etc word gedaan -->
-	<div class="input-group-2">
-	</div>
 </div>
 
 
 <div class="container2 col-md-8 offset-md-2">
-	<select id="select-sort-by" class="form-control">
+	<select id="select-sort-by" class="form-control prijs-styling">
 		<option value="advertenties.price.asc">⬆ Prijs</option>
 		<option value="advertenties.price.desc">⬇ Prijs</option>
-		<!-- <option value="advertenties.distance.asc">⬆ Afstand</option>
-		<option value="advertenties.distance.desc">⬇ Afstand</option> -->
+		<option value="advertenties.distance.asc">⬆ Afstand</option>
+		<option value="advertenties.distance.desc">⬇ Afstand</option>
 		<option value="advertenties.created_at.asc">⬆ Datum</option>
 		<option value="advertenties.created_at.desc">⬇ Datum</option>
 	</select>
@@ -59,7 +56,9 @@
 	</div>
 </div></div></div>
 
+<div id="main2">
 <div id="map"></div>
+</div>
 
 @endsection
 
@@ -237,11 +236,26 @@ function initMap() {
     center: myLatLng
   });
 
-  var marker = new google.maps.Marker({
-    position: myLatLng,
-    map: map,
-    title: 'Hello World!'
-  });
+  // var marker = new google.maps.Marker({
+  //   position: myLatLng,
+  //   map: map,
+  //   title: 'Hello World!'
+  // });
+
+	// {{-- infowindow test start --}}
+  // var infowindow = new google.maps.InfoWindow({
+	// 	content: contentString
+	// });
+
+	// var marker = new google.maps.Marker({
+	// 	position: uluru,
+	// 	map: map,
+	// 	title: 'Uluru (Ayers Rock)'
+	// });
+	// marker.addListener('click', function() {
+	// 	infowindow.open(map, marker);
+	// });
+	// {{-- infowindow test eind --}}
 
 }
 
@@ -253,17 +267,38 @@ function mapMarkersRefresh(advertenties) {
 	});
 
 	var markers = [];
+	let infoWindow = []; let count = 0;
 	for (let i of advertenties) {
-		markers.push(
-		new google.maps.Marker({
+
+		count++;
+		infoWindow[count] = new google.maps.InfoWindow({
+			content: 
+			`<div id="content">`+
+			`<h1 id="firstHeading" class="firstHeading">${i.title}</h1>`+
+			`<div id="bodyContent">`+
+			`<p>${i.description}</p>`+
+			`<p>Attribution: Uluru, <a href="/advertentie/${i.slug}">`+
+			`${i.title}</a><br> `+
+			`${i.created_at}).</p>`+
+			`<img src="/images/${i.photo1||"empty-box.jpeg"}" width="100%" height="200px">`+
+			`</div>`+
+			`</div>`,
+		});
+		
+		var marker = new google.maps.Marker({
 			position: {lat: parseFloat(i.latitude), lng: parseFloat(i.longitude)},
 			map: map,
-			title: i.title
-			
-			//hier wil ik eigelijk nog de naam van de gebruiker die vertoont wordt als je op de marker klikt. 
-		}))
+			title: i.title,
+		});
+		marker.addListener('click', function() {
+			infoWindow[count].open(map, marker);
+		});
+		markers.push(marker );
+		
 	}
 }
+
+
   
 </script>
 

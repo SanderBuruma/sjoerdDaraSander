@@ -59,6 +59,8 @@ class AdvertentieController extends Controller
             'subcategory_id'    => 'exists:subcategories,id',
         ));
 
+        
+
         $advertentie = new Advertentie;
         $advertentie->title             = $request->title;
         $advertentie->description       = $request->description;
