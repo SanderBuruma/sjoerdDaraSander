@@ -16,13 +16,13 @@ button:active {
 #main {
 	background-color: white;
 	border-radius: 1rem;
-	background-color: rgb(180, 218, 236);
+	background-color: rgb(233, 121, 121);
 }
 
 
 .main {
 	border-radius: 1rem;
-	background-color: rgba(236, 180, 192, 0.401);
+	background-color: rgba(231, 157, 173, 0.801);
 	box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
 	padding: 1rem 1rem;
 }
@@ -32,7 +32,41 @@ button:active {
 	box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
 	/* opacity: 0.6; */
 	/* background-color: lightgrey; */
-	background-color: rgb(180, 218, 236);
 }
 
-/* 0.401 */
+.line-div{
+	height: 10px;
+	width: 10px;
+	display: hidden;
+}
+
+
+.paginate-bar {
+	background-color: white;
+	border-radius: 1rem;
+	margin: auto;
+	width: 94px;
+	display: flex;
+	flex-direction: row;
+	background-color:rgba(255,0,0,0.0);
+}
+
+.paginate-bar > * {
+	background-color: unset; 
+	border: unset;
+	font-size: 30px;
+}
+
+#paginate-number {
+	width: 44px;
+	text-align: center;
+	color: white;
+}
+
+#paginate-left{
+	color: white;
+}
+
+#paginate-right{
+	color: white;
+}

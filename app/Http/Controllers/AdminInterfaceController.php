@@ -21,9 +21,14 @@ class AdminInterfaceController extends Controller
         return view('admin.index')->withUsers($users)->withRoles($roles);
     }
 
-    public function indexAjax()
+    public function indexAjax(Request $request)
     {
-        $users = User::all();
+        $offset = 6;
+        $users = User::
+            orderByDesc('created_at')
+            ->limit($offset)
+            ->offset($offset*($request->page-1))
+            ->get();
         foreach ($users as $user) {
             $user->roles;
         }

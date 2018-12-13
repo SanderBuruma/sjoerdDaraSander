@@ -6,9 +6,6 @@
 	
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active">
-				<a class="nav-link" href="{{ route('home') }}">Home<span class="sr-only">(current)</span></a>
-			</li>
 			@guest @else 
 			<li class="nav-item">
 				<a class="nav-link" href="{{ route('message.index') }}">📨 Berichten</a>
@@ -17,11 +14,11 @@
 				<a class="nav-link" href="{{ route('advertentie.create') }}">📋 Advertentie Plaatsen</a>
 			</li>
 			@endguest
-			<li class="nav-item dropdown">
+			<li class="nav-item dropdown dropdown-styling">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<i class="fas fa-user nav-style"></i>@guest Gast @else {{ Auth::user()->name }} @endguest
 				</a>
-				<div class="dropdown-menu menu" aria-labelledby="navbarDropdown">
+				<div class="dropdown-menu menu dropdown-styling" aria-labelledby="navbarDropdown">
 					@guest
 
 						<a class="dropdown-item" href="{{ route('login')}}"><i class="fas fa-sign-in-alt"></i> Log In!</a>

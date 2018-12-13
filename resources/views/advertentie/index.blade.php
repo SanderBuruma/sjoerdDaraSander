@@ -11,7 +11,7 @@
 	<div class="paginate-bar">
 		<a id="paginate-left" href="#">◀</a><input type="text" id="paginate-number" value="1"><a id="paginate-right" href="#">▶</a>
 	</div>
-	<div class="card" id="main">
+	<div class="card" id="main"><div class="line-div"></div>
 		<table class="table">
 			<thead>
 				<th>Geplaatst</th>

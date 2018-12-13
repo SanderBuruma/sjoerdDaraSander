@@ -39,25 +39,30 @@ class AdvertentiesSearchController extends Controller
 		$expl = explode(".",$request->search_sort_by);
 		$sortBy = $expl[0].".".$expl[1];
 		$offset = 6;
-		if ($expl[2] == "desc") {
-			$advertenties = Advertentie::
-					where('price', '<', 1e9)
-				->join('subcategories', 'advertenties.subcategory_id', '=', 'subcategories.id')
-				->join('users', 'advertenties.user_id', '=', 'users.id')
-				->select('advertenties.*', 'subcategories.category_id', 'users.city', 'users.latitude', 'users.longitude')
-				->where($queryWhereArr)
-				->orderByDesc($sortBy)
-				->get();
-		} else {
-			$advertenties = Advertentie::
-					where('price', '<', 1e9)
-				->join('subcategories', 'advertenties.subcategory_id', '=', 'subcategories.id')
-				->join('users', 'advertenties.user_id', '=', 'users.id')
-				->select('advertenties.*', 'subcategories.category_id', 'users.city', 'users.latitude', 'users.longitude')
-				->where($queryWhereArr)
-				->orderBy($sortBy)
-				->get();
-		}
+
+			if ($expl[1] == "price" || $expl[1] == "created_at") {
+				if ($expl[2] == "desc") {
+					$advertenties = Advertentie::
+							where('price', '<', 1e9)
+						->join('subcategories', 'advertenties.subcategory_id', '=', 'subcategories.id')
+						->join('users', 'advertenties.user_id', '=', 'users.id')
+						->select('advertenties.*', 'subcategories.category_id', 'users.city', 'users.latitude', 'users.longitude')
+						->where($queryWhereArr)
+						->orderByDesc($sortBy)
+						->get();
+				} else {
+					$advertenties = Advertentie::
+							where('price', '<', 1e9)
+						->join('subcategories', 'advertenties.subcategory_id', '=', 'subcategories.id')
+						->join('users', 'advertenties.user_id', '=', 'users.id')
+						->select('advertenties.*', 'subcategories.category_id', 'users.city', 'users.latitude', 'users.longitude')
+						->where($queryWhereArr)
+						->orderBy($sortBy)
+						->get();
+				}
+			} else {
+			
+			}
 		
 		//calculate distances and filter out far away advertenties (if necessary)
 		$tempArr = [];
