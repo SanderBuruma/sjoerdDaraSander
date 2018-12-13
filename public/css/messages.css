@@ -37,15 +37,15 @@ button:active {
 #paginate-number {
 	width: 48px;
 	text-align: center;
-	color: white;
+	color: black;
 }
 
 #paginate-left{
-	color: white;
+	color: black;
 }
 
 #paginate-right{
-	color: white;
+	color: black;
 }
 
 

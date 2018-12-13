@@ -91,9 +91,6 @@ function modalDelete() {
 	$.ajax({
 		url: `/advertentie/${slug}`,
 		method: 'DELETE',
-		// data: {
-		// 	slug: $('#paginate-number').val(),
-		// },
 		success: function(result){
 			refreshIndex();
 		},

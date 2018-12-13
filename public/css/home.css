@@ -24,6 +24,17 @@ input.form-control:focus{
 	flex-wrap: wrap;
 	display: flex;
 	justify-content: center;
+	background-color: rgba(180, 180, 236, 0.401);
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
+	border-radius: 1rem;
+}
+
+.main {
+	/* border-radius: 1rem;
+	background-color: rgba(180, 180, 236, 0.401);
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.7); */
+	/* padding: 1rem 1rem; */
+	/* padding: 10px 10px; */
 }
 
 .advertentie {
@@ -49,7 +60,7 @@ input.form-control:focus{
 .advertentie > a > .price {
 	/* background-color: var(--main-color-dark); */
 	background-color: rgb(154, 209, 235);
-	color: white;
+	color: black;
 }
 .advertentie > img {
 	width: 100% !important;
@@ -125,7 +136,7 @@ input.form-control:focus{
 #paginate-number {
 	width: 44px;
 	text-align: center;
-	color: white;
+	color: black;
 }
 
 #map {
@@ -136,18 +147,18 @@ input.form-control:focus{
 }
 
 #paginate-left{
-	color: white;
+	color: black;
 }
 
 #paginate-right{
-	color: white;
+	color: black;
 }
 
 #paginate-left-bot{
-	color: white;
+	color: black;
 }
 
 #paginate-right-bot{
-	color: white;
+	color: black;
 }
 

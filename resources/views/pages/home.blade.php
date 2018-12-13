@@ -33,6 +33,7 @@
 	</div>
 </div>
 
+
 <div class="container2 col-md-8 offset-md-2">
 	<select id="select-sort-by" class="form-control">
 		<option value="advertenties.price.asc">⬆ Prijs</option>
@@ -43,20 +44,20 @@
 		<option value="advertenties.created_at.desc">⬇ Datum</option>
 	</select>
 </div>
-	
 
 
+<div class ="main col-md-8 offset-md-2">
 <div class= "row"><div class="col-md-8 offset-md-2 results">
 	<div class="paginate-bar">
 		<a id="paginate-left" href="#">◀</a><input type="text" id="paginate-number" width="20" value="1"><a id="paginate-right" href="#">▶</a>
 	</div>
-	<div class="inside flex-row">
+	<div class="inside flex-row col-md-8 offset-md-2">
 		
 	</div>
 	<div class="paginate-bar">
 		<a id="paginate-left-bot" href="#">◀</a><a id="paginate-right-bot" href="#" style="margin-left: auto;">▶</a>
 	</div>
-</div></div>
+</div></div></div>
 
 <div id="map"></div>
 

@@ -13,6 +13,9 @@
 	<div class="col-md-6 offset-md-2 main"><div class="card">
 	<div class="card-header">
 		<h1>{{$advertentie->title}}</h1>
+		@if($user->hasRole($user,"3"))
+		<p style="text-align: center; color: red;">Admin - Delete Advertentie: <button type="button" onclick=deleteAdvertentie()><i class="fas fa-trash-alt" style="color:red;"></i></button></p>
+		@endif
 		<table class="table">
 			<tbody>
 				<tr>
@@ -110,5 +113,27 @@
 
 
 @section('footer')
+@if($user->hasRole($user,"3"))
+<script>
 
+jQuery(document).ready(function(){
+	$.ajaxSetup({
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+		}
+	});
+})
+let slug = "{{$advertentie->slug}}";
+function deleteAdvertentie() {
+	$.ajax({
+		url: `/advertentie/${slug}`,
+		method: 'DELETE',
+		success: function(result){
+			window.location.replace(`/home`);
+		},
+	})
+}
+
+</script>
+@endif
 @stop

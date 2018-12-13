@@ -94,10 +94,12 @@ class AdvertentieController extends Controller
         $advertentie = Advertentie::where('slug', '=', $slug)->first();
         $subcategory = Subcategory::find($advertentie->subcategory_id);
         $category = Category::find($subcategory->category_id);
+        $user = User::find(auth()->id());
         return view('advertentie.show')->
             withAdvertentie($advertentie)->
             withSubcategory($subcategory)->
-            withCategory($category);
+            withCategory($category)->
+            withUser($user);
     }
 
     /**
@@ -131,11 +133,14 @@ class AdvertentieController extends Controller
      */
     public function destroy($slug)
     {
+        $user = User::find(auth()->id());
         $advertentie = Advertentie::where("slug",$slug)->first();
-        if ($advertentie->user_id == auth()->id()) {
+        if ($advertentie->user_id == $user->id || $user->hasRole($user,"3")) {
             $advertentie->delete();
+            Session::flash('success','Advertentie verwijderd!');
+            return "advertentie deleted";
         }
-        return $advertentie;
+        return "advertentie not deleted, user is not admin or not owner of advertentie";
     }
 
     public function ajaxIndex(Request $request)

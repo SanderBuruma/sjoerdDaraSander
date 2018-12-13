@@ -18,25 +18,25 @@
 #paginate-number {
 	width: 44px;
 	text-align: center;
-	color: white;
+	color: black;
 }
 
 
 
 #paginate-left{
-	color: white;
+	color: black;
 }
 
 #paginate-right{
-	color: white;
+	color: black;
 }
 
 #paginate-left-bot{
-	color: white;
+	color: black;
 }
 
 #paginate-right-bot{
-	color: white;
+	color: black;
 }
 
 .main {

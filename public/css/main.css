@@ -70,12 +70,14 @@ button {
 	color: var(--main-color-dark) !important;
 }
 
-.dropdown-item:focus, .dropdown-item:hover {
+/* .dropdown-item:focus, .dropdown-item:hover {
 	background-color: var(--main-color-light) !important;
 }
 .dropdown-menu {
 	background-color: var(--main-color-dark) !important;
-}
+} */
+
+/* overgezet naar nav.css */
 
 .search {
 	color: white !important;

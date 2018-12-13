@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="{{ asset('css/nav.css') }}">
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<img src="{{ asset("img/logo3.png") }}" height="32" alt="blue cube svg icon" /><a class="navbar-brand title" href="{{ route('home') }}">Nervamarkt</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,7 +16,7 @@
 				<a class="nav-link" href="{{ route('advertentie.create') }}">📋 Advertentie Plaatsen</a>
 			</li>
 			@endguest
-			<li class="nav-item dropdown dropdown-styling">
+			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<i class="fas fa-user nav-style"></i>@guest Gast @else {{ Auth::user()->name }} @endguest
 				</a>
