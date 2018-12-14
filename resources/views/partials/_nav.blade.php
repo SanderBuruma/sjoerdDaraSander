@@ -13,6 +13,9 @@
 				<a class="nav-link" href="{{ route('message.index') }}">📨 Berichten</a>
 			</li>
 			<li class="nav-item">
+				<a class="nav-link" href="{{ route('message.sent.index') }}">📨 Verzonden Berichten</a>
+			</li>
+			<li class="nav-item">
 				<a class="nav-link" href="{{ route('advertentie.create') }}">📋 Advertentie Plaatsen</a>
 			</li>
 			@endguest

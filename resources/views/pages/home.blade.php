@@ -9,17 +9,23 @@
 @section('content')
 
 <div class="container2 col-md-8 offset-md-2">
+		
 	<div class="input-group">
+
 		<input type="text" class="form-control search-bar" aria-label="Text input with dropdown button"  placeholder="Zoeken in Nervamarkt..." id="home-search-text">
+		<div class="search-icon"><i class="fas fa-search icon"></i></div>
+		
+		
+
 			<div class="input-group-append">
 				
-			<select id="home-search-select" class="category">
+			<select id="home-search-select" class="category form-control">
 				@foreach($categories as $category)
 					<option value="{{$category->id}}">{{$category->name}}</option>
 				@endforeach
 			</select><div class="vertical-row"></div>
 			</div>
-			<select id="home-search-distance" class="category">
+			<select id="home-search-distance" class="category form-control">
 				<option value="0">Geen Max km</option>
 				@foreach([0.1,0.2,0.5,1,1.5,2,3,5,10,15,20,30,50] as $distance)
 					<option value="{{$distance}}">Max {{$distance}} km</option>
@@ -32,14 +38,17 @@
 
 
 <div class="container2 col-md-8 offset-md-2">
-	<select id="select-sort-by" class="form-control prijs-styling">
-		<option value="advertenties.price.asc">⬆ Prijs</option>
-		<option value="advertenties.price.desc">⬇ Prijs</option>
-		<option value="advertenties.distance.asc">⬆ Afstand</option>
-		<option value="advertenties.distance.desc">⬇ Afstand</option>
-		<option value="advertenties.created_at.asc">⬆ Datum</option>
-		<option value="advertenties.created_at.desc">⬇ Datum</option>
-	</select>
+	<div class="row">
+		<select id="select-sort-by" class="form-control prijs-styling col-md-6">
+			<option value="advertenties.price.asc">⬆ Prijs</option>
+			<option value="advertenties.price.desc">⬇ Prijs</option>
+			<option value="advertenties.distance.asc">⬆ Afstand</option>
+			<option value="advertenties.distance.desc">⬇ Afstand</option>
+			<option value="advertenties.created_at.asc">⬆ Datum</option>
+			<option value="advertenties.created_at.desc">⬇ Datum</option>
+		</select>
+		<input type="text" placeholder="Gebruiker" id="filter-user" class="form-control col-md-6 search-bar">{{-- om op gebruiker te filteren --}}
+	</div>
 </div>
 
 
@@ -57,8 +66,9 @@
 </div></div></div>
 
 <div id="main2">
-<div id="map"></div>
+	<div id="map"></div>
 </div>
+
 
 @endsection
 
@@ -119,7 +129,13 @@ jQuery(document).ready(function(){
 	$('#home-search-text')[0].onkeydown = function(e) {
 		if (e.keyCode == 13){
 			let pagNr = $('#paginate-number');
-			pagNr.val(1);
+			e.preventDefault();
+			searchQuery();
+		}
+	};
+	$('#filter-user')[0].onkeydown = function(e) {
+		if (e.keyCode == 13){
+			let pagNr = $('#paginate-number');
 			e.preventDefault();
 			searchQuery();
 		}
@@ -146,9 +162,10 @@ function searchQuery(){
 			search_select: jQuery('#home-search-select').val(),
 			search_paginate_nr: jQuery('#paginate-number').val(),
 			search_distance: jQuery('#home-search-distance').val()||0,
-			user_lat: userLat||null,
-			user_lng: userLng||null, 
+			user_lat: userLat||6.566,
+			user_lng: userLng||53.212, 
 			search_sort_by: jQuery('#select-sort-by').val(),
+			search_filter_user: jQuery('#filter-user').val(),
 		},
 		success: function(result){
 			console.log(result);
@@ -202,7 +219,7 @@ function refreshResults(searchResults){
 		
 		if (i.distance > 0) {
 			insideStr += `
-					${i.distance.toFixed(2)} km afstand</p>`
+					${i.distance.toFixed(1)} km afstand</p>`
 				};
 		insideStr += `</p>
 				<img src="/images/${i.photo1||"empty-box.jpeg"}" width="100%" height="200px">
@@ -229,7 +246,7 @@ function refreshResults(searchResults){
 
 
 function initMap() {
-  var myLatLng = {lat: 53.2152292, lng: 6.5669632};
+  var myLatLng = {lat: userLat||53.2152292, lng: userLng||6.5669632};
 
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
@@ -260,7 +277,7 @@ function initMap() {
 }
 
 function mapMarkersRefresh(advertenties) {
-	let myLatLng = {lat: 53.21252292, lng: 6.5669632};
+	let myLatLng = {lat: userLat||53.2152292, lng: userLng||6.5669632};
 	var map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 12,
 		center: myLatLng
@@ -273,14 +290,15 @@ function mapMarkersRefresh(advertenties) {
 		count++;
 		infoWindow[count] = new google.maps.InfoWindow({
 			content: 
-			`<div id="content">`+
-			`<h1 id="firstHeading" class="firstHeading">${i.title}</h1>`+
-			`<div id="bodyContent">`+
+			`<div class="infoWindow">`+
+			`<h1 class="infoWindowHeader"><a href="/advertentie/${i.slug}">${i.title}</a></h1>`+
+			`<div class="infoWindowBody">`+
+			`<h2>€${i.price/100},-</h2>`+
 			`<p>${i.description}</p>`+
-			`<p>Attribution: Uluru, <a href="/advertentie/${i.slug}">`+
-			`${i.title}</a><br> `+
+			`<p><a href="/advertentie/${i.slug}">`+
+			`${i.title}</a><br>`+
 			`${i.created_at}).</p>`+
-			`<img src="/images/${i.photo1||"empty-box.jpeg"}" width="100%" height="200px">`+
+			`<img src="/images/${i.photo1||"empty-box.jpeg"}" width="100%">`+
 			`</div>`+
 			`</div>`,
 		});
@@ -290,10 +308,14 @@ function mapMarkersRefresh(advertenties) {
 			map: map,
 			title: i.title,
 		});
-		marker.addListener('click', function() {
-			infoWindow[count].open(map, marker);
-		});
-		markers.push(marker );
+		function clickFactory (count) {
+			return function () {
+				console.log(count);
+				infoWindow[count].open(map, markers[count-1]);
+			}
+		}
+		marker.addListener('click', clickFactory(count));
+		markers.push(marker);
 		
 	}
 }

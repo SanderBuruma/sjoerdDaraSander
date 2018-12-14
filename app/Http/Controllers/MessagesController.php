@@ -146,4 +146,23 @@ class MessagesController extends Controller
         // }
         return view('messages.createNamed')->withUser($user)->withAdvertentie($advertentie);
     }
+
+    public function messagesSent(Request $request) {
+        return view('messages.sent');
+    }
+
+    public function messagesSentAjax(Request $request) {
+        $offset = 12;
+        $messages = Message::
+              where('user_id',auth()->id())
+            ->orderBy('created_at', 'desc')
+			->limit($offset)
+			->offset(($request->page-1)*$offset)
+            ->get();
+        $returnMessages = [];
+        foreach($messages as $k => $v) {
+            $v->receiver_name = User::find($v->receiver_id)->name;
+        }
+        return $messages;
+    }
 }

@@ -38,6 +38,8 @@ Route::group(['middleware' => ['web','auth','verified', 'role:!4']], function(){
 		Route::post('message', ['as' => 'message.namedcreate', 'uses'=>'MessagesController@namedCreate']);
 		Route::post('message.store', ['as' => 'message.store', 'uses'=>'MessagesController@store']);
 		Route::get('/messageajax', 'MessagesController@indexAjax')->name('message.index.ajax');
+		Route::get('inbox/sent', 'MessagesController@messagesSent')->name('message.sent.index');
+		Route::get('inbox/sentAjax', 'MessagesController@messagesSentAjax')->name('message.sent.ajax');
 		// Route::get('message/{name}/create', 'MessagesController@namedCreate');
 		Route::resource('advertentie' , 'AdvertentieController', ['except' => ['show']]);
 		Route::post('advertentieAjax', 'AdvertentieController@ajaxIndex')->name('advertentie.ajax.index');
