@@ -16,7 +16,9 @@
 				<a class="nav-link" style="color:black;" href="{{ route('message.sent.index') }}"><i class="fas fa-envelope"></i> Verzonden Berichten</a>
 			</li>
 			<li class="nav-item">
+
 				<a class="nav-link" style="color:black;" href="{{ route('advertentie.create') }}">📋 Advertentie Plaatsen</a>
+				
 			</li>
 			@endguest
 			<li class="nav-item dropdown" >
@@ -35,7 +37,7 @@
 							<a class="dropdown-item" href="{{ route('admin.index') }}">🔧 Admin Interface</a>
 						@endif
 						<a class="dropdown-item" href="{{ route('user.index') }}"><i class="fas fa-user-edit"></i> User Interface</a>
-						<a class="dropdown-item" href="{{ route('advertentie.index') }}">📋 Mijn Advertenties</a>
+						{{-- <a class="dropdown-item" href="{{ route('advertentie.index') }}">📋 Mijn Advertenties</a> --}}
 						
 						<div class="dropdown-divider"></div>
 						<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

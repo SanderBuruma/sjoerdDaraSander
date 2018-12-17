@@ -72,14 +72,15 @@
 
 <div class ="col-md-8 offset-md-2">
 <div class= "row"><div class="col-md-8 offset-md-2 results">
+	<div class="inside flex-row col-md-8 offset-md-2">
+		<div class="row">
+			<div class="col-sm results">col-sm</div>
+			<div class="col-sm results">col-sm</div>
+			<div class="col-sm results">col-sm</div>
+		</div>
+	</div>
 	<div class="paginate-bar">
 		<a id="paginate-left" href="#">◀</a><input type="text" id="paginate-number" width="20" value="1"><a id="paginate-right" href="#">▶</a>
-	</div>
-	<div class="inside flex-row col-md-8 offset-md-2">
-		
-	</div>
-	<div class="paginate-bar">
-		<a id="paginate-left-bot" href="#">◀</a><a id="paginate-right-bot" href="#" style="margin-left: auto;">▶</a>
 	</div>
 </div></div></div>
 
@@ -129,17 +130,7 @@ jQuery(document).ready(function(){
 		pagNr.val((parseInt(pagNr.val())-1)||1);
 		searchQuery();
 	}
-	$('#paginate-left-bot')[0].onclick = function(){
-		let pagNr = $('#paginate-number');
-		pagNr.val((parseInt(pagNr.val())-1)||1);
-		searchQuery();
-	}
 	$('#paginate-right')[0].onclick = function(){
-		let pagNr = $('#paginate-number');
-		pagNr.val(parseInt(pagNr.val())+1);
-		searchQuery();
-	}
-	$('#paginate-right-bot')[0].onclick = function(){
 		let pagNr = $('#paginate-number');
 		pagNr.val(parseInt(pagNr.val())+1);
 		searchQuery();
@@ -231,7 +222,7 @@ function refreshResults(searchResults){
 		let title = i.title.substr(0,25)
 		if (title.length>25) {title+="...";}
 		let description = i.description.substr(0,100)
-		if (description.length>25) {description+="...";}
+		if (description.length>100) {description+="...";}
 		insideStr += `
 			<div class="advertentie" title="${i.description}"><a href="/advertentie/${i.slug}" target="_blank" rel="noopener noreferrer">
 				<h6 class="title" style="font-size: 2rem;">${i.title.substr(0, 25)}</h6>

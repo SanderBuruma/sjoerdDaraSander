@@ -180,20 +180,23 @@ input.form-control:focus{
 	display: flex;
 	flex-direction: row;
 	background-color:rgba(255,0,0,0.0);
-	position: sticky;
+	position: sticky;padding: 5px 0;
+	background-color: #aaa;
+	display: inline;
+	margin: 0 35% 0 35%;
 }
 
 .paginate-bar > * {
 	background-color: unset;
 	border: unset;
-	font-size: 30px;
-	width: 100%;
+	font-size: 20px;
+	padding: 10px;
 }
 
 #paginate-number {
 	width: 44px;
 	text-align: center;
-	color: black;
+	color: white;
 }
 
 #map {
@@ -207,19 +210,23 @@ input.form-control:focus{
 }
 
 #paginate-left{
-	color: black;
+	color: white;
 }
 
 #paginate-right{
-	color: black;
+	color: white;
 }
 
 #paginate-left-bot{
-	color: black;
+	color: white;
 }
 
 #paginate-right-bot{
-	color: black;
+	color: white;
+}
+
+.results {
+	margin-bottom: 1rem;
 }
 
 /* #main2 {
