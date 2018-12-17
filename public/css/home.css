@@ -1,12 +1,3 @@
-/* input.text:focus {
-	all: unset;
-	outline-width: 0 !important;
-}
-
-input.form-control:focus{
-	outline-width: 0;
-} */
-
 .input-text:focus{outline:none;}
 *,
 *:focus,
@@ -20,49 +11,21 @@ input.form-control:focus{
 	box-shadow: unset;
 }
 
-/* .inside {
+.inside {
 	flex-wrap: wrap;
 	display: flex;
-	
-	background-color: white;
-	box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
-	border-radius: 1rem;
-	width: 100%;
-} */
-
-@media(max-width: 600px){
-	.inside{
-		float: none;
-		width: 75%;
-	}
-	.inside{
-		margin-left: 6%;
-		margin-right: 6%;
-	}
+	justify-content: center;
 }
 
-/* .main {
-	border-radius: 1rem;
-	background-color: rgba(180, 180, 236, 0.401);
-	box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
-	padding: 1rem 1rem;
-	padding: 10px 10px;
-} */
-
 .advertentie {
-	margin: 1rem 1rem;
-	padding: 10px;
-	/* width: 300px; */
-	width: 200%;
-	margin-left:-50%;
-	margin-right:-50%;
-
-	border-radius: 6px;
-	font-size: 1.2em;
-	/* background-color: rgb(180, 218, 236); */
+	margin: 1rem 4px;
 	background-color: white;
-	border: 1px solid grey;
-	box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
+	width: 350px;
+	height: 150px !important;
+	border-radius: 10px;
+}
+.advertentie td{
+	padding: 0;
 }
 .advertentie > a {
 	color: black;
@@ -73,7 +36,10 @@ input.form-control:focus{
 	color: black;
 }
 .advertentie > a > * {
-	text-align: center;
+	text-align: right;
+}
+.advertentie td:nth-child(2) {
+	padding-right: 10px;
 }
 .advertentie > a > .price {
 	/* background-color: var(--main-color-dark); */
@@ -90,8 +56,29 @@ input.form-control:focus{
 	margin: auto;
 }
 
+.advertentie .image-div {
+	width: 150px;
+	background-color: #eee;
+}
+.advertentie .title {
+	font-weight: bold;
+	font-size: 19px;
+}
+
+.advertentie .advertentie-info {
+	display: relative;
+}
+
+.advertentie .visit-adv {
+	border-radius: 5rem;
+	background-color: darkgrey;
+	color: white;
+	padding: 4px;
+	font-size: 16px !important;
+	margin-left: 1rem;
+}
+
 .container2{
-	/* background-color: rgb(180, 218, 236); */
 	background-color: white;
 	padding: 0 0;
 	border: 1px solid grey;
@@ -100,9 +87,7 @@ input.form-control:focus{
 
 .search-bar{
 	border: none;
-	/* border-right: grey solid 1px; */
 	border-right: solid grey 1px;
-	/* background-color: rgb(180, 218, 236); */
 }
 
 @media screen and (max-width: 600px){
@@ -111,7 +96,6 @@ input.form-control:focus{
 	}
 	.search-icon{
 		display: inline-block;
-		/* border-bottom: grey solid 1px; */
 		width: 50px;
 		border-right: solid 1px grey;
 	}
@@ -136,7 +120,6 @@ input.form-control:focus{
 	cursor: pointer;
 	font-weight: bold;
 	font-size: 17px;
-	/* background-color: rgb(180, 218, 236); */
 }
 
 .vertical-row {
@@ -144,10 +127,6 @@ input.form-control:focus{
 	height: 100%;
 	width: 1px;
 	background-color: grey;
-}
-
-.prijs-styling{
-	/* background-color: rgb(180, 218, 236); */
 }
 
 .search-button{
@@ -160,7 +139,6 @@ input.form-control:focus{
 	font-weight: bold;
 	font-size: 17px;
 	border-radius: 0px 5px 5px 0px;
-	/* background-color: rgb(180, 218, 236); */
 }
 
 .filler1{
@@ -176,14 +154,13 @@ input.form-control:focus{
 	background-color: white;
 	border-radius: 1rem;
 	margin: auto;
-	width: 94px;
 	display: flex;
 	flex-direction: row;
 	background-color:rgba(255,0,0,0.0);
 	position: sticky;padding: 5px 0;
 	background-color: #aaa;
 	display: inline;
-	margin: 0 35% 0 35%;
+	margin: 0 40%;
 }
 
 .paginate-bar > * {
@@ -201,7 +178,6 @@ input.form-control:focus{
 
 #map {
 	height: 450px;
-	/* width: 98%; */
 	width: 60%;
 	margin-left: 20%;
 	margin-right: 20%;
@@ -224,25 +200,6 @@ input.form-control:focus{
 #paginate-right-bot{
 	color: white;
 }
-
-.results {
-	margin-bottom: 1rem;
-}
-
-/* #main2 {
-	border-radius: 1rem;
-	/* background-color: rgba(180, 180, 236, 0.401); */
-	/* background-color: white;
-	box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
-	height: 500px;
-	width: 66%;
-	margin-left: 17%;
-	margin-right: 17%;
-	padding-left: 2.5%;
-	padding-right: 1%;
-	padding-top: 25px;
-	padding-bottom: 25px;	 */
-/* } */
 
 .infoWindow{
 

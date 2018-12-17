@@ -49,40 +49,28 @@
 	</div>
 		
 		
-
-			
-
-		
 </div>
 
- {{-- <div class="container2 col-md-8 offset-md-2">
-	 <div class="row"> 
-		<select id="select-sort-by" class="form-control prijs-styling col-md-6">
-			<option value="advertenties.price.asc">⬆ Prijs</option>
-			<option value="advertenties.price.desc">⬇ Prijs</option>
-			<option value="advertenties.distance.asc">⬆ Afstand</option>
-			<option value="advertenties.distance.desc">⬇ Afstand</option>
-			<option value="advertenties.created_at.asc">⬆ Datum</option>
-			<option value="advertenties.created_at.desc">⬇ Datum</option>
-		</select>
-		<input type="text" placeholder="Gebruiker" id="filter-user" class="form-control col-md-6 search-bar">
-	</div>
-</div>  --}}
 
-
-<div class ="col-md-8 offset-md-2">
-<div class= "row"><div class="col-md-8 offset-md-2 results">
-	<div class="inside flex-row col-md-8 offset-md-2">
-		<div class="row">
-			<div class="col-sm results">col-sm</div>
-			<div class="col-sm results">col-sm</div>
-			<div class="col-sm results">col-sm</div>
-		</div>
+<div class= "row"><div class="col-md-10 offset-md-1 results">
+	<div class="inside flex-row">
+		{{-- this div will get replaced --}}
+		<div class="advertentie" title="${i.description}"><a href="/advertentie/${i.slug}" target="_blank" rel="noopener noreferrer">
+			<table class="table">
+				<tbody>
+					<tr>
+						<td><div class="image-div"><img src="/images/${i.photo1||"empty-box.jpeg"}"></div></td>
+						<td><h6 class="title">${i.title.substr(0, 25)}</h6><p class="price" style="font-size: 1.4rem;">€${i.price/100}</p><p class="visit-adv" style="font-size: 1.4rem;">Details</p></td>
+					</tr>
+				</tbody>
+			</table>
+		</a></div>
 	</div>
 	<div class="paginate-bar">
-		<a id="paginate-left" href="#">◀</a><input type="text" id="paginate-number" width="20" value="1"><a id="paginate-right" href="#">▶</a>
+		<a id="paginate-left" href="#">◀</a><input type="text" id="paginate-number"><a id="paginate-right" href="#">▶</a>
 	</div>
-</div></div></div>
+</div></div>
+
 
 <div id="main2">
 	<div id="map"></div>
@@ -223,22 +211,19 @@ function refreshResults(searchResults){
 		if (title.length>25) {title+="...";}
 		let description = i.description.substr(0,100)
 		if (description.length>100) {description+="...";}
+
 		insideStr += `
 			<div class="advertentie" title="${i.description}"><a href="/advertentie/${i.slug}" target="_blank" rel="noopener noreferrer">
-				<h6 class="title" style="font-size: 2rem;">${i.title.substr(0, 25)}</h6>
-				<p class="price" style="font-size: 1.4rem;">€${i.price/100}</p>
-				<p class="date">${date}<br> 
-					Stad: ${i.city}<br>`;
-		
-		if (i.distance > 0) {
-			insideStr += `
-					${i.distance.toFixed(1)} km afstand</p>`
-				};
-		insideStr += `</p>
-				<img src="/images/${i.photo1||"empty-box.jpeg"}">
-				<p class="description">${description}</p>
+				<table class="table">
+					<tbody>
+						<tr>
+							<td><div class="image-div"><img src="/images/${i.photo1||"empty-box.jpeg"}"></div></td>
+							<td class="advertemtie-info"><h6 class="title">${title}</h6><p class="price-button"><span class="price" style="font-size: 1.4rem;">€${i.price/100}</span><span class="visit-adv" style="font-size: 1.4rem;">Details</span></p></td>
+						</tr>
+					</tbody>
+				</table>
 			</a></div>
-		`;
+		`
 
 		mapMarkersRefresh(searchResults);
 	};
