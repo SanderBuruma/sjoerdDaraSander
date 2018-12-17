@@ -1,40 +1,44 @@
-:root {
-	--main-color-light: #fff;
+/*:root {
+	 --main-color-light: #fff;
 	--main-color-med: #aaa;
 	--main-color-yellow: #fff;
 	--main-color-dark: #666;
 	--main-color-text: #333;
-}
+} */
 
 *:focus {
 	outline: none !important;
 }
 
 body {
-	color: var(--main-color-text);
-	background-image: url("/img/background-image3.jpg");
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
+	/* color: var(--main-color-text); */
+	/* background-image: url("/img/background-image3.jpg"); */
+	background-color: white;
+	/* background-repeat: no-repeat;
+	background-attachment: fixed; */
 }
 
 nav .title {
-	color: white !important;
+	/* color: white !important; */
+	color: black;
 	font-weight: bold;
 	padding-left: 10px;
 }
 
+
 li a {
-	color: white !important;
+	/* color: white !important; */
+	color: black;
 	font-weight: bold;
 }
 
 .menu {
-	background-color: grey;
+	/* background-color: grey; */
+	background-color: white;
 }
 
 nav a {
-	opacity: 0.8;
+	opacity: 1;
 }
 
 a:hover {
@@ -53,7 +57,7 @@ button {
 }
 
 .role-list-item {
-	background-color: var(--main-color-dark);
+	/* background-color: var(--main-color-dark); */
 	color: white;
 	padding: 4px;
 	font-size: 12px;

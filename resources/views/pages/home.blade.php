@@ -13,11 +13,9 @@
 	<div class="input-group">
 
 		<input type="text" class="form-control search-bar" aria-label="Text input with dropdown button"  placeholder="Zoeken in Nervamarkt..." id="home-search-text">
-		<div class="search-icon"><i class="fas fa-search icon"></i></div>
-		
-		
+		{{-- <div class="search-icon"><i class="fas fa-search icon"></i></div> --}}
 
-			<div class="input-group-append">
+		<div class="input-group-append">
 				
 			<select id="home-search-select" class="category form-control">
 				@foreach($categories as $category)
@@ -26,18 +24,27 @@
 			</select><div class="vertical-row"></div>
 			</div>
 			<select id="home-search-distance" class="category form-control">
-				<option value="0">Geen Max km</option>
-				@foreach([0.1,0.2,0.5,1,1.5,2,3,5,10,15,20,30,50] as $distance)
+				{{-- @foreach([0.5,1,1.5,2,3, >3] as $distance)
 					<option value="{{$distance}}">Max {{$distance}} km</option>
-				@endforeach
+				@endforeach --}}
+				<option value="1">Max 1 km</option>
+				<option value="2">Max 2 km</option>
+				<option value="3">Max 3 km</option>
+				<option value=">3">Meer dan 3km</option>
 			</select>
-
+		
 		<button class="btn btn-outline-secondary search-button" type="button" id="home-search-button">Zoek!</button>
 	</div>
+		
+		
+
+			
+
+		
 </div>
 
 
-<div class="container2 col-md-8 offset-md-2">
+{{-- <div class="container2 col-md-8 offset-md-2">
 	<div class="row">
 		<select id="select-sort-by" class="form-control prijs-styling col-md-6">
 			<option value="advertenties.price.asc">⬆ Prijs</option>
@@ -47,9 +54,9 @@
 			<option value="advertenties.created_at.asc">⬆ Datum</option>
 			<option value="advertenties.created_at.desc">⬇ Datum</option>
 		</select>
-		<input type="text" placeholder="Gebruiker" id="filter-user" class="form-control col-md-6 search-bar">{{-- om op gebruiker te filteren --}}
+		<input type="text" placeholder="Gebruiker" id="filter-user" class="form-control col-md-6 search-bar">
 	</div>
-</div>
+</div>--}}
 
 
 <div class ="main col-md-8 offset-md-2">
@@ -233,17 +240,6 @@ function refreshResults(searchResults){
 	searchResultList.innerHTML = insideStr;
 };
 
-//   function initMap() {
-//         var pyrmont = {lat: 53.2193133, lng: 6.5669632};
-  
-
-
-//         map = new google.maps.Map(document.getElementById('map'), {
-//           center: pyrmont,
-//           zoom: 8
-//         });
-// }
-
 
 function initMap() {
   var myLatLng = {lat: userLat||53.2152292, lng: userLng||6.5669632};
@@ -251,29 +247,7 @@ function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
     center: myLatLng
-  });
-
-  // var marker = new google.maps.Marker({
-  //   position: myLatLng,
-  //   map: map,
-  //   title: 'Hello World!'
-  // });
-
-	// {{-- infowindow test start --}}
-  // var infowindow = new google.maps.InfoWindow({
-	// 	content: contentString
-	// });
-
-	// var marker = new google.maps.Marker({
-	// 	position: uluru,
-	// 	map: map,
-	// 	title: 'Uluru (Ayers Rock)'
-	// });
-	// marker.addListener('click', function() {
-	// 	infowindow.open(map, marker);
-	// });
-	// {{-- infowindow test eind --}}
-
+  })
 }
 
 function mapMarkersRefresh(advertenties) {

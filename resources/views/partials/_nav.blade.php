@@ -10,10 +10,10 @@
 		<ul class="navbar-nav mr-auto">
 			@guest @else 
 			<li class="nav-item">
-				<a class="nav-link" href="{{ route('message.index') }}">📨 Berichten</a>
+				<a class="nav-link" href="{{ route('message.index') }}"><i class="fas fa-envelope"></i> Berichten</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="{{ route('message.sent.index') }}">📨 Verzonden Berichten</a>
+				<a class="nav-link" href="{{ route('message.sent.index') }}"><i class="fas fa-envelope"></i> Verzonden Berichten</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="{{ route('advertentie.create') }}">📋 Advertentie Plaatsen</a>

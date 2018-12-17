@@ -27,12 +27,18 @@ class AdvertentiesSearchController extends Controller
 			];
 		}
 
-		if ($request->search_distance > 0) {
+		if ($request->search_distance == "1" || $request->search_distance == "2" || $request->search_distance == "3") {
 			$queryWhereArr[] = ['users.latitude','>',$user->latitude-(1/111.1111)*$request->search_distance];
 			$queryWhereArr[] = ['users.latitude','<',$user->latitude+(1/111.1111)*$request->search_distance];
 			$longitudeMargin = (1/111.1111)/cos(abs($user->latitude)/57.295);
 			$queryWhereArr[] = ['users.longitude','>',$user->longitude-$longitudeMargin*$request->search_distance];
 			$queryWhereArr[] = ['users.longitude','<',$user->longitude+$longitudeMargin*$request->search_distance];
+		} else if ($request->search_distance == ">3" ) {
+			$queryWhereArr[] = ['users.latitude','<',$user->latitude-(1/111.1111)*$request->search_distance];
+			$queryWhereArr[] = ['users.latitude','>',$user->latitude+(1/111.1111)*$request->search_distance];
+			$longitudeMargin = (1/111.1111)/cos(abs($user->latitude)/57.295);
+			$queryWhereArr[] = ['users.longitude','<',$user->longitude-$longitudeMargin*$request->search_distance];
+			$queryWhereArr[] = ['users.longitude','>',$user->longitude+$longitudeMargin*$request->search_distance];
 		}
 		// return $queryWhereArr;
 

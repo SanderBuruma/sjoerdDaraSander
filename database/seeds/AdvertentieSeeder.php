@@ -16,6 +16,8 @@ class AdvertentieSeeder extends Seeder
 			$jibberish = '';
 			$vowels = explode(' ','a a a a a a a e e e e e e e e e u i i i i i o o o o');
 			$consonants = explode(' ','b b b c c d d d d f f f g g h h j j k k l l m m n n n p p p q r r s s t t v v w w b b b c c d d d d f f f g g h h j j k k l l m m n n n p p p r r s s t t v v w w x y z');
+			$titleSubjects = explode(";","Jas;Motorfiets;Telefoon;Piano;Standbeeld;Munt;Mariabeeld;Katholiek Kruis;Kast;Boog;Springkussen;Foto Sinterklaas;Kerst Beeldjes");
+			$prefixes = explode(";",";;Grote;Kleine;Mooie;Zware;Lichte;");
 			while (strlen($jibberish) < $len) {
 				$word = '';
 				$randLen = random_int(2,7)+random_int(2,7);
@@ -32,7 +34,7 @@ class AdvertentieSeeder extends Seeder
 		}
 
 		$count = 0;
-		while ($count++ < 5e2) {
+		function createAdvertentie($title, $beschrijving, $categorie) {
 			$createdAt = '2018-'.str_pad(random_int(1,12),2,"0",STR_PAD_LEFT).'-'.str_pad(random_int(1,28),2,"0",STR_PAD_LEFT).' '.str_pad(random_int(0,23),2,"0",STR_PAD_LEFT).':'.str_pad(random_int(0,59),2,"0",STR_PAD_LEFT).':'.str_pad(random_int(0,59),2,"0",STR_PAD_LEFT);
 			DB::table('advertenties')->insert([
 				'user_id' => random_int(1,177), //max is same as the nr of users from initial seed.
