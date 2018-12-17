@@ -1,9 +1,9 @@
-.main {
+/* .main {
 	border-radius: 1rem;
 	background-color: rgba(180, 180, 236, 0.401);
 	box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
 	padding: 1rem 1rem;
-}
+} */
 
 .secondary {
 	padding: 1rem;
@@ -11,7 +11,8 @@
 .main > div,
 .secondary > div {
 	box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
-	background-color: rgb(180, 218, 236);
+	/* background-color: rgb(180, 218, 236); */
+	background-color: white;
 	border-radius: 1rem;
 }
 .carousel-control-next-icon,

@@ -12,7 +12,7 @@
 <div class="row">
 	<div class="col-md-6 offset-md-3 main">
 		<div class="card">
-			<div class="card-header"><h3>📨 Verzonden</h3></div>
+			<div class="card-header"><h3><i class="fas fa-envelope"></i> Verzonden</h3></div>
 			<div class="paginate-bar">
 				<a id="paginate-left" href="#">◀</a><input type="text" id="paginate-number" width="24" value="1"><a id="paginate-right" href="#">▶</a>
 			</div>
@@ -31,7 +31,6 @@
 	</div>
 </div>
 
-<!-- Message Show Modal -->
 <div class="modal fade" id="messageShowModal" tabindex="-1" role="dialog" aria-labelledby="messageShowModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
@@ -51,7 +50,6 @@
 	</div>
 </div>
 
-<!-- Message Delete Modal -->
 <div class="modal modal2 fade" id="messageDeleteModal" tabindex="-1" role="dialog" aria-labelledby="messageDeleteModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">

@@ -23,10 +23,22 @@
 				@endforeach
 			</select><div class="vertical-row"></div>
 			</div>
+
+			<select id="select-sort-by" class="form-control prijs-styling col-md-6">
+				<option value="advertenties.price.asc">⬆ Prijs</option>
+				<option value="advertenties.price.desc">⬇ Prijs</option>
+				<option value="advertenties.distance.asc">⬆ Afstand</option>
+				<option value="advertenties.distance.desc">⬇ Afstand</option>
+				<option value="advertenties.created_at.asc">⬆ Datum</option>
+				<option value="advertenties.created_at.desc">⬇ Datum</option>
+			</select>
+			
+
 			<select id="home-search-distance" class="category form-control">
 				{{-- @foreach([0.5,1,1.5,2,3, >3] as $distance)
 					<option value="{{$distance}}">Max {{$distance}} km</option>
 				@endforeach --}}
+				<option value="0">Alle</option>
 				<option value="1">Max 1 km</option>
 				<option value="2">Max 2 km</option>
 				<option value="3">Max 3 km</option>
@@ -43,9 +55,8 @@
 		
 </div>
 
-
-{{-- <div class="container2 col-md-8 offset-md-2">
-	<div class="row">
+ {{-- <div class="container2 col-md-8 offset-md-2">
+	 <div class="row"> 
 		<select id="select-sort-by" class="form-control prijs-styling col-md-6">
 			<option value="advertenties.price.asc">⬆ Prijs</option>
 			<option value="advertenties.price.desc">⬇ Prijs</option>
@@ -56,10 +67,10 @@
 		</select>
 		<input type="text" placeholder="Gebruiker" id="filter-user" class="form-control col-md-6 search-bar">
 	</div>
-</div>--}}
+</div>  --}}
 
 
-<div class ="main col-md-8 offset-md-2">
+<div class ="col-md-8 offset-md-2">
 <div class= "row"><div class="col-md-8 offset-md-2 results">
 	<div class="paginate-bar">
 		<a id="paginate-left" href="#">◀</a><input type="text" id="paginate-number" width="20" value="1"><a id="paginate-right" href="#">▶</a>
@@ -140,13 +151,13 @@ jQuery(document).ready(function(){
 			searchQuery();
 		}
 	};
-	$('#filter-user')[0].onkeydown = function(e) {
-		if (e.keyCode == 13){
-			let pagNr = $('#paginate-number');
-			e.preventDefault();
-			searchQuery();
-		}
-	};
+	// $('#filter-user')[0].onkeydown = function(e) {
+	// 	if (e.keyCode == 13){
+	// 		let pagNr = $('#paginate-number');
+	// 		e.preventDefault();
+	// 		searchQuery();
+	// 	}
+	// };
 	$('#paginate-number')[0].onkeydown = function(e) {
 		if (e.keyCode == 13){
 			e.preventDefault();
@@ -172,7 +183,7 @@ function searchQuery(){
 			user_lat: userLat||6.566,
 			user_lng: userLng||53.212, 
 			search_sort_by: jQuery('#select-sort-by').val(),
-			search_filter_user: jQuery('#filter-user').val(),
+			// search_filter_user: jQuery('#filter-user').val(),
 		},
 		success: function(result){
 			console.log(result);
@@ -217,11 +228,15 @@ function refreshResults(searchResults){
 			createdAtSplit[0]+" - "+
 			createdAtSplit[3]+":"+createdAtSplit[4];
 
+		let title = i.title.substr(0,25)
+		if (title.length>25) {title+="...";}
+		let description = i.description.substr(0,100)
+		if (description.length>25) {description+="...";}
 		insideStr += `
 			<div class="advertentie" title="${i.description}"><a href="/advertentie/${i.slug}" target="_blank" rel="noopener noreferrer">
-				<h6 class="title" style="font-size: 2rem;">${i.title.substr(1, 25)}...</h6>
+				<h6 class="title" style="font-size: 2rem;">${i.title.substr(0, 25)}</h6>
 				<p class="price" style="font-size: 1.4rem;">€${i.price/100}</p>
-				<p class="date">${date}<br>
+				<p class="date">${date}<br> 
 					Stad: ${i.city}<br>`;
 		
 		if (i.distance > 0) {
@@ -229,8 +244,8 @@ function refreshResults(searchResults){
 					${i.distance.toFixed(1)} km afstand</p>`
 				};
 		insideStr += `</p>
-				<img src="/images/${i.photo1||"empty-box.jpeg"}" width="100%" height="200px">
-				<p class="description">${i.description.substr(1, 100)}...</p>
+				<img src="/images/${i.photo1||"empty-box.jpeg"}">
+				<p class="description">${description}</p>
 			</a></div>
 		`;
 
@@ -245,7 +260,7 @@ function initMap() {
   var myLatLng = {lat: userLat||53.2152292, lng: userLng||6.5669632};
 
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 12,
+    zoom: 10,
     center: myLatLng
   })
 }
@@ -253,7 +268,7 @@ function initMap() {
 function mapMarkersRefresh(advertenties) {
 	let myLatLng = {lat: userLat||53.2152292, lng: userLng||6.5669632};
 	var map = new google.maps.Map(document.getElementById('map'), {
-		zoom: 12,
+		zoom: 10,
 		center: myLatLng
 	});
 
@@ -265,7 +280,7 @@ function mapMarkersRefresh(advertenties) {
 		infoWindow[count] = new google.maps.InfoWindow({
 			content: 
 			`<div class="infoWindow">`+
-			`<h1 class="infoWindowHeader"><a href="/advertentie/${i.slug}">${i.title}</a></h1>`+
+			`<h6 class="infoWindowHeader"><a href="/advertentie/${i.slug}">${i.title}</a></h6>`+
 			`<div class="infoWindowBody">`+
 			`<h2>€${i.price/100},-</h2>`+
 			`<p>${i.description}</p>`+

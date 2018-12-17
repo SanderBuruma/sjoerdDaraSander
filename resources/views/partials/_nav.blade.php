@@ -10,17 +10,17 @@
 		<ul class="navbar-nav mr-auto">
 			@guest @else 
 			<li class="nav-item">
-				<a class="nav-link" href="{{ route('message.index') }}"><i class="fas fa-envelope"></i> Berichten</a>
+				<a class="nav-link" style="color:black;" href="{{ route('message.index') }}"><i class="fas fa-envelope"></i> Berichten</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="{{ route('message.sent.index') }}"><i class="fas fa-envelope"></i> Verzonden Berichten</a>
+				<a class="nav-link" style="color:black;" href="{{ route('message.sent.index') }}"><i class="fas fa-envelope"></i> Verzonden Berichten</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="{{ route('advertentie.create') }}">📋 Advertentie Plaatsen</a>
+				<a class="nav-link" style="color:black;" href="{{ route('advertentie.create') }}">📋 Advertentie Plaatsen</a>
 			</li>
 			@endguest
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<li class="nav-item dropdown" >
+				<a class="nav-link dropdown-toggle" style="color:black;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<i class="fas fa-user nav-style"></i>@guest Gast @else {{ Auth::user()->name }} @endguest
 				</a>
 				<div class="dropdown-menu menu dropdown-styling" aria-labelledby="navbarDropdown">

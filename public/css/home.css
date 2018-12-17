@@ -20,19 +20,15 @@ input.form-control:focus{
 	box-shadow: unset;
 }
 
-.inside {
+/* .inside {
 	flex-wrap: wrap;
 	display: flex;
-	/* flex-direction: row; */
-	/* justify-content: center; */
-	background-color: rgba(180, 180, 236, 0.401);
+	
+	background-color: white;
 	box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
 	border-radius: 1rem;
 	width: 100%;
-	/* min-width: 320px;
-	max-width: 350px;
-	position: inherit; */
-}
+} */
 
 @media(max-width: 600px){
 	.inside{
@@ -56,11 +52,17 @@ input.form-control:focus{
 .advertentie {
 	margin: 1rem 1rem;
 	padding: 10px;
-	width: 300px;
+	/* width: 300px; */
+	width: 200%;
+	margin-left:-50%;
+	margin-right:-50%;
+
 	border-radius: 6px;
 	font-size: 1.2em;
-	background-color: rgb(180, 218, 236);
-	/* background-color: rgb(209, 227, 236); */
+	/* background-color: rgb(180, 218, 236); */
+	background-color: white;
+	border: 1px solid grey;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
 }
 .advertentie > a {
 	color: black;
@@ -79,14 +81,18 @@ input.form-control:focus{
 	color: black;
 	border-radius: 5px;
 }
-.advertentie > img {
-	width: 100% !important;
-	height: 100%;
-	border-radius: 5px;
+.advertentie img {
+	max-height: 150px !important;
+	width: auto !important;
+	height: auto !important;
+	max-width: 100% !important;
+	display: block;
+	margin: auto;
 }
 
 .container2{
-	background-color: rgb(180, 218, 236);
+	/* background-color: rgb(180, 218, 236); */
+	background-color: white;
 	padding: 0 0;
 	border: 1px solid grey;
 	border-radius: 5px;
@@ -96,7 +102,7 @@ input.form-control:focus{
 	border: none;
 	/* border-right: grey solid 1px; */
 	border-right: solid grey 1px;
-	background-color: rgb(180, 218, 236);
+	/* background-color: rgb(180, 218, 236); */
 }
 
 @media screen and (max-width: 600px){
@@ -130,7 +136,7 @@ input.form-control:focus{
 	cursor: pointer;
 	font-weight: bold;
 	font-size: 17px;
-	background-color: rgb(180, 218, 236);
+	/* background-color: rgb(180, 218, 236); */
 }
 
 .vertical-row {
@@ -141,7 +147,7 @@ input.form-control:focus{
 }
 
 .prijs-styling{
-	background-color: rgb(180, 218, 236);
+	/* background-color: rgb(180, 218, 236); */
 }
 
 .search-button{
@@ -154,7 +160,7 @@ input.form-control:focus{
 	font-weight: bold;
 	font-size: 17px;
 	border-radius: 0px 5px 5px 0px;
-	background-color: rgb(180, 218, 236);
+	/* background-color: rgb(180, 218, 236); */
 }
 
 .filler1{
@@ -192,8 +198,12 @@ input.form-control:focus{
 
 #map {
 	height: 450px;
-	width: 98%;
+	/* width: 98%; */
+	width: 60%;
+	margin-left: 20%;
+	margin-right: 20%;
 	border-radius: 10px;
+	
 }
 
 #paginate-left{
@@ -212,9 +222,10 @@ input.form-control:focus{
 	color: black;
 }
 
-#main2 {
+/* #main2 {
 	border-radius: 1rem;
-	background-color: rgba(180, 180, 236, 0.401);
+	/* background-color: rgba(180, 180, 236, 0.401); */
+	/* background-color: white;
 	box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
 	height: 500px;
 	width: 66%;
@@ -223,8 +234,8 @@ input.form-control:focus{
 	padding-left: 2.5%;
 	padding-right: 1%;
 	padding-top: 25px;
-	padding-bottom: 25px;	
-}
+	padding-bottom: 25px;	 */
+/* } */
 
 .infoWindow{
 

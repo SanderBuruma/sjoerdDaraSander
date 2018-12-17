@@ -12,7 +12,9 @@ class AdvertentiesSearchController extends Controller
 
 		$queryWhereArr = [];
 		$queryWhereArr[] = ['advertenties.title','like',"%$request->search_text%"];
-		$queryWhereArr[] = ['users.name','like',"%$request->search_filter_user%"];
+		if (isset($request->search_filter_user)) {
+			$queryWhereArr[] = ['users.name','like',"%$request->search_filter_user%"];
+		}
 		
 		if ($request->search_select != 1) {
 			//doesn't include this where condition if ALL category is selected
@@ -39,6 +41,8 @@ class AdvertentiesSearchController extends Controller
 			$longitudeMargin = (1/111.1111)/cos(abs($user->latitude)/57.295);
 			$queryWhereArr[] = ['users.longitude','<',$user->longitude-$longitudeMargin*$request->search_distance];
 			$queryWhereArr[] = ['users.longitude','>',$user->longitude+$longitudeMargin*$request->search_distance];
+		} else if($request->search_distance == "0") {
+			//nothing
 		}
 		// return $queryWhereArr;
 

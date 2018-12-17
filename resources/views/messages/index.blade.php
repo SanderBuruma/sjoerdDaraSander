@@ -12,7 +12,7 @@
 <div class="row">
 	<div class="col-md-6 offset-md-3 main">
 		<div class="card">
-			<div class="card-header"><h3>📨 Inbox</h3></div>
+			<div class="card-header"><h3><i class="fas fa-envelope"></i> Inbox</h3></div>
 			<div class="paginate-bar">
 				<a id="paginate-left" href="#">◀</a><input type="text" id="paginate-number" width="24" value="1"><a id="paginate-right" href="#">▶</a>
 			</div>
