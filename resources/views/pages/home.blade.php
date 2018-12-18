@@ -55,19 +55,9 @@
 <div class= "row"><div class="col-md-10 offset-md-1 results">
 	<div class="inside flex-row">
 		{{-- this div will get replaced --}}
-		<div class="advertentie" title="${i.description}"><a href="/advertentie/${i.slug}" target="_blank" rel="noopener noreferrer">
-			<table class="table">
-				<tbody>
-					<tr>
-						<td><div class="image-div"><img src="/images/${i.photo1||"empty-box.jpeg"}"></div></td>
-						<td><h6 class="title">${i.title.substr(0, 25)}</h6><p class="price" style="font-size: 1.4rem;">€${i.price/100}</p><p class="visit-adv" style="font-size: 1.4rem;">Details</p></td>
-					</tr>
-				</tbody>
-			</table>
-		</a></div>
 	</div>
 	<div class="paginate-bar">
-		<a id="paginate-left" href="#">◀</a><input type="text" id="paginate-number"><a id="paginate-right" href="#">▶</a>
+		<a id="paginate-left" href="#">◀</a><input type="text" id="paginate-number" value="1"><a id="paginate-right" href="#">▶</a>
 	</div>
 </div></div>
 

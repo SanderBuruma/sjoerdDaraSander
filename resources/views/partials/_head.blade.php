@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 {{-- local files --}}
-<link rel="icon" href="{{ asset('img/logo3.png') }}"> 
+<link rel="icon" href="{{ asset('img/logo4.png') }}"> 
 <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
 {{-- fontawesome CDN --}}

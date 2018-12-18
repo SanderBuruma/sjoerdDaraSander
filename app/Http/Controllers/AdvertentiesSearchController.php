@@ -112,7 +112,7 @@ class AdvertentiesSearchController extends Controller
 			}
 		}
 
-		$offset = 6;
+		$offset = 8;
 		$count = 0;
 		$data = [];
 		while ($count++ < $offset) {

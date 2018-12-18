@@ -52,7 +52,7 @@
 			{{ Form::label('photo6', 'Foto 6:') }}
 			{{ Form::file('photo6') }}
 
-			{{ Form::submit('Plaats!', array('class' => 'btn btn-info btn-lg btn-block', 'style'=>'margin-top: 20px;')) }}
+			{{ Form::submit('Plaats!', array('class' => 'btn btn-primary btn-lg btn-block', 'style'=>'margin-top: 20px;')) }}
 		{!! Form::close() !!}
 	</div>
 </div></div></div>
