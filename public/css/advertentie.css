@@ -24,13 +24,13 @@
 }
 
 .button{
-	background-color: rgb(154, 209, 235);
-	border-color: rgb(154, 209, 235);
+	background-color: var(--main-color-button);
+	border-color: var(--main-color-button);
 }
 
 .button:hover{
-	background-color: rgb(154, 209, 235);
-	border-color: rgb(154, 209, 235);
+	background-color: var(--main-color-button);
+	border-color: var(--main-color-button);
 }
 
 input[name="price"]{

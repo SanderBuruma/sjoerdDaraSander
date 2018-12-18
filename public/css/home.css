@@ -11,6 +11,18 @@
 	box-shadow: unset;
 }
 
+.categorie-styling{
+	border: unset !important;
+}
+
+.prijs-styling{
+	border: unset;
+}
+
+.afstand-styling{
+	border: unset !important;
+}
+
 .inside {
 	flex-wrap: wrap;
 	display: flex;
@@ -126,6 +138,7 @@
 .search-bar{
 	border: none;
 	border-right: solid grey 1px;
+	font-size: 12px;
 }
 
 @media screen and (max-width: 600px){
@@ -161,8 +174,15 @@
 }
 
 .vertical-row {
-	float: left;
+	float: right;
 	height: 100%;
+	width: 1px;
+	background-color: grey;
+}
+
+.vertical-row2 {
+	float: right;
+	height: 38px;
 	width: 1px;
 	background-color: grey;
 }

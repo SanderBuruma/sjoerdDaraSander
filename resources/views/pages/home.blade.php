@@ -17,7 +17,7 @@
 
 		<div class="input-group-append">
 				
-			<select id="home-search-select" class="category form-control">
+			<select id="home-search-select" class="category form-control categorie-styling">
 				@foreach($categories as $category)
 					<option value="{{$category->id}}">{{$category->name}}</option>
 				@endforeach
@@ -27,14 +27,15 @@
 			<select id="select-sort-by" class="form-control prijs-styling col-md-6">
 				<option value="advertenties.price.asc">⬆ Prijs</option>
 				<option value="advertenties.price.desc">⬇ Prijs</option>
-				<option value="advertenties.distance.asc">⬆ Afstand</option>
-				<option value="advertenties.distance.desc">⬇ Afstand</option>
+				{{-- <option value="advertenties.distance.asc">⬆ Afstand</option>
+				<option value="advertenties.distance.desc">⬇ Afstand</option> --}}
 				<option value="advertenties.created_at.asc">⬆ Datum</option>
 				<option value="advertenties.created_at.desc">⬇ Datum</option>
-			</select>
+			</select><div class="vertical-row2"></div>
+		
 			
 
-			<select id="home-search-distance" class="category form-control">
+			<select id="home-search-distance" class="category form-control afstand-styling">
 				{{-- @foreach([0.5,1,1.5,2,3, >3] as $distance)
 					<option value="{{$distance}}">Max {{$distance}} km</option>
 				@endforeach --}}

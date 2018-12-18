@@ -25,7 +25,7 @@ class AdminInterfaceController extends Controller
     {
         $offset = 6;
         $users = User::
-            orderByDesc('created_at')
+            orderByDesc('id')
             ->limit($offset)
             ->offset($offset*($request->page-1))
             ->get();
