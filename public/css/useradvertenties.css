@@ -1,42 +1,40 @@
-
 .paginate-bar {
-	background-color: white;
+	background-color:white;
 	border-radius: 1rem;
 	margin: auto;
-	width: 94px;
-	display: flex;
-	flex-direction: row;
 	background-color:rgba(255,0,0,0.0);
+	padding: 5px 0;
+	background-color: #aaa;
+	display: inline;
+	margin-left: 44%;
 }
 
 .paginate-bar > * {
-	background-color: unset; 
+	background-color: unset;
 	border: unset;
-	font-size: 30px;
+	font-size: 15px;
+	padding:2px;
+	margin-bottom: 20px;
+	
+
+	/* position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: center; */
 }
 
 #paginate-number {
-	width: 44px;
+	width: 48px;
 	text-align: center;
-	color: black;
+	color: white;
 }
 
-
-
 #paginate-left{
-	color: black;
+	color: white;
 }
 
 #paginate-right{
-	color: black;
-}
-
-#paginate-left-bot{
-	color: black;
-}
-
-#paginate-right-bot{
-	color: black;
+	color: white;
 }
 
 /* .main {

@@ -240,22 +240,26 @@ function mapMarkersRefresh(advertenties) {
 
 	var markers = [];
 	let infoWindow = []; let count = 0;
+	
 	for (let i of advertenties) {
+		let title = i.title.substr(0,25);
+		if (i.title.length > 25) {
+			title += `...`;
+		}
+
+		let contentString = 
+			`<div id="content">`+
+				`<a href="/advertentie/${i.slug}" target="_blank" rel="noopener noreferrer">`+
+				`<div id="bodyContent">`+
+					`<img src="/images/${i.photo1}">`+
+				`</div>`+
+				`<h1 id="firstHeading" class="firstHeading">${title}</h1>`+
+				`</a>`+
+			`</div>`;
 
 		count++;
 		infoWindow[count] = new google.maps.InfoWindow({
-			content: 
-			`<div class="infoWindow">`+
-			`<h6 class="infoWindowHeader"><a href="/advertentie/${i.slug}">${i.title}</a></h6>`+
-			`<div class="infoWindowBody">`+
-			`<h2>€${i.price/100},-</h2>`+
-			`<p>${i.description}</p>`+
-			`<p><a href="/advertentie/${i.slug}">`+
-			`${i.title}</a><br>`+
-			`${i.created_at}).</p>`+
-			`<img src="/images/${i.photo1||"empty-box.jpeg"}" width="100%">`+
-			`</div>`+
-			`</div>`,
+			content: contentString,
 		});
 		
 		var marker = new google.maps.Marker({

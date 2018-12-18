@@ -1,10 +1,6 @@
-/*:root {
-	 --main-color-light: #fff;
-	--main-color-med: #aaa;
-	--main-color-yellow: #fff;
-	--main-color-dark: #666;
-	--main-color-text: #333;
-} */
+:root {
+	 --main-color-button: rgb(71, 169, 255);
+}
 
 *:focus {
 	outline: none !important;

@@ -20,7 +20,21 @@
 	color: black;
 	background-color: black;
 }
+.carousel-item img {
+	max-height: 500px !important;
+	width: auto !important;
+	height: auto !important;
+	max-width: 100% !important;
+	display: block;
+	margin: 0 50%;
+	position: relative;
+	transform: translate(-50%);
+}
 
+.card-header {
+	border-top-left-radius: 1rem !important;
+	border-top-right-radius: 1rem !important;
+}
 .card-header > h1 {
 	text-align: center;
 }
@@ -33,4 +47,17 @@
 .d-block {
 	height: 500px;
 	width: 100% !important;
+}
+
+.button{    
+	background-color: var(--main-color-button);
+	color: white;
+	border: 1px solid #fff0;
+	box-shadow: 0 0 2px 1px #6af4;
+}
+.button:hover{
+	background-color: white;
+	color: var(--main-color-button);
+	border: 1px solid #fff0;
+	box-shadow: 0 0 2px 1px var(--main-color-button);
 }

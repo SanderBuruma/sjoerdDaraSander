@@ -22,11 +22,11 @@ class MessagesTableSeeder extends Seeder
 				'title' => "Maria Standbeeld",
 				'message' => "Geachte heer Vos,
 
-				Ik heb interesse in deze advertentie: 
-				Maria Standbeeld
-				Alleen niet voor zoveel geld. Is €50,- genoeg?
+Ik heb interesse in deze advertentie: 
+Maria Standbeeld
+Alleen niet voor zoveel geld. Is €50,- genoeg?
 
-				Met vriendelijke groet,",
+Met vriendelijke groet,",
 				'created_at' => $createdAt,
 				'updated_at' => $createdAt,
 			]);

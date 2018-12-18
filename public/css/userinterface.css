@@ -6,7 +6,7 @@ div>nav {
 	border-bottom: 1px solid var(--main-color-med);
 }
 div>.main {
-	padding: 1rem;
+	padding: 4px;
 }
 input {
 	background: unset;
@@ -78,9 +78,20 @@ label {
 } */
 
 .card {
-	border-radius: 1rem;
+	/* border-radius: 1rem; */
+	border-radius: 10px;
 	box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
 	/* opacity: 0.6; */
 	/* background-color: lightgrey; */
 	background-color: white;
+}
+
+.navbar-style{
+	border-radius: 10px;
+	box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
+}
+
+.button{
+	background-color: rgb(154, 209, 235);
+	border-color: rgb(154, 209, 235);
 }

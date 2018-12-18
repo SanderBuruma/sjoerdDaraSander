@@ -14,7 +14,7 @@
 	
 	<div class="card" id="container">
 
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<nav class="navbar navbar-style navbar-expand-lg navbar-light bg-light">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -98,8 +98,8 @@
 			</div>
 		</div>
 		<br>
-		<button id="submit-changes-nonpw" type="button" class="btn btn-dark col-md-4 offset-md-4" style="">Profiel Bijwerken</button>
-		<h5 id="submit-changes-message" hidden>Gebruiker opgeslagen</h5>
+		<button id="submit-changes-nonpw" type="button" class="btn btn-dark button col-md-4 offset-md-4" style="">Profiel Bijwerken</button>
+		<h5 id="submit-changes-message button" hidden>Gebruiker opgeslagen</h5>
 
 		<div id="map"></div>
 
@@ -111,7 +111,7 @@
 				<input placeholder="paswoord opnieuw" type="password" name="password_confirmation" value="" pattern=".{8,128}" title="Paswoord: tussen 8 en 128 karakters">
 				<p id="input-password-feedback" hidden class="input-feedback">Paswoorden komen niet overeen</p>
 			</div>
-		<button id="submit-changes-pw" type="button" class="btn btn-dark col-md-4 offset-md-4" style="">Paswoord opslaan</button>
+		<button id="submit-changes-pw" type="button" class="btn btn-dark button col-md-4 offset-md-4" style="">Paswoord opslaan</button>
 		</div>
 		<br>
 			

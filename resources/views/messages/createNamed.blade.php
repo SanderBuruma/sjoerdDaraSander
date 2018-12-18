@@ -29,11 +29,11 @@
 
 Ik heb interesse in deze advertentie: 
 http://{{route('advertentie.show', $advertentie->slug)}}
-Alleen niet voor zoveel geld. Is €{{$advertentie->price/1e3}} genoeg?
+Alleen niet voor zoveel geld. Is €{{$advertentie->price/2e2}} genoeg?
 
 Met vriendelijke groet,</textarea>
 				<br>
-				{{ Form::submit('Verstuur!', array('class' => 'btn btn-success btn-lg btn-block', 'style'=>'margin-top: 20px;')) }}
+				{{ Form::submit('Verstuur!', array('class' => 'btn btn-success button btn-lg btn-block', 'style'=>'margin-top: 20px;')) }}
 			{!! Form::close() !!}
 		</div>
 	</div>

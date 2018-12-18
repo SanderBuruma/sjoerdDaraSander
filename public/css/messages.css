@@ -16,7 +16,7 @@ button:hover,
 button:active {
 	/* background-color: var(--main-color-dark);
 	color: var(--main-color-dark); */
-	background-color: rgb(180, 218, 236);
+	/* background-color: rgb(180, 218, 236); */
 }
 
 .paginate-bar {

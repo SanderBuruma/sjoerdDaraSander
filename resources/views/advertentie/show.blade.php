@@ -35,7 +35,7 @@
 	</div>
 	<div class="card-body">
 		<p>{{$advertentie->description}}</p>
-		<div class="row"><div class="col-md-6 offset-md-3">
+		<div class="row"><div class="col-md-12">
 			
 				<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 						<ol class="carousel-indicators">
@@ -100,7 +100,7 @@
 					<i class="fas fa-envelope-open"></i>
 					<input type="text" class="form-control" required hidden value="{{$advertentie->user->name}}" name="name">
 					<input type="text" class="form-control" required hidden value="{{$advertentie->slug}}" name="advertentie_slug">
-					{{ Form::submit('Zend Bericht', array('class' => 'btn btn-info btn-sm')) }}
+					{{ Form::submit('Zend Bericht', array('class' => 'btn btn-info button btn-sm')) }}
 				{!! Form::close() !!}
 				<br>
 				@if($advertentie->user->telephone1) <p><i class="fas fa-phone"></i> {{$advertentie->user->telephone1}}</p> @endif

@@ -16,12 +16,21 @@
 
 .btn-success:hover,
 .btn-success:active,
-.btn-success:focus {
-	background-color: rgb(154, 209, 235);
-	background-color: var(--main-color-light) !important;
-	border: 1px solid var(--main-color-medium) !important;
+.btn-success:focus { 
+	/* background-color: var(--main-color-light) !important; */
+	border: 1px solid;
 	color: var(--main-color-dark) !important;
 	box-shadow: 0px 0px 3px rgba(0,0,0,0.4) !important;
+}
+
+.button{
+	background-color: rgb(154, 209, 235);
+	border-color: rgb(154, 209, 235);
+}
+
+.button:hover{
+	background-color: rgb(154, 209, 235);
+	border-color: rgb(154, 209, 235);
 }
 
 input[name="price"]{
