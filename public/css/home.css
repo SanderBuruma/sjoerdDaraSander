@@ -23,6 +23,7 @@
 	width: 350px;
 	height: 150px !important;
 	border-radius: 10px;
+	box-shadow: 0px 0px 1px 1px #ccc8;
 	transition: box-shadow 0.3s ease-in-out;
 }
 
@@ -53,6 +54,13 @@
 	color: black;
 	border-radius: 5px;
 }
+.advertentie .image-div {
+	width: 150px;
+	border-radius: 10px;
+	height: 150px;
+	position: absolute;
+	/* display: flex; */
+}
 .advertentie img {
 	max-height: 150px !important;
 	width: auto !important;
@@ -60,17 +68,24 @@
 	max-width: 100% !important;
 	display: block;
 	margin: auto;
-	border-radius: 10px;
+	border-radius: 10px 0 0 10px;
+	/* transform: translate(-50%,-50%);
+	top: 50%;
+	left: 50%; */
+	position: relative;
+	/* flex-direction: row;
+	justify-content: space-around;  */
+	float: left;
 }
 
-.advertentie .image-div {
-	width: 150px;
-	background-color: #eee;
-	border-radius: 10px;
+.advertentie .price-button {
+	margin-top: 4.5rem;
 }
+
 .advertentie .title {
 	font-weight: bold;
 	font-size: 19px;
+	padding-top: 5px;
 }
 
 .advertentie .advertentie-info {
@@ -79,11 +94,19 @@
 
 .advertentie .visit-adv {
 	border-radius: 5rem;
-	background-color: darkgrey;
+	background-color: rgb(71, 169, 255);
 	color: white;
-	padding: 4px;
-	font-size: 16px !important;
+	padding: 8px;
+	font-size: 14px !important;
 	margin-left: 1rem;
+	transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,border 0.2s ease-in-out;
+	border: 1px solid white;
+}
+
+.advertentie .visit-adv:hover{
+	background-color: rgb(255, 255, 255);
+	color: rgb(71, 169, 255);
+	border: 1px solid rgb(71,169,255);
 }
 
 .container2{
@@ -161,25 +184,26 @@
 .paginate-bar {
 	background-color: white;
 	border-radius: 1rem;
-	margin: auto;
+	margin-left: 50px;
 	display: flex;
 	flex-direction: row;
 	background-color:rgba(255,0,0,0.0);
 	position: sticky;padding: 5px 0;
 	background-color: #aaa;
 	display: inline;
-	margin: 0 40%;
+	margin:  46%;
+	
 }
 
 .paginate-bar > * {
 	background-color: unset;
 	border: unset;
-	font-size: 20px;
-	padding: 10px;
+	font-size: 15px;
+	padding: 5px;
 }
 
 #paginate-number {
-	width: 44px;
+	width: 25px;
 	text-align: center;
 	color: white;
 }
@@ -190,8 +214,24 @@
 	margin-left: 20%;
 	margin-right: 20%;
 	border-radius: 10px;
+	margin-top:5%;
 	
 }
+/* .infoWindow img {
+	max-width: 190px !important;
+}
+.infoWindow > * > * {
+	max-width: 190px;
+}
+.infoWindowHeadr {
+	max-width: 190px !important;
+}
+.infoWindowBody {
+	border: none;
+}
+.infoWindowBody > * {
+	max-width: 190px;
+} */
 
 #paginate-left{
 	color: white;
@@ -214,4 +254,8 @@
 	height:150px;
 	width:200px;
 
+}
+
+.footer-style {
+	color: black;
 }
