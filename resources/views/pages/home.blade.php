@@ -15,14 +15,18 @@
 		<input type="text" class="form-control search-bar" aria-label="Text input with dropdown button"  placeholder="Zoeken in Nervamarkt..." id="home-search-text">
 		{{-- <div class="search-icon"><i class="fas fa-search icon"></i></div> --}}
 
-		<div class="input-group-append">
+		{{-- <div class="vertical-row"></div>  --}}
+		{{-- <div class="vertical-row2"></div> --}}
+
+		<div class="input-group-append categorie-styling">
 				
-			<select id="home-search-select" class="category form-control categorie-styling">
+			<select id="home-search-select" class="categorie-styling form-control">
+				{{-- form-control verwijderd --}}
 				@foreach($categories as $category)
 					<option value="{{$category->id}}">{{$category->name}}</option>
 				@endforeach
 			</select><div class="vertical-row"></div>
-			</div>
+		</div>
 
 			<select id="select-sort-by" class="form-control prijs-styling col-md-6">
 				<option value="advertenties.price.asc">⬆ Prijs</option>
@@ -32,10 +36,8 @@
 				<option value="advertenties.created_at.asc">⬆ Datum</option>
 				<option value="advertenties.created_at.desc">⬇ Datum</option>
 			</select><div class="vertical-row2"></div>
-		
-			
 
-			<select id="home-search-distance" class="category form-control afstand-styling">
+			<select id="home-search-distance" class="afstand-styling">
 				{{-- @foreach([0.5,1,1.5,2,3, >3] as $distance)
 					<option value="{{$distance}}">Max {{$distance}} km</option>
 				@endforeach --}}
@@ -156,7 +158,6 @@ function searchQuery(){
 			// search_filter_user: jQuery('#filter-user').val(),
 		},
 		success: function(result){
-			console.log(result);
 			resultLength = result.length;
 			if (!resultLength) {
 				let pagNr = $('#paginate-number');

@@ -10,9 +10,6 @@
 		<ul class="navbar-nav mr-auto">
 			@guest @else 
 			<li class="nav-item">
-				<a class="nav-link" style="color:black;" href="{{ route('message.index') }}"><i class="fas fa-envelope"></i> Berichten</a>
-			</li>
-			<li class="nav-item">
 
 				<a class="nav-link" style="color:black;" href="{{ route('advertentie.create') }}">📋 Advertentie Plaatsen</a>
 				
@@ -35,6 +32,7 @@
 						@endif
 						<a class="dropdown-item" href="{{ route('user.index') }}"><i class="fas fa-user-edit"></i> User Interface</a>
 						<a class="dropdown-item" href="{{ route('advertentie.index') }}">📋 Mijn Advertenties</a>
+						<a class="dropdown-item" href="{{ route('message.index') }}"><i class="fas fa-envelope"></i> Berichten</a>
 						<a class="dropdown-item" href="{{ route('message.sent.index') }}"><i class="fas fa-envelope"></i> Verzonden Berichten</a>
 						
 						<div class="dropdown-divider"></div>

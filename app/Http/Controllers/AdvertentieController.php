@@ -45,7 +45,6 @@ class AdvertentieController extends Controller
      */
     public function store(Request $request)
     {
-        
         $this->validate($request, array(
             'title'             => 'required|string|max:255|min:3|unique:advertenties',
             'description'       => 'required|string|max:25500',
@@ -67,16 +66,16 @@ class AdvertentieController extends Controller
         $advertentie->subcategory_id    = $request->subcategory;
         $advertentie->user_id           = auth()->id();
         $advertentie->price             = $request->price*100;
-        $advertentie->slug              = random_int(1e15,1e16-1)."-".time();
+        $advertentie->slug              = random_int(1e7,1e8-1)."-".time();
 
         foreach([1,2,3,4,5,6] as $v) {
             if ($request->hasFile("photo$v")) {
                 $image = $request->file("photo$v");
-                $randomNr = random_int(1e10,1e11-1);
+                $randomNr = random_int(1e7,1e8-1);
                 $filename = time() . "$randomNr." . $image->getClientOriginalExtension();
-                $location = "/images/$filename";
+                $location = "images/$filename";
                 Image::make($image)->save($location);
-                $advertentie["photo$v"] = $location;
+                $advertentie["photo$v"] = $filename;
             }
         }
 
