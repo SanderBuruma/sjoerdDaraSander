@@ -1,6 +1,6 @@
 <?php
 
-namespace MyApp\Http\Middleware;
+namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\App;
@@ -9,7 +9,7 @@ class HttpsProtocol{
 
 	public function handle($request, Closure $next)
 	{
-		if (!$request->secure()) {
+		if (!$request->secure() ) {
 			return redirect()->secure($request->getRequestUri());
 		}
 
