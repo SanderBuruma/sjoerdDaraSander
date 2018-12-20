@@ -48,11 +48,10 @@ class AdvertentieSeeder extends Seeder
 				'created_at' => $createdAt,
 				'updated_at' => $createdAt,
 				]);
-			}
-			$count = 0;
-			while ($count++ < 500) {
-				createAdvertentie();
-			}
-			
+		}
+		$count = 0;
+		while ($count++ < 500) {
+			createAdvertentie();
+		}	
 	}
 }
