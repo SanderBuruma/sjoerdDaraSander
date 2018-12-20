@@ -55,15 +55,16 @@
 		</div>
 
 		<div class="row">
-				<div class="col-md-4"><h4>Bepaal uw locatie:</h4><p>Hiernaast ziet u de coördinaten van uw directe omgeving.</p></div>
-				
-				<div class="col-md-8">
-				<input onload=getLocation() type="number" name="latitude" id="latitude" step="0.0000001"><br><h4>Lengtegraad</h4>
-				<input type="number" name="longitude" id="longitude" step="0.0000001"><br><h4>Breedtegraad</h4>
-				</div>
+			<div class="col-md-4"><h4>Bepaal uw locatie:</h4><p>Hiernaast ziet u de coördinaten van uw directe omgeving.</p></div>
+			
+			<div class="col-md-8">
+			<input onload=getLocation() type="number" name="latitude" id="latitude" step="0.0000001"><br><h4>Lengtegraad</h4>
+			<input type="number" name="longitude" id="longitude" step="0.0000001"><br><h4>Breedtegraad</h4>
 			</div>
-			<hr>
-
+		</div>
+			
+		<div id="map"></div>
+		<hr>
 		<div class="row">
 			<div class="col-md-4"><h4>Uw adres-informatie</h4></div>
 			<div class="col-md-8">
@@ -101,7 +102,6 @@
 		<button id="submit-changes-nonpw" type="button" class="btn btn-dark button col-md-4 offset-md-4" style="">Profiel Bijwerken</button>
 		<h5 id="submit-changes-message button" hidden>Gebruiker opgeslagen</h5>
 
-		<div id="map"></div>
 
 		<div class="row">
 			<div class="col-md-4"><h4 id="password-change">Paswoord Veranderen</h4></div>
